@@ -54,7 +54,7 @@ eddigi = szo.replace(/[A-Za-z0-9]/g, '_');
 
 var nemtalalt = "";
 var ujszo = "";
-var elet = 16;
+var elet = 16; //16
 var eletpont = document.getElementById("eletpont");
 eletpont.innerHTML = "Életpont: "+elet;
 
@@ -71,6 +71,7 @@ function Ellenoriz(){
     ujszo = "";
     for (let i = 0; i < eddigi.length; i++) {
         ujszo += szo[i]===begepeltbetu?begepeltbetu:eddigi[i];
+        visszajelzes.innerHTML = "<br>";
     }
 
     
@@ -89,6 +90,7 @@ function Ellenoriz(){
     }else if(nemtalalt.includes(begepeltbetu)){ //Volt már ilyen betű
         visszajelzes.innerHTML = "Ezt a betűt már felhasználtad: "+begepeltbetu;
     }
+    
 
     //nemtalalt += szo.includes(begepeltbetu)?"":begepeltbetu;
     //elet -= szo.includes(begepeltbetu)?0:1;
@@ -98,11 +100,34 @@ function Ellenoriz(){
     megjelenito.innerHTML = ujszo;
     eddigi = ujszo;
     document.getElementById("betuinput").value = "";
+    TheEnd();
 }
 
 function EmberValt(){
     var emberkiir = document.getElementById("ember");
     
+}
+
+function TheEnd(){
+    if(elet == 0){
+        alert("Nem sikerült kitalálni a szót. Megfejtés: "+szo);
+        Lezaras();
+    } else if(!eddigi.includes("_")){
+        alert("Sikeresen kitaláltad a szavat. ( Maradék élet: "+elet+" )");
+        Lezaras();
+    }
+}
+
+function Lezaras(){
+    document.getElementById("betuinput").classList.add("d-none");
+    document.getElementById("bekuld").classList.add("d-none");
+    document.getElementById("ujjatek").classList.remove("d-none");
+}
+
+function UjJatek(){
+    document.getElementById("betuinput").classList.remove("d-none");
+    document.getElementById("bekuld").classList.remove("d-none");
+    document.getElementById("ujjatek").classList.add("d-none");
 }
 
 /*document.getElementById('szo').addEventListener('input', function (e) {
