@@ -1,0 +1,98 @@
+:root {
+    --vilagoslila: rgb(138, 79, 255);
+    --zoldeskek: rgb(0, 109, 119);
+    --sotetzold: rgb(0, 60, 60);
+    --vilagoskek: rgb(37, 183, 250);
+    --sotetlila: rgb(87, 31, 105);
+    --sotetkek2: rgb(29,35,49);
+    --sotetkek: rgb(28,37,63);
+    --szurke: rgb(43, 42, 51);
+    --vilagosszurke: rgb(66, 64, 73);
+    --feherlila: rgb(179, 154, 187);
+
+    --szin1: rgb(22,30,50); /* hatter */
+    --szin2: rgb(70,25,84); /* fejlec,lablec */
+    --szin3: rgb(11,15,25); /* ajanlo */
+    --szin4: rgb(35,38,39); /* szurke regist/login */
+}
+/*Alap*/
+*{
+    box-sizing: border-box;
+}
+body {
+    background-color: var(--sotetkek);
+    color: white;
+    min-width: 300px;
+    font-family: 'Kanit', sans-serif;
+}
+main {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+.hatternav, footer {
+    background-color: var(--sotetlila);
+}
+nav .navbar-brand {
+    margin-right: 0 !important;
+}
+nav .navbar-brand > img {
+    width: 125px;
+}
+nav a.navbar-brand:hover {
+    transition: transform .2s;
+    transform: scale(1.05);
+    color: var(--feherlila) !important;
+    text-decoration: underline;
+}
+nav li.nav-item a:hover {
+    transition: transform .2s;
+    transform: scale(1.025);
+    text-decoration: underline;
+    color: var(--feherlila) !important;
+}
+a.nav-link {
+    color: white !important;
+}
+nav .dropdown-item, .dropdown-menu {
+    background-color: var(--sotetlila);
+    color: white;
+}
+nav .dropdown-item:hover {
+    color: var(--feherlila);
+    background-color: var(--sotetlila) !important;
+}
+.modal span {
+    font-weight: bold;
+}
+main {
+    min-height: 100vh;
+}
+footer {
+    line-height: 56px;
+}
+a.linkek {
+    color: white;
+}
+.navbar-brand {
+    font-family: 'Protest Revolution', sans-serif !important;
+    letter-spacing: .25rem !important;
+}
+.navbar-brand:hover {
+    text-decoration: none !important;
+}
+
+/*Felugró ablak*/
+.modal-body {
+    background-color: var(--sotetkek);
+    text-align: justify;
+}
+.modal-header, .modal-footer {
+    background-color: var(--sotetlila);
+    color: white;
+}
+#felugro_kep {
+    width: 60%;
+}
+#kilepModal input[type="submit"], #kilepModal button {
+    cursor: pointer;
+}

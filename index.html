@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="hu" dir="ltr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Akasztófa">
+        <meta name="keywords" content="Játék">
+        <meta name="author" content="CsontiXD">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+        <link rel="stylesheet" href="bootstrap-5.0.2-dist/css/bootstrap.css">
+        <link rel="stylesheet" href="style.css">
+        <link rel="icon" type="image/x-icon" href="img/logo1.png">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Protest+Revolution&display=swap" rel="stylesheet">
+
+        <!-- Kanit -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap" rel="stylesheet">
+
+        <title>Akasztófa | Főoldal</title>
+    </head>
+    <body onload="CimCsere()">
+        <header>
+            <nav class="navbar navbar-expand-sm navbar-dark hatternav">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="index.html" style="padding: 8px 0 !important;">Akasztófa</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.html"><i class="fa-solid fa-house"></i> Főoldal</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="hirfolyam.html"><i class="fa-solid fa-newspaper"></i> Hírfolyam</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="info.html"><i class="fa-solid fa-circle-info"></i></i> Infó</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <main>
+
+            <!-- Cím -->
+            <div class="container text-center my-5">
+                <div class="row">
+                    <div class="col-12">
+                        <h1 id="cim">Akasztófa</h1>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nehézségi szintek-->
+            <div id="nehezseg" class="d-none">
+                <div class="container">
+                    <div class="row text-center">
+                        <div class="col-12">
+                            <h3>Kitalálandó szó:</h3>
+                            <input type="text" id="szo">
+                            <span id="mutate" onclick="Mutat()" title="Jelszó mutatása/elrejtése"><i class="fa-solid fa-eye"></i></span>
+                        </div>
+                        <div class="col-12">
+                            <h3>Válassz nehézséget</h3>
+                        </div>
+                        <!--
+                        <div class="col-4">
+                            <button onclick="Kezdes(16)">
+                                Könnyű<br>Hibalehetőség: 16
+                            </button>
+                        </div>
+                        <div class="col-4">
+                            <button onclick="Kezdes(16)">
+                                Közepes<br>Hibalehetőség: XX
+                            </button>
+                        </div>
+                        <div class="col-4">
+                            <button onclick="Kezdes(16)">
+                                Nehéz<br>Hibalehetőség: YY
+                            </button>
+                        </div>
+                        -->
+                        <div class="col-4 text-center">
+                            <input type="radio" name="nehezseg" id="n1" value="16" checked>
+                            <label for="n1">Könnyű<br>Hibalehetőség: 16</label>
+                        </div>
+                        <div class="col-4 text-center">
+                            <input type="radio" name="nehezseg" id="n2" value="XX">
+                            <label for="n2">Közepes<br>Hibalehetőség: XX</label>
+                        </div>
+                        <div class="col-4 text-center">
+                            <input type="radio" name="nehezseg" id="n3" value="YY" class="">
+                            <label for="n3">Nehéz<br>Hibalehetőség: YY</label>
+                        </div>
+
+                        <div class="col-12">
+                            <button onclick="Kezdes()" data-bs-toggle="modal" data-bs-target="#DeMiert1">Játék kezdése</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ///// JÁTÉKTÉR \\\\\-->
+            <div id="jatekter" class="">
+
+                <!-- Kitalálandó szó -->
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <h1 class="text-center" id="megjelenito"></h1>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kijelzések -->
+                <div class="container">
+                    <div class="row text-center">
+                        <div class="col-12 col-sm-6">
+                            Ember
+                            <div id="ember">
+                                <img src="New Piskel-512.png" alt="" width="256">
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            Nincsen benne:
+                            <div id="betuk"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Találandó tér -->
+                <div class="container text-center">
+                    <div class="row">
+                        <div class="col-12">
+                            <form action="#" method="post">
+                                <input type="text" id="betuinput" name="betuinput" pattern="[A-Za-zÁÉÍÓÖŐÚÜŰáéíóöőúüű]+" maxlength="1" title="Írj ide valamit..." placeholder="Írj ide egy betűt..." required>
+                                <input type="button" value="Beküldés" onclick="Ellenoriz()">
+                                <p id="hiba"></p>
+                            </form>
+                            <p id="visszajelzes"><br></p>
+                            <h5 class="text-center" id="eletpont"></h5>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </main>
+        <footer class="text-center">
+            Az oldal jelenlegi verziója: 1.0
+        </footer>
+    </body>
+    <script src="bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="main.js"></script>
+</html>
+<!-- Infó modal -->
+<div class="modal fade text-center" id="DeMiert1" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-md">
+      <div class="modal-content">
+        <div class="modal-body">
+          <button type="button" class="btn btn-danger float-end" data-bs-dismiss="modal">X</button>
+          <hr class="mb-4">
+            <h1 class="text-center">Hiba</h1>
+            <p>Nincsen kitöltve a "Kitalálandó szó" rész!</p>
+          <hr>
+        </div>
+      </div>
+    </div>
+</div>
+<script>
+    /*var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+    var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+    return new bootstrap.Popover(popoverTriggerEl)
+    })*/
+</script>
+<style>
+    input[type=radio] {
+        border: 0px;
+        width: 100%;
+        height: 2em;
+    }
+</style>
