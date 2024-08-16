@@ -8,8 +8,6 @@ function CimCsere(){
 }
 
 /*
-const szo = "Valami";
-
 function Kezdes(n){
     var nehezseg = document.getElementById("nehezseg");
     var jatekter = document.getElementById("jatekter");
@@ -17,46 +15,49 @@ function Kezdes(n){
     nehezseg.classList.add("d-none");
     jatekter.classList.remove("d-none");
 }
-
-function Ellenoriz(){
-    var betu = document.getElementById("");
-}
 */
 
 // Kitalálandó szó mutatása bekérésnél
+var szo = document.getElementById("szo");
+var szem = document.getElementById("mutate");
+var sz = ['<i class="fa-solid fa-eye"></i>','<i class="fa-solid fa-eye-slash"></i>'];
 function Mutat(){
-    var szo = document.getElementById("szo");
-    var szem = document.getElementById("mutate");
-
-    var sz = ['<i class="fa-solid fa-eye"></i>','<i class="fa-solid fa-eye-slash"></i>'];
+    
     szem.innerHTML = szem.innerHTML==sz[0]?sz[1]:sz[0];
     szo.type = szem.innerHTML==sz[0]?"text":"password";
 }
 
-function Kezdes(){
-    let selectedRadio = document.querySelector('input[name="nehezseg"]:checked');
-    let value = selectedRadio.value;
-    console.log("Kiválasztott nehézségi szint: " + value);
-    var szo = document.getElementById("szo");
-    if(szo.value == ""){
-        
-    }else{
-        console.log("Ezt találd ki: "+szo.value);
-    }
-}
-szo = "alma - 1";
-szo = szo.toUpperCase();
-
-var megjelenito = document.getElementById("megjelenito");
-
-megjelenito.innerHTML = szo.replace(/[A-Za-z0-9]/g, '_');
-eddigi = szo.replace(/[A-Za-z0-9]/g, '_');
-
+/* Általános információk */
 var nemtalalt = "";
 var ujszo = "";
-var elet = 16; //16
-var eletpont = document.getElementById("eletpont");
-eletpont.innerHTML = "Életpont: "+elet;
+var elet = 16; //16-12-8
+var szo = "";
+
+/* Játék kezdése */
+function Kezdes(){
+    let selectedRadio = document.querySelector('input[name="nehezseg"]:checked');
+    elet = selectedRadio.value;
+    szo = document.getElementById("szo");
+    if(szo.value == ""){
+        alert("Nincsen beírva kitalálandó szó!");
+    }else{
+        elet = selectedRadio.value;
+        //console.log("Ezt találd ki: "+szo.value+" Élet: "+elet);
+        document.getElementById("nehezseg").classList.add("d-none");
+        document.getElementById("jatekter").classList.remove("d-none");
+    }
+    szo = szo.value.toUpperCase();
+
+    var megjelenito = document.getElementById("megjelenito");
+
+    megjelenito.innerHTML = szo.replace(/[A-Za-z0-9]/g, '_');
+    eddigi = szo.replace(/[A-Za-z0-9]/g, '_');
+
+
+    var eletpont = document.getElementById("eletpont");
+    eletpont.innerHTML = "Életpont: "+elet;
+}
+
 
 /* Játék */
 function Ellenoriz(){
@@ -79,7 +80,7 @@ function Ellenoriz(){
         visszajelzes.innerHTML = "Nincs mit leellenőrizni.";
     } else if(!nemtalalt.includes(begepeltbetu) && !ujszo.includes(begepeltbetu)){ //elbírálás
         visszajelzes.innerHTML = "<br>";
-        if(szo.includes(begepeltbetu)){
+        if(szo.includes(begepeltbetu)){//van a szóban
             nemtalalt+="";
             elet-=0;
         }else{
@@ -90,10 +91,10 @@ function Ellenoriz(){
     }else if(nemtalalt.includes(begepeltbetu)){ //Volt már ilyen betű
         visszajelzes.innerHTML = "Ezt a betűt már felhasználtad: "+begepeltbetu;
     }
+    if(eddigi.includes(begepeltbetu)){
+        visszajelzes.innerHTML = "Ezt a betűt már felhasználtad: "+begepeltbetu;
+    }
     
-
-    //nemtalalt += szo.includes(begepeltbetu)?"":begepeltbetu;
-    //elet -= szo.includes(begepeltbetu)?0:1;
     nemtalaltbetuk.innerHTML = nemtalalt.split("").join(", ");
     eletpont.innerHTML = "Életpont: "+elet;
     megjelenito.innerHTML = "";
@@ -103,11 +104,18 @@ function Ellenoriz(){
     TheEnd();
 }
 
+/* Akasztófa kinézete */
 function EmberValt(){
-    var emberkiir = document.getElementById("ember");
-    
+    var maxelet = document.querySelector('input[name="nehezseg"]:checked').value;
+    var emberkiir = document.getElementById("emberkep");
+
+    let szam = 0;
+    szam = maxelet-elet;
+    emberrajz = "img/man"+szam+"-512_gray.png";
+    emberkiir.src = emberrajz;
 }
 
+/* Játék vége */
 function TheEnd(){
     if(elet == 0){
         alert("Nem sikerült kitalálni a szót. Megfejtés: "+szo);
@@ -126,8 +134,21 @@ function Lezaras(){
 
 function UjJatek(){
     document.getElementById("betuinput").classList.remove("d-none");
+    document.getElementById("betuinput").value = "";
     document.getElementById("bekuld").classList.remove("d-none");
     document.getElementById("ujjatek").classList.add("d-none");
+    document.querySelectorAll('input[name="nehezseg"]')[0].checked = true;
+    document.getElementById("szo").value = "";
+    document.getElementById("nehezseg").classList.remove("d-none");
+    document.getElementById("jatekter").classList.add("d-none");
+
+    szo = "";
+    ujszo = "";
+    nemtalalt = "";
+    elet = 16;
+
+    szem.innerHTML = sz[1]
+    szo.type = "text";
 }
 
 /*document.getElementById('szo').addEventListener('input', function (e) {

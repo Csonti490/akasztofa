@@ -57,8 +57,8 @@
                 </div>
             </div>
 
-            <!-- Nehézségi szintek-->
-            <div id="nehezseg" class="d-none">
+            <!-- ///// Nehézségi szintek \\\\\ -->
+            <div id="nehezseg" class="">
                 <div class="container">
                     <div class="row text-center">
                         <div class="col-12">
@@ -91,23 +91,23 @@
                             <label for="n1">Könnyű<br>Hibalehetőség: 16</label>
                         </div>
                         <div class="col-4 text-center">
-                            <input type="radio" name="nehezseg" id="n2" value="XX">
-                            <label for="n2">Közepes<br>Hibalehetőség: XX</label>
+                            <input type="radio" name="nehezseg" id="n2" value="12">
+                            <label for="n2">Közepes<br>Hibalehetőség: 12</label>
                         </div>
                         <div class="col-4 text-center">
-                            <input type="radio" name="nehezseg" id="n3" value="YY" class="">
-                            <label for="n3">Nehéz<br>Hibalehetőség: YY</label>
+                            <input type="radio" name="nehezseg" id="n3" value="8">
+                            <label for="n3">Nehéz<br>Hibalehetőség: 8</label>
                         </div>
 
                         <div class="col-12">
-                            <button onclick="Kezdes()" data-bs-toggle="modal" data-bs-target="#DeMiert1">Játék kezdése</button>
+                            <button onclick="Kezdes()">Játék kezdése</button>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- ///// JÁTÉKTÉR \\\\\-->
-            <div id="jatekter" class="">
+            <div id="jatekter" class="d-none">
 
                 <!-- Kitalálandó szó -->
                 <div class="container">
@@ -122,9 +122,9 @@
                 <div class="container">
                     <div class="row text-center">
                         <div class="col-12 col-sm-6">
-                            Ember
-                            <div id="ember">
-                                <img src="New Piskel-512.png" alt="" width="256">
+                            &nbsp;
+                            <div id="ember" width="256" height="256">
+                                <img src="img/man0-512_gray.png" alt="" width="256" id="emberkep">
                             </div>
                         </div>
                         <div class="col-12 col-sm-6">
@@ -139,11 +139,11 @@
                     <div class="row">
                         <div class="col-12">
                             <div id="visszajelzes"><br></div>
-                            <form action="#" method="post">
-                                <input type="text" id="betuinput" name="betuinput" pattern="[A-Za-zÁÉÍÓÖŐÚÜŰáéíóöőúüű]+" maxlength="1" title="Írj ide valamit..." placeholder="Írj ide egy betűt..." required>
+                            
+                                <input type="text" id="betuinput" name="betuinput" pattern="[A-Za-zÁÉÍÓÖŐÚÜŰáéíóöőúüű]+" maxlength="1" title="Írj ide valamit..." placeholder="Írj ide egy betűt/számot..." required>
                                 <input type="button" value="Beküldés" onclick="Ellenoriz()" id="bekuld">
-                                <input type="button" value="Új játék" class="d-none" id="ujjatek">
-                            </form>
+                                <input type="button" value="Új játék" onclick="UjJatek()" class="d-none" id="ujjatek">
+                            
                             <h5 class="text-center" id="eletpont"></h5>
                         </div>
                     </div>
@@ -160,6 +160,7 @@
     <script src="main.js"></script>
 </html>
 <!-- Infó modal -->
+<!-- data-bs-toggle="modal" data-bs-target="#DeMiert1" -->
 <div class="modal fade text-center" id="DeMiert1" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered modal-md">
       <div class="modal-content">
