@@ -119,7 +119,9 @@ function EmberValt(){
     
     switch (maxelet) {
         case 16:
-            szam = 16-elet;
+            szam += 1;
+            emberrajz = "img/man"+szam+"-512_gray.png";
+            emberkiir.src = emberrajz;
             break;
         case 12:
             if(seged == 1){
