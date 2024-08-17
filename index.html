@@ -63,29 +63,17 @@
                     <div class="row text-center">
                         <div class="col-12">
                             <h3>Kitalálandó szó:</h3>
-                            <input type="text" id="szo">
-                            <span id="mutate" onclick="Mutat()" title="Jelszó mutatása/elrejtése"><i class="fa-solid fa-eye"></i></span>
+
+                            <input type="text" id="szo" placeholder="Kitalálandó szó" class="p-2">
+                            <!--<span id="mutate" onclick="Mutat()" title="Jelszó mutatása/elrejtése">
+                                <i class="fa-solid fa-eye" id="szem"></i>
+                            </span>-->
+                            <button id="mutate" onclick="Mutat()" class="p-2" title="Szó mutatása/elrejtése"><i class="fa-solid fa-eye"></i></button>
+                            
                         </div>
                         <div class="col-12">
                             <h3>Válassz nehézséget</h3>
                         </div>
-                        <!--
-                        <div class="col-4">
-                            <button onclick="Kezdes(16)">
-                                Könnyű<br>Hibalehetőség: 16
-                            </button>
-                        </div>
-                        <div class="col-4">
-                            <button onclick="Kezdes(16)">
-                                Közepes<br>Hibalehetőség: XX
-                            </button>
-                        </div>
-                        <div class="col-4">
-                            <button onclick="Kezdes(16)">
-                                Nehéz<br>Hibalehetőség: YY
-                            </button>
-                        </div>
-                        -->
                         <div class="col-4 text-center">
                             <input type="radio" name="nehezseg" id="n1" value="16" checked>
                             <label for="n1">Könnyű<br>Hibalehetőség: 16</label>
@@ -153,7 +141,7 @@
 
         </main>
         <footer class="text-center">
-            Az oldal jelenlegi verziója: 1.0
+            Az oldal jelenlegi verziója: 1.4
         </footer>
     </body>
     <script src="bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
