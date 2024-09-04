@@ -4,7 +4,7 @@
     --feherlila: rgb(179, 154, 187); /* fejléc kijelölés */
     --sotetkek: rgb(28,37,63);/* háttér */
     --sotetszurke: rgb(35,38,39);
-    --szurke: rgb(95, 92, 92);
+    --szurke: rgb(53, 50, 50);
 
     /*--vilagoslila: rgb(138, 79, 255);
     --sotetkek2: rgb(29,35,49);
@@ -102,23 +102,27 @@ a.linkek {
 }
 
 /*Beviteli mezők és gombok*/
-input[type="text"],input[type="password"],button{
+/*input[type="text"],input[type="password"],input[type="button"],button{
     color: white;
     background-color: var(--sotetszurke);
     border: 1px solid var(--szurke);
 }
-input[type="text"]:hover,input[type="password"]:hover,button:hover {
+input[type="text"]:hover,input[type="password"]:hover,input[type="button"]:hover,button:hover {
     background-color: var(--szurke);
     border: 1px solid white;
     transition: ease-in-out 0.1s;
-}
+}*/
 input[type="radio"]{
     border: 0px;
     width: 100%;
     height: 2em;
-    accent-color: blue;
 }
 
 /*html {
     color-scheme: dark !important;
 }*/
+
+.ikon {
+    width: 43.2px;
+    height: 43.2px;
+}

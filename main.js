@@ -208,3 +208,11 @@ function UjJatek(){
     seged = 0;
     szam = 0;
 }
+
+function TemaValtas(){
+    var asd = document.getElementById("tema");
+    document.documentElement.style.colorScheme = document.documentElement.style.colorScheme === 'dark' ? 'light' : 'dark';
+    //document.documentElement.style.colorScheme === 'dark' ? '' : '';
+    asd.innerHTML = document.documentElement.style.colorScheme === 'dark' ? '<i class="fa-solid fa-moon"></i>' : '<i class="fa-solid fa-sun"></i>';
+    //asd.innerHTML = document.documentElement.style.colorScheme === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+}

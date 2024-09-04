@@ -48,6 +48,10 @@
         </header>
         <main>
 
+            <p class="text-end">
+                <button onclick="TemaValtas()" class="p-2 ikon" id="tema"><i class="fa-solid fa-sun"></i></button>
+            </p>
+
             <!-- Cím -->
             <div class="container text-center my-5">
                 <div class="row">
@@ -64,7 +68,7 @@
                         <div class="col-12">
                             <h3>Kitalálandó szó:</h3>
                             <input type="text" id="szo" placeholder="Kitalálandó szó" class="p-2">
-                            <button id="mutate" onclick="Mutat()" class="p-2" title="Szó mutatása/elrejtése"><i class="fa-solid fa-eye"></i></button>
+                            <button id="mutate" onclick="Mutat()" class="p-2 ikon" title="Szó mutatása/elrejtése"><i class="fa-solid fa-eye"></i></button>
                         </div>
                         <div class="col-12">
                             <h3>Válassz nehézséget</h3>
@@ -123,9 +127,9 @@
                         <div class="col-12">
                             <div id="visszajelzes"><br></div>
                             
-                                <input type="text" id="betuinput" name="betuinput" pattern="[A-Za-zÁÉÍÓÖŐÚÜŰáéíóöőúüű]+" maxlength="1" title="Írj ide valamit..." placeholder="Írj ide egy betűt/számot..." required>
-                                <input type="button" value="Beküldés" onclick="Ellenoriz()" id="bekuld">
-                                <input type="button" value="Új játék" onclick="UjJatek()" class="d-none" id="ujjatek">
+                                <input type="text" id="betuinput" name="betuinput" pattern="[A-Za-zÁÉÍÓÖŐÚÜŰáéíóöőúüű]+" maxlength="1" title="Írj ide valamit..." placeholder="Írj ide egy betűt/számot..." required class="p-2">
+                                <input type="button" value="Ellenőrzés" onclick="Ellenoriz()" id="bekuld" class="p-2">
+                                <input type="button" value="Új játék" onclick="UjJatek()" class="d-none p-2" id="ujjatek">
                             
                             <h5 class="text-center" id="eletpont"></h5>
                         </div>
