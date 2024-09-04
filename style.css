@@ -1,14 +1,18 @@
 :root {
-    --vilagoslila: rgb(138, 79, 255);
+    
+    --sotetlila: rgb(87, 31, 105); /* fejléc, lábléc */
+    --feherlila: rgb(179, 154, 187); /* fejléc kijelölés */
+    --sotetkek: rgb(28,37,63);/* háttér */
+    --sotetszurke: rgb(35,38,39);
+    --szurke: rgb(95, 92, 92);
+
+    /*--vilagoslila: rgb(138, 79, 255);
+    --sotetkek2: rgb(29,35,49);
+    --vilagoskek: rgb(37, 183, 250);
     --zoldeskek: rgb(0, 109, 119);
     --sotetzold: rgb(0, 60, 60);
-    --vilagoskek: rgb(37, 183, 250);
-    --sotetlila: rgb(87, 31, 105);
-    --sotetkek2: rgb(29,35,49);
-    --sotetkek: rgb(28,37,63);
     --szurke: rgb(43, 42, 51);
-    --vilagosszurke: rgb(66, 64, 73);
-    --feherlila: rgb(179, 154, 187);
+    --vilagosszurke: rgb(66, 64, 73);*/
 
     --szin1: rgb(22,30,50); /* hatter */
     --szin2: rgb(70,25,84); /* fejlec,lablec */
@@ -96,3 +100,25 @@ a.linkek {
 #kilepModal input[type="submit"], #kilepModal button {
     cursor: pointer;
 }
+
+/*Beviteli mezők és gombok*/
+input[type="text"],input[type="password"],button{
+    color: white;
+    background-color: var(--sotetszurke);
+    border: 1px solid var(--szurke);
+}
+input[type="text"]:hover,input[type="password"]:hover,button:hover {
+    background-color: var(--szurke);
+    border: 1px solid white;
+    transition: ease-in-out 0.1s;
+}
+input[type="radio"]{
+    border: 0px;
+    width: 100%;
+    height: 2em;
+    accent-color: blue;
+}
+
+/*html {
+    color-scheme: dark !important;
+}*/

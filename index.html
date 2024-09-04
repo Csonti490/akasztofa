@@ -52,7 +52,7 @@
             <div class="container text-center my-5">
                 <div class="row">
                     <div class="col-12">
-                        <h1 id="cim">Akasztófa</h1>
+                        <h1 id="cim" class="m-0">Akasztófa</h1>
                     </div>
                 </div>
             </div>
@@ -63,13 +63,8 @@
                     <div class="row text-center">
                         <div class="col-12">
                             <h3>Kitalálandó szó:</h3>
-
                             <input type="text" id="szo" placeholder="Kitalálandó szó" class="p-2">
-                            <!--<span id="mutate" onclick="Mutat()" title="Jelszó mutatása/elrejtése">
-                                <i class="fa-solid fa-eye" id="szem"></i>
-                            </span>-->
                             <button id="mutate" onclick="Mutat()" class="p-2" title="Szó mutatása/elrejtése"><i class="fa-solid fa-eye"></i></button>
-                            
                         </div>
                         <div class="col-12">
                             <h3>Válassz nehézséget</h3>
@@ -88,7 +83,7 @@
                         </div>
 
                         <div class="col-12">
-                            <button onclick="Kezdes()">Játék kezdése</button>
+                            <button onclick="Kezdes()" class="p-2">Játék kezdése</button>
                         </div>
                     </div>
                 </div>
@@ -122,7 +117,7 @@
                     </div>
                 </div>
 
-                <!-- Találandó tér -->
+                <!-- Beviteli rész -->
                 <div class="container text-center">
                     <div class="row">
                         <div class="col-12">
@@ -168,10 +163,3 @@
     return new bootstrap.Popover(popoverTriggerEl)
     })*/
 </script>
-<style>
-    input[type=radio] {
-        border: 0px;
-        width: 100%;
-        height: 2em;
-    }
-</style>

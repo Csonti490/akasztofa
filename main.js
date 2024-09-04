@@ -1,5 +1,6 @@
 
 function CimCsere(){
+
     var c = document.getElementById("cim");
     c.innerHTML = "__________"; c.innerHTML = "Akasztófa";
     const a = "Akasztófa";
@@ -7,7 +8,7 @@ function CimCsere(){
     
 }
 
-/* Alaphelyzetbe állítás, ha frissítve lesz az oldal */
+/* Alaphelyzetbe állítás, ha frissülne az oldal */
 window.onload = function() {
     document.querySelectorAll('input[type="text"]').forEach(function(input) {
       input.value = '';
@@ -35,36 +36,52 @@ function Mutat(){
 /* Általános információk */
 var nemtalalt = "";
 var ujszo = "";
-var elet = 16; //16-12-8
+var elet = 16; //16 v 12 v 8
 var szo = "";
 var seged = 0;
 var szam = 0;
 
 /* Játék kezdése */
 function Kezdes(){
-    let selectedRadio = document.querySelector('input[name="nehezseg"]:checked');
-    elet = selectedRadio.value;
-    szo = document.getElementById("szo");
-    if(szo.value == ""){
-        alert("Nincsen beírva kitalálandó szó!");
-    }else{
-        elet = selectedRadio.value;
-        //console.log("Ezt találd ki: "+szo.value+" Élet: "+elet);
-        document.getElementById("nehezseg").classList.add("d-none");
-        document.getElementById("jatekter").classList.remove("d-none");
-    }
-    szo = szo.value.toUpperCase();
-
     var megjelenito = document.getElementById("megjelenito");
-
-    megjelenito.innerHTML = szo.replace(/[A-Za-z0-9áéíóöőúüűÁÉÍÓÖŐÚÜŰ]/g, '_');//szo.replace(/[A-Za-z0-9]/g, '_');
-    eddigi = szo.replace(/[A-Za-z0-9áéíóöőúüűÁÉÍÓÖŐÚÜŰ]/g, '_');//szo.replace(/[A-Za-z0-9]/g, '_');
-
-
     var eletpont = document.getElementById("eletpont");
-    eletpont.innerHTML = "Életpont: "+elet;
+    var selectedRadio = document.querySelector('input[name="nehezseg"]:checked');
+
+    szo = document.getElementById("szo");
+    elet = selectedRadio.value;
+    
+    if(szo.value == "" ){
+        alert("HIBA! Nincsen beírva kitalálandó szó!");
+    }else{
+
+        szo = szo.value.toUpperCase();
+        elet = selectedRadio.value;
+        //console.log("Ezt találd ki: "+szo.value+" Élet: "+elet); //Ellenőrzésre
+        megjelenito.innerHTML = szo.replace(/[A-Za-z0-9áéíóöőúüűÁÉÍÓÖŐÚÜŰ]/g, '_');
+        eddigi = szo.replace(/[A-Za-z0-9áéíóöőúüűÁÉÍÓÖŐÚÜŰ]/g, '_');
+
+        if(!eddigi.includes('_')){
+            alert("HIBA! Nincsen kitalálandó betű/szám!");
+        }else{
+            document.getElementById("nehezseg").classList.add("d-none");
+            document.getElementById("jatekter").classList.remove("d-none");
+            eletpont.innerHTML = "Életpont: "+elet;
+        }
+    }
+
+    
+    
+
 }
 
+/* Csak a megfelelő karakterek elfogadása */
+document.getElementById('betuinput').addEventListener('input', function (e) {
+    var pattern = /^[A-Za-z0-9ÁÉÍÓÖŐÚÜŰáéíóöőúüű]+$/;
+    
+    if (!pattern.test(e.target.value)) {
+        e.target.value = e.target.value.replace(/[^A-Za-z0-9ÁÉÍÓÖŐÚÜŰáéíóöőúüű]/g, '');
+    }
+});
 
 /* Játék */
 function Ellenoriz(){
@@ -79,11 +96,11 @@ function Ellenoriz(){
     }
 
     
-    if(begepeltbetu.length == 0 || begepeltbetu == null || begepeltbetu == " "){ //üres
-        visszajelzes.innerHTML = "Nincs mit leellenőrizni.";
-    } else if(!nemtalalt.includes(begepeltbetu) && !ujszo.includes(begepeltbetu)){ //elbírálás
+    if(begepeltbetu.length == 0 || begepeltbetu == null || begepeltbetu == " "){ //Üres
+        visszajelzes.innerHTML = "Nincs mit leellenőrizni.";return;
+    }/* else */if(!nemtalalt.includes(begepeltbetu) && !ujszo.includes(begepeltbetu)){ //Elbírálás
         visszajelzes.innerHTML = "<br>";
-        if(szo.includes(begepeltbetu)){//van a szóban
+        if(szo.includes(begepeltbetu)){//Van a szóban ilyen karakter
             nemtalalt+="";
             elet-=0;
         }else{
@@ -91,10 +108,10 @@ function Ellenoriz(){
             elet-=1;
             EmberValt();
         }
-    }else if(nemtalalt.includes(begepeltbetu)){ //Volt már ilyen betű
+    }else if(nemtalalt.includes(begepeltbetu)){ //Felhasználtad már és nem volt jó
         visszajelzes.innerHTML = "Ezt a betűt már felhasználtad: "+begepeltbetu;
     }
-    if(eddigi.includes(begepeltbetu) && ujszo.includes(begepeltbetu)){
+    if(eddigi.includes(begepeltbetu) && ujszo.includes(begepeltbetu)){//Felhasználtad már és jó volt
         visszajelzes.innerHTML="Ezt a betűt már felhasználtad: "+begepeltbetu;
     }
 
@@ -111,11 +128,6 @@ function Ellenoriz(){
 function EmberValt(){
     var maxelet = parseInt(document.querySelector('input[name="nehezseg"]:checked').value);
     var emberkiir = document.getElementById("emberkep");
-
-    /*szam += 2;
-            emberrajz = "img/man"+szam+"-512_gray.png";
-            emberkiir.src = emberrajz;
-            console.log(szam);*/
     
     switch (maxelet) {
         case 16:
@@ -149,28 +161,39 @@ function EmberValt(){
 function TheEnd(){
     if(elet == 0){
         alert("Nem sikerült kitalálni a szót. Megfejtés: "+szo);
-        Lezaras();
+        Lezaras(1);
     } else if(!eddigi.includes("_")){
         alert("Sikeresen kitaláltad a szót. ( Maradék élet: "+elet+" )");
-        Lezaras();
+        Lezaras(0);
+
     }
 }
 
-function Lezaras(){
+/* Játékfelület lezárása */
+function Lezaras(n){
+
+    if(n == 1){
+
+    }else{
+
+    }
+
     document.getElementById("betuinput").classList.add("d-none");
     document.getElementById("bekuld").classList.add("d-none");
     document.getElementById("ujjatek").classList.remove("d-none");
+    if(elet == 0){
+        console.log(ujszo);
+    }
 }
 
+/* Alaphelyzet */
 function UjJatek(){
     document.getElementById("betuinput").classList.remove("d-none");
     document.getElementById("betuinput").value = "";
     document.getElementById("bekuld").classList.remove("d-none");
     document.getElementById("ujjatek").classList.add("d-none");
-    document.querySelectorAll('input[name="nehezseg"]')[0].checked = true;
+    //document.querySelectorAll('input[name="nehezseg"]')[0].checked = true;
     document.getElementById("szo").value = "";
-    //document.getElementById("szo").type = "text";
-    //document.getElementById("mutate").innerHTML = "<i class='fa-solid fa-eye'></i>";//HIBA
     document.getElementById("nehezseg").classList.remove("d-none");
     document.getElementById("jatekter").classList.add("d-none");
     document.getElementById("emberkep").src = "img/man0-512_gray.png";
@@ -181,25 +204,7 @@ function UjJatek(){
     nemtalalt = "";
     elet = 16;
 
-    szem.innerHTML = sz[1];
     szo.type = "text";
     seged = 0;
     szam = 0;
 }
-
-/*document.getElementById('szo').addEventListener('input', function (e) {
-    // Csak betűk engedélyezése
-    var pattern = /^[A-Za-zÁÉÍÓÖŐÚÜŰáéíóöőúüű]+$/;
-    
-    // Ha a bevitt érték nem felel meg a mintának, eltávolítjuk
-    if (!pattern.test(e.target.value)) {
-        e.target.value = e.target.value.replace(/[^A-Za-zÁÉÍÓÖŐÚÜŰáéíóöőúüű]/g, '');
-    }
-   console.log("a");
-});*/
-
-/*document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('betuinput').addEventListener('input', function (e) {
-        console.log("a"); // Kiírja a "a" szót a konzolra minden input eseménynél
-    });
-});*/
