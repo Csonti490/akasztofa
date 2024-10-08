@@ -36,10 +36,10 @@
                                 <a class="nav-link" href="index.html"><i class="fa-solid fa-house"></i> Főoldal</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="hirfolyam.html"><i class="fa-solid fa-newspaper"></i> Hírfolyam</a>
+                                <a class="nav-link" href="#"><i class="fa-solid fa-newspaper"></i> Hírfolyam</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="info.html"><i class="fa-solid fa-circle-info"></i></i> Infó</a>
+                                <a class="nav-link" href="#"><i class="fa-solid fa-circle-info"></i></i> Infó</a>
                             </li>
                         </ul>
                     </div>
@@ -48,23 +48,23 @@
         </header>
         <main>
 
-            <div class="clearfix">
+            <!--<div class="clearfix">
                 <div class="float-start">
                     <button onclick="TemaValtas()" class="p-2 ikon" title="Téma"><i class="fa-solid fa-circle-half-stroke"></i></button>
                 </div>
                 <div class="float-end">
-                    <button onclick="TemaValtas()" class="p-2 ikon" title="Beállítások"><i class="fa-solid fa-gear"></i></button>
+                    <button onclick="" class="p-2 ikon" title="Beállítások"><i class="fa-solid fa-gear"></i></button>
                 </div>
-              </div>
+            </div>-->
 
             <!-- Cím -->
-            <div class="container text-center my-5">
+            <!--<div class="container text-center my-5">
                 <div class="row">
                     <div class="col-12">
                         <h1 id="cim" class="m-0">Akasztófa</h1>
                     </div>
                 </div>
-            </div>
+            </div>-->
 
             <!-- ///// Nehézségi szintek \\\\\ -->
             <div id="nehezseg" class="">
@@ -102,16 +102,16 @@
             <div id="jatekter" class="d-none">
 
                 <!-- Kitalálandó szó -->
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12">
-                            <h1 class="text-center" id="megjelenito"></h1>
+                <div class="container m-0 p-0 d-block mx-auto">
+                    <div class="row m-0 p-0">
+                        <div class="col-12 m-0 p-0">
+                            <h1 class="text-center my-5" id="megjelenito">Lenni vagy nem lenni</h1>
                         </div>
                     </div>
                 </div>
 
                 <!-- Kijelzések -->
-                <div class="container">
+                <!--<div class="container">
                     <div class="row text-center">
                         <div class="col-12 col-sm-6">
                             &nbsp;
@@ -122,6 +122,30 @@
                         <div class="col-12 col-sm-6">
                             Nincsen benne:
                             <div id="betuk"></div>
+                        </div>
+                    </div>
+                </div>-->
+
+                <div class="container" id="t1">
+                    <div class="row text-center">
+                        <div class="col-12" id="tartalom">
+                            <div id="ember" width="256" height="256">
+                                <img src="img/man0-512_gray.png" alt="" width="256" id="emberkep">
+                                <br>
+                                Nincsen benne:
+                                <div id="betuk">&nbsp;</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container d-none" id="eredmeny">
+                    <div class="row text-center">
+                        <div class="col-6" id="e1">
+
+                        </div>
+                        <div class="col-6" id="e2">
+
                         </div>
                     </div>
                 </div>
@@ -141,6 +165,18 @@
                     </div>
                 </div>
 
+            </div>
+
+            <!-- Beállítások -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <h1>Beállítások</h1>
+                        <p id="ezt">Itt ez a valami</p>
+                        <input type="range" id="b_meret" name="b_meret" min="16" max="160" value="96" step="1">
+                        <p id="ertek">96</p>
+                    </div>
+                </div>
             </div>
 
         </main>

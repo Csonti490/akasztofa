@@ -126,3 +126,9 @@ input[type="radio"]{
     width: 43.2px;
     height: 43.2px;
 }
+
+#megjelenito {
+    min-height: 25vh;
+    font-size: 6em;
+    background: red;
+}

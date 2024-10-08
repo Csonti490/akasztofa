@@ -14,6 +14,7 @@ window.onload = function() {
       input.value = '';
     });
     document.querySelectorAll('input[name="nehezseg"]')[0].checked = true;
+    document.getElementById("b_meret").value = 96;
 };
 
 /* Kitalálandó szó mutatása bekérésnél */
@@ -68,10 +69,6 @@ function Kezdes(){
             eletpont.innerHTML = "Életpont: "+elet;
         }
     }
-
-    
-    
-
 }
 
 /* Csak a megfelelő karakterek elfogadása */
@@ -83,7 +80,7 @@ document.getElementById('betuinput').addEventListener('input', function (e) {
     }
 });
 
-/* Játék */
+/* Játékmenet */
 function Ellenoriz(){
     var begepeltbetu = document.getElementById("betuinput").value.toUpperCase();
     var nemtalaltbetuk = document.getElementById("betuk");
@@ -173,18 +170,39 @@ function TheEnd(){
 function Lezaras(n){
 
     if(n == 1){
-
+        //Nem sikerült kitalálni a szavat...
     }else{
-
+        //Sikerült kitalálni
     }
 
     document.getElementById("betuinput").classList.add("d-none");
     document.getElementById("bekuld").classList.add("d-none");
     document.getElementById("ujjatek").classList.remove("d-none");
-    if(elet == 0){
+    /*if(elet == 0){
         console.log(ujszo);
-    }
+    }*/
+
+   var tartalom = document.getElementById("tartalom");
+   var eredmeny = document.getElementById("eredmeny");
+   var e1 = document.getElementById("e1");
+   var e2 = document.getElementById("e2");
+   var t1 = document.getElementById("t1");
+
+   t1.classList.add("d-none");
+   e2.innerHTML = tartalom.innerHTML;
+   e1.innerHTML = n==1?"<p>Nem sikerült kitalálni. Megfejtés: "+szo+"</p>":"Sikeresen kitalálva";
+   eredmeny.classList.remove("d-none");
+
 }
+
+/* Beállítások */
+var cim = document.getElementById("megjelenito");
+var b_meret = document.getElementById("b_meret");
+b_meret.addEventListener("input", function() {
+    var meret = b_meret.value;
+    cim.style.fontSize = meret + "px";
+    document.getElementById("ertek").innerText = meret;
+});
 
 /* Alaphelyzet */
 function UjJatek(){
@@ -199,6 +217,9 @@ function UjJatek(){
     document.getElementById("emberkep").src = "img/man0-512_gray.png";
     document.getElementById("betuk").innerHTML = "";
 
+    document.getElementById("b_meret").value = 96;
+    document.getElementById("ertek").innerText = 96;
+
     szo = "";
     ujszo = "";
     nemtalalt = "";
@@ -209,6 +230,7 @@ function UjJatek(){
     szam = 0;
 }
 
+/* Ideiglenes téma */
 function TemaValtas(){
     var asd = document.getElementById("tema");
     document.documentElement.style.colorScheme = document.documentElement.style.colorScheme === 'dark' ? 'light' : 'dark';
