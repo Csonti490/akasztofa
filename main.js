@@ -269,3 +269,10 @@ function Gyari(){
     temakiir.innerHTML = "világos";
     document.documentElement.style.colorScheme = 'light';
 }
+
+/*
+
+Létrehozni egy kérdést, mikor az élet 0-ra csökken és megkérdezni a játékost, hogy "Az életeid száma elfogyott és szegény bob is fel lett lógatva a diófára, de akarod tovább folytatni a találgatást, vagy szabad-e a gazda?", ha szabad a gazda, akkor ugye megjelenítjük a megoldást, viszont ha tovább akar játszani az emberünk, akkor továbbtalálgathat életek nélkül is.
+Most így rögtön lenne egy elméleti megoldásom, de kódban még nem igazán állt össze a fejemben, de már fáradt vagyok... majd holnap meglátjuk vagy valamikor megllátjuk még, hogy ebből az ötletből mi fog megvalósulni és mikor...
+
+*/
