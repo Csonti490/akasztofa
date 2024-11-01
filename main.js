@@ -67,6 +67,7 @@ function Kezdes(){
             document.getElementById("nehezseg").classList.add("d-none");
             document.getElementById("jatekter").classList.remove("d-none");
             eletpont.innerHTML = "Életpont: "+elet;
+            //document.getElementById("cim").classList.add("d-none");
         }
     }
 }
@@ -112,7 +113,7 @@ function Ellenoriz(){
         visszajelzes.innerHTML="Ezt a betűt már felhasználtad: "+begepeltbetu;
     }
 
-    nemtalaltbetuk.innerHTML = nemtalalt.split("").join(", ");
+    nemtalaltbetuk.innerHTML = "&nbsp;"+nemtalalt.split("").join(", ");
     eletpont.innerHTML = "Életpont: "+elet;
     megjelenito.innerHTML = "";
     megjelenito.innerHTML = ujszo;
@@ -162,50 +163,76 @@ function TheEnd(){
     } else if(!eddigi.includes("_")){
         alert("Sikeresen kitaláltad a szót. ( Maradék élet: "+elet+" )");
         Lezaras(0);
-
     }
 }
 
 /* Játékfelület lezárása */
 function Lezaras(n){
-
-    if(n == 1){
-        //Nem sikerült kitalálni a szavat...
-    }else{
-        //Sikerült kitalálni
-    }
-
+    // Még nincsen készen!!!
     document.getElementById("betuinput").classList.add("d-none");
     document.getElementById("bekuld").classList.add("d-none");
     document.getElementById("ujjatek").classList.remove("d-none");
-    /*if(elet == 0){
-        console.log(ujszo);
-    }*/
 
-   var tartalom = document.getElementById("tartalom");
-   var eredmeny = document.getElementById("eredmeny");
-   var e1 = document.getElementById("e1");
-   var e2 = document.getElementById("e2");
-   var t1 = document.getElementById("t1");
+    var tartalom = document.getElementById("tartalom");
+    var eredmeny = document.getElementById("eredmeny");
+    var e1 = document.getElementById("e1");
+    var e2 = document.getElementById("e2");
+    var t1 = document.getElementById("t1");
 
-   t1.classList.add("d-none");
-   e2.innerHTML = tartalom.innerHTML;
-   e1.innerHTML = n==1?"<p>Nem sikerült kitalálni. Megfejtés: "+szo+"</p>":"Sikeresen kitalálva";
-   eredmeny.classList.remove("d-none");
-
+    t1.classList.add("d-none");
+    e2.innerHTML = tartalom.innerHTML;
+    e1.innerHTML = n==1?"<p>Nem sikerült kitalálni. Megfejtés: "+szo+"</p>":"Sikeresen kitalálva";
+    if(n!=1){
+        
+    }
+    eredmeny.classList.remove("d-none");
 }
 
-/* Beállítások */
+/* Beállításokhoz navigálás */
+const legomb = document.getElementById("beallitasok");
+legomb.addEventListener("click", function(event) {
+  event.preventDefault(); // Megakadályozza a link alapértelmezett viselkedését
+  IranyLefele();
+});
+
+function IranyLefele() {
+  window.scrollTo({
+    top: document.body.scrollHeight,
+    behavior: "smooth"
+  });
+}
+
+/* Beállítások betűméret */
 var cim = document.getElementById("megjelenito");
 var b_meret = document.getElementById("b_meret");
 b_meret.addEventListener("input", function() {
     var meret = b_meret.value;
     cim.style.fontSize = meret + "px";
-    document.getElementById("ertek").innerText = meret;
+    document.getElementById("ertek").innerText = meret+" px";
 });
+
+/* Ideiglenes téma */
+function TemaValtas(n){
+    let gomb = document.getElementsByClassName("temagomb");
+    let temakiir = document.getElementById("temakiir");
+    if(n%2==0){
+        gomb[0].disabled = true;
+        gomb[1].disabled = false;
+        temakiir.innerHTML = "világos";
+        document.documentElement.style.colorScheme = 'light';
+    }else{
+        gomb[0].disabled = false;
+        gomb[1].disabled = true;
+        temakiir.innerHTML = "sötét";
+        document.documentElement.style.colorScheme = 'dark';
+    }
+}
 
 /* Alaphelyzet */
 function UjJatek(){
+    document.getElementById("eredmeny").classList.add("d-none");
+    document.getElementById("t1").classList.remove("d-none");
+
     document.getElementById("betuinput").classList.remove("d-none");
     document.getElementById("betuinput").value = "";
     document.getElementById("bekuld").classList.remove("d-none");
@@ -216,9 +243,7 @@ function UjJatek(){
     document.getElementById("jatekter").classList.add("d-none");
     document.getElementById("emberkep").src = "img/man0-512_gray.png";
     document.getElementById("betuk").innerHTML = "";
-
-    document.getElementById("b_meret").value = 96;
-    document.getElementById("ertek").innerText = 96;
+    document.getElementById("megjelenito").innerHTML = "Akasztófa";
 
     szo = "";
     ujszo = "";
@@ -228,10 +253,19 @@ function UjJatek(){
     szo.type = "text";
     seged = 0;
     szam = 0;
+
+    document.getElementsByClassName("temagomb")[0].disabled = false;
+    document.getElementsByClassName("temagomb")[1].disabled = true;
 }
 
-/* Ideiglenes téma */
-function TemaValtas(){
-    var asd = document.getElementById("tema");
-    document.documentElement.style.colorScheme = document.documentElement.style.colorScheme === 'dark' ? 'light' : 'dark';
+/* Beállítások alaphelyzete */
+function Gyari(){
+    document.getElementById("megjelenito").style.fontSize = 96 + "px";
+    document.getElementById("b_meret").value = 96;
+    document.getElementById("ertek").innerHTML = 96 + " px";
+    let gomb = document.getElementsByClassName("temagomb");
+    gomb[0].disabled = true;
+    gomb[1].disabled = false;
+    temakiir.innerHTML = "világos";
+    document.documentElement.style.colorScheme = 'light';
 }
