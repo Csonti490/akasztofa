@@ -72,7 +72,7 @@
             </div>
 
             <!-- ///// Nehézségi szintek \\\\\ -->
-            <div id="nehezseg" class="">
+            <div id="alapok" class="">
                 <div class="container">
                     <div class="row text-center">
                         <div class="col-12">
@@ -107,7 +107,7 @@
             <div id="jatekter" class="d-none">
 
                 <!-- Kijelzések -->
-                <div class="container" id="t1">
+                <div class="container" id="kijelzes">
                     <div class="row text-center">
                         <div class="col-12" id="tartalom">
                             <div id="ember" width="256" height="256">
@@ -119,20 +119,8 @@
                     </div>
                 </div>
 
-                <!-- Játék eredménye -->
-                <div class="container d-none" id="eredmeny">
-                    <div class="row text-center">
-                        <div class="col-6" id="e1">
-
-                        </div>
-                        <div class="col-6" id="e2">
-
-                        </div>
-                    </div>
-                </div>
-
                 <!-- Beviteli rész -->
-                <div class="container text-center">
+                <div class="container text-center" id="bevitel">
                     <div class="row">
                         <div class="col-12">
                             <div id="visszajelzes">
@@ -140,9 +128,33 @@
                             </div>
                             <input type="text" id="betuinput" name="betuinput" pattern="[A-Za-zÁÉÍÓÖŐÚÜŰáéíóöőúüű]+" maxlength="1" title="Írj ide valamit..." placeholder="Írj ide egy betűt/számot..." required class="p-2">
                             <input type="button" value="Ellenőrzés" onclick="Ellenoriz()" id="bekuld" class="p-2">
-                            <input type="button" value="Új játék" onclick="UjJatek()" class="d-none p-2" id="ujjatek">
                             <h5 class="text-center" id="eletpont"></h5>
                         </div>
+                    </div>
+                </div>
+
+                <!-- Kérdés -->
+                <div class="container d-none" id="kerdes">
+                    <div class="row text-center">
+                        <div class="col-12">
+                            <h3 class="text-center">Kérdés</h3>
+                            <p>Az életpontjaid elfogytak. Viszont van lehetőséged tovább játszani.</p>
+                            <h5 class="text-center m-0">Szeretnéd folytatni?</h5>
+                            <input type="button" value="Igen" onclick="TovabbE(true)" class="p-2" id="tovabb">
+                            <input type="button" value="Nem" onclick="TovabbE(false)" class="p-2" id="feladom">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Játék eredménye -->
+                <div class="container d-none" id="eredmeny">
+                    <div class="row text-center">
+                        <div class="col-12" id="eredmenykiir">
+                        </div>
+                        <div class="col-12">
+                            <input type="button" value="Új játék" onclick="UjJatek()" class="p-2" id="ujjatek">
+                        </div>
+                        
                     </div>
                 </div>
 
@@ -153,18 +165,6 @@
                 <div class="row">
                     <div class="col-12">
                         <h1 class="text-center">Beállítások</h1>
-                        <!--<p class="d-flex align-items-center justify-content-center">
-                            <label>Betűméret:</label>
-                            <input type="range" id="b_meret" name="b_meret" min="16" max="160" value="96" step="1" class="mx-2">
-                            <label id="ertek">96 px</label>
-                        </p>
-                        <p class="text-center">
-                            <label>Téma:</label>
-                            <button onclick="TemaValtas(0)" class="temagomb" disabled><i class="fa-solid fa-sun"></i></button>
-                            <button onclick="TemaValtas(1)" class="temagomb"><i class="fa-solid fa-moon"></i></button>
-                            <label id="temakiir">Jelenlegi téma: világos</label>
-                        </p>-->
-
                         <table class="mx-auto">
                             <tr>
                                 <td>
@@ -199,7 +199,7 @@
 
         </main>
         <footer class="text-center">
-            Készítette: CsontiXD
+            [ - ] Készítette: CsontiXD [ - ]
         </footer>
     </body>
     <script src="bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
@@ -220,7 +220,7 @@
             <p>Az oldal a jelenleg futó munkamenettel párhuzamosan menti a különféle módosításokat, így ha frissíted, akkor az addigi össze adat elveszik.</p>
             <p class="text-center fw-bold m-0">[-] Bugok [-]</p>
             <p>Ha bármi hiba felütné a fejét, akkor kéretik jelezni felém: <a href="mailto: skelyxd@gmail.com"> skelyxd@gmail.com </a></p>
-            <p class="text-center">v1.05.03</p>
+            <p class="text-center">[ - ] v1.06.01 [ - ]</p>
           <hr>
         </div>
       </div>
