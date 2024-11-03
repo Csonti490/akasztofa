@@ -13,6 +13,7 @@ var jatekter = document.getElementById("jatekter");
 var kijelzes = document.getElementById("kijelzes");
 var bevitel = document.getElementById("bevitel");
 var kerdes = document.getElementById("kerdes");
+var kepallas = document.getElementById("kepallas");
 var eredmeny = document.getElementById("eredmeny");
 var eredmenykiir = document.getElementById("eredmenykiir");
 var tovabbmegyek = false;
@@ -48,6 +49,7 @@ var nemtalalt = "";
 var ujszo = "";
 var elet = 16; //16 v 12 v 8
 var szo = "";
+var eddigi = "";
 var seged = 0;
 var szam = 0;
 
@@ -108,7 +110,8 @@ function Ellenoriz(){
     
     if(begepeltbetu.length == 0 || begepeltbetu == null || begepeltbetu == " "){ //Üres
         visszajelzes.innerHTML = "Nincs mit leellenőrizni.";return;
-    }/* else */if(!nemtalalt.includes(begepeltbetu) && !ujszo.includes(begepeltbetu)){ //Elbírálás
+    }
+    if(!nemtalalt.includes(begepeltbetu) && !ujszo.includes(begepeltbetu) && !tovabbmegyek){ //Elbírálás
         visszajelzes.innerHTML = "<br>";
         if(szo.includes(begepeltbetu)){//Van a szóban ilyen karakter
             nemtalalt+="";
@@ -120,7 +123,15 @@ function Ellenoriz(){
         }
     }else if(nemtalalt.includes(begepeltbetu)){ //Felhasználtad már és nem volt jó
         visszajelzes.innerHTML = "Ezt a betűt már felhasználtad: "+begepeltbetu;
+    }else if(!nemtalalt.includes(begepeltbetu) && !ujszo.includes(begepeltbetu) && tovabbmegyek){ //Elbírálás élet nélkül
+        visszajelzes.innerHTML = "<br>";
+        if(szo.includes(begepeltbetu)){//Van a szóban ilyen karakter
+            nemtalalt+="";
+        }else{
+            nemtalalt += begepeltbetu;
+        }
     }
+
     if(eddigi.includes(begepeltbetu) && ujszo.includes(begepeltbetu)){//Felhasználtad már és jó volt
         visszajelzes.innerHTML="Ezt a betűt már felhasználtad: "+begepeltbetu;
     }
@@ -169,33 +180,34 @@ function EmberValt(){
 
 /* Játék vége */
 function TheEnd(){
-    if(elet == 0 & tovabbmegyek == false){
+    let kep = '<img src="'+document.getElementById('emberkep').src+'" alt="" width="256" id="emberkep" class="d-block mx-auto">';
+    if(elet == 0 && tovabbmegyek == false){
         //alert("Nem sikerült kitalálni a szót. Megfejtés: "+szo);
-        Lezaras(1);
-    } else if(!eddigi.includes("_")){
-        //alert("A szó sikeresen kitalálva. ( Maradék élet: "+elet+" )");
-        Lezaras(0);
-    }
-}
 
-/* Játékfelület lezárása */
-function Lezaras(n){
-    if(n==1){
-        kijelzes.classList.add("d-none");
         bevitel.classList.add("d-none");
         kerdes.classList.remove("d-none");
-    }else{
+
+    } else if(!eddigi.includes("_")){
+        //alert("A szó sikeresen kitalálva. ( Maradék élet: "+elet+" )");
         kijelzes.classList.add("d-none");
         bevitel.classList.add("d-none");
-        eredmenykiir.innerHTML = elet > 0 ? "<h3 class='text-center'>Sikeresen kitaláltad a szót.<br>Maradék életek száma: "+elet+"</h3>":"<h3 class='text-center'>Sikeresen kitaláltad a szót.</h3>";
+        eredmenykiir.innerHTML = kep;
+        eredmenykiir.innerHTML += elet > 0 ? "<h3 class='text-center'>Sikeresen kitaláltad a szót.<br>Maradék életek száma: "+elet+"</h3>":"<h3 class='text-center'>Sikeresen kitaláltad a szót.<br>Bár kiskrapek pórul járt. :/</h3>";
         eredmeny.classList.remove("d-none");
+        console.log("Itt a vége");
     }
 }
 
 /* Nem találta ki a szavat, de folytani akarja-e */
 function TovabbE(tovabbmesz){
+    let kep = '<img src="'+document.getElementById('emberkep').src+'" alt="" width="256" id="emberkep" class="d-block mx-auto">';
     if(!tovabbmesz){
-        UjJatek();
+        kijelzes.classList.add("d-none");
+        kerdes.classList.add("d-none");
+        eredmenykiir.innerHTML = kep;
+        eredmenykiir.innerHTML += "<h3 class='text-center'>Sajnos nem sikerült kitalálni a szavat. :(</h3>";
+        eredmeny.classList.remove("d-none");
+        MegoldasMutatasa();
     }else{
         tovabbmegyek = true;
         kerdes.classList.add("d-none");
@@ -204,10 +216,25 @@ function TovabbE(tovabbmesz){
     }
 }
 
+function MegoldasMutatasa(){
+    var szoveg = szo;
+    var hianyos = eddigi;
+    var eredmeny = [];
+
+    for (var i = 0; i < hianyos.length; i++) {
+        if (hianyos[i] === '_') {
+            eredmeny.push('<span class="off">' + szoveg[i] + '</span>');
+        } else {
+            eredmeny.push(hianyos[i]);
+        }
+    }
+    megjelenito.innerHTML = eredmeny.join('');
+}
+
 /* Beállításokhoz navigálás */
 const legomb = document.getElementById("beallitasok");
-legomb.addEventListener("click", function(event) {
-  event.preventDefault();
+legomb.addEventListener("click", function(e) {
+  e.preventDefault();
   IranyLefele();
 });
 

@@ -123,6 +123,6 @@ input[type="radio"]{
 }*/
 
 #megjelenito {
-    min-height: 25vh;
+    /*min-height: 25vh;*/
     font-size: 6em;
 }
