@@ -170,10 +170,10 @@ function EmberValt(){
 /* Játék vége */
 function TheEnd(){
     if(elet == 0 & tovabbmegyek == false){
-        alert("Nem sikerült kitalálni a szót. Megfejtés: "+szo);
+        //alert("Nem sikerült kitalálni a szót. Megfejtés: "+szo);
         Lezaras(1);
     } else if(!eddigi.includes("_")){
-        alert("A szó sikeresen kitalálva. ( Maradék élet: "+elet+" )");
+        //alert("A szó sikeresen kitalálva. ( Maradék élet: "+elet+" )");
         Lezaras(0);
     }
 }
@@ -192,6 +192,7 @@ function Lezaras(n){
     }
 }
 
+/* Nem találta ki a szavat, de folytani akarja-e */
 function TovabbE(tovabbmesz){
     if(!tovabbmesz){
         UjJatek();
@@ -206,7 +207,7 @@ function TovabbE(tovabbmesz){
 /* Beállításokhoz navigálás */
 const legomb = document.getElementById("beallitasok");
 legomb.addEventListener("click", function(event) {
-  event.preventDefault(); // Megakadályozza a link alapértelmezett viselkedését
+  event.preventDefault();
   IranyLefele();
 });
 
@@ -282,10 +283,3 @@ function Gyari(){
     temakiir.innerHTML = "világos";
     document.documentElement.style.colorScheme = 'light';
 }
-
-/*
-
-Létrehozni egy kérdést, mikor az élet 0-ra csökken és megkérdezni a játékost, hogy "Az életeid száma elfogyott és szegény bob is fel lett lógatva a diófára, de akarod tovább folytatni a találgatást, vagy szabad-e a gazda?", ha szabad a gazda, akkor ugye megjelenítjük a megoldást, viszont ha tovább akar játszani az emberünk, akkor továbbtalálgathat életek nélkül is.
-Most így rögtön lenne egy elméleti megoldásom, de kódban még nem igazán állt össze a fejemben, de már fáradt vagyok... majd holnap meglátjuk vagy valamikor megllátjuk még, hogy ebből az ötletből mi fog megvalósulni és mikor...
-
-*/
