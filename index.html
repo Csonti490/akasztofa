@@ -292,13 +292,15 @@
 </div>
 <script>
     function checkCookie() {
-        if (!document.cookie.includes("yalcookie=true")) {
+        if (document.cookie.includes("yalcookie=true")) {
+            document.getElementById("cookieConsent").style.display = "none";
+        } else {
             document.getElementById("cookieConsent").style.display = "block";
         }
     }
 
     function acceptCookies() {
-        document.cookie = "yalcookie=true; max-age=86400; path=/";
+        document.cookie = "yalcookie=true; max-age=86400; path=/; SameSite=None; Secure";
         document.getElementById("cookieConsent").style.display = "none";
     }
 
