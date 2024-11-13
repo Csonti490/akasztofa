@@ -283,39 +283,24 @@
 
 -->
 
-<div class="position-fixed bottom-0 m-3" style="z-index: 1 !important;" id="cookie-banner">
+<div class="position-fixed bottom-0 m-3" style="z-index: 1 !important;" id="cookieConsent">
     <div class="border border-secondary rounded p-3" style="width: 250px; background-color: rgba(43, 42, 51, 0.95);">
       <p class="text-center p-0 m-0">Ez a weboldal cookie-kat használ annak érdekében, hogy a webhelyünk jobb élményt nyújthasson.</p>
       <img src="img/rwby-cookie2.png" class="d-block mx-auto w-75 my-3">
-        <button class="d-block mx-auto btn btn-success" id="accept-cookie">Elfogadom</button> 
+        <button class="d-block mx-auto btn btn-success" onclick="acceptCookies()">Elfogadom</button> 
     </div>
 </div>
 <script>
-    if (!getCookie("acceptedCookie")) {
-        document.getElementById("cookie-banner").style.display = "block";
-    }
-    
-    document.getElementById("accept-cookie").addEventListener("click", function() {
-        setCookie("acceptedCookie", "true", 30);
-        document.getElementById("cookie-banner").style.display = "none";
-    });
-    
-    function setCookie(name, value, days) {
-        var maxAge = days * 24 * 60 * 60;
-        document.cookie = name + "=" + value + 
-                          ";max-age=" + maxAge + 
-                          ";path=/" + 
-                          ";SameSite=Lax";
-    }
-    function getCookie(name) {
-        var nameEq = name + "=";
-        var ca = document.cookie.split(';');
-        for (var i = 0; i < ca.length; i++) {
-            var c = ca[i].trim();
-            if (c.indexOf(nameEq) === 0) {
-                return c.substring(nameEq.length, c.length);
-            }
+    function checkCookie() {
+        if (!document.cookie.includes("yalcookie=true")) {
+            document.getElementById("cookieConsent").style.display = "block";
         }
-        return "";
     }
+
+    function acceptCookies() {
+        document.cookie = "yalcookie=true; max-age=86400; path=/";
+        document.getElementById("cookieConsent").style.display = "none";
+    }
+
+    checkCookie();
 </script>
