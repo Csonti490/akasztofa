@@ -66,7 +66,7 @@
             <div class="container m-0 p-0 d-block mx-auto">
                 <div class="row m-0 p-0">
                     <div class="col-12 m-0 p-0">
-                        <h1 class="text-center my-5 p-0" id="megjelenito">Akasztófa</h1>
+                        <h1 class="text-center my-5 p-0 text-uppercase" id="megjelenito">Akasztófa</h1>
                     </div>
                 </div>
             </div>
@@ -161,14 +161,18 @@
             </div>
 
             <!-- Beállítások -->
-            <div class="container mt-3" id="sttngs">
+            <div class="container position-fixed bottom-0 start-50 translate-middle-x mb-5 p-3 d-none" style="z-index: 1 !important;" id="sttngs">
                 <div class="row">
                     <div class="col-12">
+                        <button onclick="Becsuk()" type="button" class="btn btn-danger float-end">X</button>
                         <h1 class="text-center">Beállítások</h1>
                         <table class="mx-auto">
                             <tr>
                                 <td>
-                                    <label>Betűméret:</label>
+                                    <label>
+                                        <i class="fa-solid fa-circle-info" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Disabled popover"></i> 
+                                        Betűméret:
+                                    </label>
                                 </td>
                                 <td>
                                     <input class="d-flex align-items-center mx-auto" type="range" id="b_meret" name="b_meret" min="16" max="160" value="96" step="1" class="mx-2">
@@ -179,7 +183,10 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <label>Téma:</label>
+                                    <label>
+                                        <i class="fa-solid fa-circle-info" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Disabled popover"></i> 
+                                        Téma:
+                                    </label>
                                 </td>
                                 <td>
                                     <button onclick="TemaValtas(0)" class="temagomb w-25" disabled><i class="fa-solid fa-sun"></i></button>
@@ -192,7 +199,7 @@
                         </table>
                     </div>
                     <div class="col-12">
-                        <button class="d-block mx-auto" onclick="Gyari()">Alapbeállítások</button>
+                        <button class="d-block mx-auto p-2 m-2" onclick="Gyari()">Alapbeállítások</button>
                     </div>
                 </div>
             </div>
@@ -214,13 +221,14 @@
           <button type="button" class="btn btn-danger float-end" data-bs-dismiss="modal">X</button>
           <hr class="mb-4">
             <h1 class="text-center mb-3">Tudnivalók</h1>
-            <p class="text-center fw-bold m-0">[-] Használható karakterek [-]</p>
+            <p class="text-center fw-bold m-0">[] Használható karakterek []</p>
             <p>Az oldal a következő karaktereket fogadja csak el: A-Z, a-z, 0-9</p>
-            <p class="text-center fw-bold m-0">[-] Sose frissítsd az oldalt! [-]</p>
+            <p class="text-center fw-bold m-0">[] Sose frissítsd az oldalt! []</p>
             <p>Az oldal a jelenleg futó munkamenettel párhuzamosan menti a különféle módosításokat, így ha frissíted, akkor az addigi össze adat elveszik.</p>
-            <p class="text-center fw-bold m-0">[-] Bugok [-]</p>
+            <p class="text-center fw-bold m-0">[] Bugok []</p>
             <p>Ha bármi hiba felütné a fejét, akkor kéretik jelezni felém: <a href="mailto: skelyxd@gmail.com"> skelyxd@gmail.com </a></p>
-            <p class="text-center">[ - ] v1.07.01 [ - ]</p>
+            <hr>
+            <p class="text-center">[ + ] Verzió: 1.07.02 [ + ]</p>
           <hr>
         </div>
       </div>
@@ -241,56 +249,17 @@
     </div>
 </div>
 
-<style>
-    tr {
-        border-bottom: 1px solid white;
-        border-top: 1px solid white;
-    }
-    table,tr,td {
-        padding: 8px;
-    }
-    table {
-        border-collapse: collapse !important;
-    }
-    td:nth-child(1){
-        text-align: right;
-    }
-    td:nth-child(2),td:nth-child(3){
-        text-align: center;
-    }
-    #sttngs{
-        background: linear-gradient(to right, rgba(0, 0, 0, 0.125), rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.125));
-    }
-    td:nth-child(1),td:nth-child(3){
-        width: 25%;
-    }
-    td:nth-child(2){
-        width: 50%;
-    }
-    span.off {
-        color: red;
-    }
-</style>
-<!--
-
-.lapok {
-    /*background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0));*/
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.75) 50%, rgba(0, 0, 0, 0.25));
-}
-.oldalcim {
-    background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0));
-}
-
--->
-
 <div class="position-fixed bottom-0 m-3" style="z-index: 1 !important;" id="cookieConsent">
-    <div class="border border-secondary rounded p-3" style="width: 250px; background-color: rgba(43, 42, 51, 0.95);">
-      <p class="text-center p-0 m-0">Ez a weboldal cookie-kat használ annak érdekében, hogy a webhelyünk jobb élményt nyújthasson.</p>
+    <div class="border border-secondary rounded p-3" id="suti">
+      <p class="text-center p-0 m-0">
+        Ez a weboldal sütiket használ annak érdekében, hogy a webhely jobb élményt nyújthasson.
+    </p>
       <img src="img/rwby-cookie2.png" class="d-block mx-auto w-75 my-3">
-        <button class="d-block mx-auto btn btn-success" onclick="acceptCookies()">Elfogadom</button> 
+        <button class="d-block mx-auto btn btn-success" onclick="acceptCookies()">Elfogadom</button>
     </div>
 </div>
 <script>
+    /*Süti*/
     function checkCookie() {
         if (document.cookie.includes("yalcookie=true")) {
             document.getElementById("cookieConsent").style.display = "none";

@@ -18,6 +18,9 @@
     --szin2: rgb(70,25,84); /* fejlec,lablec */
     --szin3: rgb(11,15,25); /* ajanlo */
     --szin4: rgb(35,38,39); /* szurke regist/login */
+
+    --m_kek: #2e3192;
+    --m_vkek: #026e9f;
 }
 /*Alap*/
 *{
@@ -125,4 +128,105 @@ input[type="radio"]{
 #megjelenito {
     /*min-height: 25vh;*/
     font-size: 6em;
+}
+
+.ikon {
+    width: 3em;
+}
+
+/*Beállítások*/
+tr {
+    border-bottom: 1px solid white;
+    border-top: 1px solid white;
+}
+table,tr,td {
+    padding: 8px;
+}
+table {
+    border-collapse: collapse !important;
+}
+td:nth-child(1){
+    text-align: right;
+}
+td:nth-child(2),td:nth-child(3){
+    text-align: center;
+}
+#sttngs{
+    background-color: var(--sotetlila);
+    /*background: linear-gradient(to right, rgba(0, 0, 0, 0.125), rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.125));*/
+    border: 1px solid white;
+    border-radius: 15px;
+}
+td:nth-child(1),td:nth-child(3){
+    width: 25%;
+}
+td:nth-child(2){
+    width: 50%;
+}
+span.off {
+    color: red;
+}
+
+
+
+#suti {
+    width: 250px;
+    background-color: rgba(43, 42, 51, 0.95);
+}
+
+/*
+.lapok {
+    background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0));
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.75) 50%, rgba(0, 0, 0, 0.25));
+}
+.oldalcim {
+    background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0));
+}
+*/
+
+
+/* osztályok: animated tada */
+/* Listaelemek */
+@keyframes tada {
+    0% {
+      -webkit-transform: scale3d(1, 1, 1);
+      -ms-transform: scale3d(1, 1, 1);
+      transform: scale3d(1, 1, 1);
+    }
+  
+    10%, 20% {
+      -webkit-transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -1.5deg);
+      -ms-transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -1.5deg);
+      transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -1.5deg);
+    }
+  
+    30%, 50%, 70%, 90% {
+      -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 1.5deg);
+      -ms-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 1.5deg);
+      transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 1.5deg);
+    }
+  
+    40%, 60%, 80% {
+      -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -1.5deg);
+      -ms-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -1.5deg);
+      transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -1.5deg);
+    }
+  
+    100% {
+      -webkit-transform: scale3d(1, 1, 1);
+      -ms-transform: scale3d(1, 1, 1);
+      transform: scale3d(1, 1, 1);
+    }
+}
+.animated {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-iteration-count: 1;
+}
+.tada {
+    animation-name: tada;
+}
+.mondologo {
+    width: 40px !important;
+    aspect-ratio: 1.5/1 !important;
 }

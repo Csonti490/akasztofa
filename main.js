@@ -25,6 +25,7 @@ window.onload = function() {
     });
     document.querySelectorAll('input[name="nehezseg"]')[0].checked = true;
     document.getElementById("b_meret").value = 96;
+    Gyari();
 };
 
 /* Kitalálandó szó mutatása bekérésnél */
@@ -235,15 +236,26 @@ function MegoldasMutatasa(){
 const legomb = document.getElementById("beallitasok");
 legomb.addEventListener("click", function(e) {
   e.preventDefault();
-  IranyLefele();
+  //IranyLefele();
+  Megnyit();
 });
 
 function IranyLefele() {
-  window.scrollTo({
-    top: document.body.scrollHeight,
-    behavior: "smooth"
-  });
+    window.scrollTo({
+      top: document.body.scrollHeight,
+      behavior: "smooth"
+    });
 }
+
+var sttngs = document.getElementById("sttngs");
+function Megnyit(){
+    sttngs.classList.remove("d-none");
+}
+function Becsuk(){
+    sttngs.classList.add("d-none");
+}
+
+
 
 /* Beállítások betűméret */
 var cim = document.getElementById("megjelenito");
@@ -310,3 +322,10 @@ function Gyari(){
     temakiir.innerHTML = "világos";
     document.documentElement.style.colorScheme = 'light';
 }
+
+
+/*Felugró infó*/
+var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+    return new bootstrap.Popover(popoverTriggerEl)
+})
