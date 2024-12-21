@@ -69,19 +69,20 @@ function Kezdes(){
     szo = document.getElementById("szo");
     elet = selectedRadio.value;
     
-    if(szo.value == "" ){
+    if(!/[A-Za-z0-9áéíóöőúüűÁÉÍÓÖŐÚÜŰ]/.test(szo) ){//szo.value == ""
         alert("HIBA! Nincsen beírva kitalálandó szó!");
-    }else{
+    }else if(/[A-Za-z0-9áéíóöőúüűÁÉÍÓÖŐÚÜŰ]/.test(szo)){
 
         szo = szo.value.toUpperCase();
         elet = selectedRadio.value;
         //console.log("Ezt találd ki: "+szo.value+" Élet: "+elet); //Ellenőrzésre
-        megjelenito.innerHTML = szo.replace(/[A-Za-z0-9áéíóöőúüűÁÉÍÓÖŐÚÜŰ]/g, '_');
+        //megjelenito.innerHTML = szo.replace(/[A-Za-z0-9áéíóöőúüűÁÉÍÓÖŐÚÜŰ]/g, '_');
         eddigi = szo.replace(/[A-Za-z0-9áéíóöőúüűÁÉÍÓÖŐÚÜŰ]/g, '_');
 
         if(!eddigi.includes('_')){
             alert("HIBA! Nincsen kitalálandó betű/szám!");
         }else{
+            megjelenito.innerHTML = szo.replace(/[A-Za-z0-9áéíóöőúüűÁÉÍÓÖŐÚÜŰ]/g, '_');
             alapok.classList.add("d-none");
             jatekter.classList.remove("d-none");
             eletpont.innerHTML = "Életpont: "+elet;
@@ -99,7 +100,11 @@ document.getElementById('szo').addEventListener('input', function (e) {
     if (e.target.value.length == 0){
         document.getElementById("hibaellenorzes1").innerHTML = n + " Nincs beírva semmi.";
         StartEngedelyezes(true);
-    }else{
+    }else if(e.target.value.length != 0 && !/[A-Za-z0-9áéíóöőúüűÁÉÍÓÖŐÚÜŰ]/.test(e.target.value)){
+        document.getElementById("hibaellenorzes1").innerHTML = n + " Nincs benne kitalálható karakter.";
+        StartEngedelyezes(true);
+    }
+    else if(/[A-Za-z0-9áéíóöőúüűÁÉÍÓÖŐÚÜŰ]/.test(e.target.value)){
         document.getElementById("hibaellenorzes1").innerHTML = y + " Gomb engedélyezve.";
         StartEngedelyezes(false);
     }
@@ -307,6 +312,9 @@ function TemaValtas(n){
 
 /* Alaphelyzet */
 function UjJatek(){
+    document.getElementById("hibaellenorzes1").innerHTML = n + " Nincs beírva semmi.";
+    StartEngedelyezes(true);
+
     tovabbmegyek = false;
     kerdes.classList.add("d-none");
     kijelzes.classList.add("d-none");
