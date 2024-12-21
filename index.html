@@ -21,6 +21,7 @@
             setInterval(changeFavicon, 500);
         </script>-->
 
+        <!-- Protest Revolution -->
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,7 +34,7 @@
 
         <title>Akasztófa</title>
     </head>
-    <body onload="CimCsere()">
+    <body>
         <header>
             <nav class="navbar navbar-expand-sm navbar-dark hatternav">
                 <div class="container-fluid">
@@ -62,88 +63,127 @@
         </header>
         <main>
 
+            <!--<div id="megjelenitodoboz" class="">
+                <h1 class="piroska" id="megjelenito">
+                    Akasztófa
+                </h1>
+            </div>-->
+
+            <div id="megjelenitodoboz" class="d-flex justify-content-center align-items-center">
+                <h1 class="m-0 text-center" id="megjelenito">
+                    Akasztófa
+                </h1>
+            </div>
+
+            <!--<div class="container vw-auto">
+                <div class="row">
+                    <div class="col-12 d-flex justify-content-center align-items-center" id="megjelenitodoboz">
+                        <h1 id="megjelenito" class="m-0 text-center">Akasztófa</h1>
+                    </div>
+                </div>
+            </div>-->
+
             <!-- Kitalálandó szó -->
-            <div class="container m-0 p-0 d-block mx-auto">
+            <!--<div class="container m-0 p-0 d-block mx-auto">
                 <div class="row m-0 p-0">
                     <div class="col-12 m-0 p-0">
                         <h1 class="text-center my-5 p-0 text-uppercase" id="megjelenito">Akasztófa</h1>
                     </div>
                 </div>
-            </div>
+            </div>-->
 
-            <!-- ///// Nehézségi szintek \\\\\ -->
-            <div id="alapok" class="">
-                <div class="container">
-                    <div class="row text-center">
-                        <div class="col-12">
-                            <h3>Kitalálandó szó:</h3>
-                            <input type="text" id="szo" placeholder="Kitalálandó szó" class="p-2">
-                            <button id="mutate" onclick="Mutat()" class="p-2 ikon" title="Szó mutatása/elrejtése"><i class="fa-solid fa-eye"></i></button>
-                        </div>
-                        <div class="col-12 m-3">
-                            <h3>Nehézségi szintek:</h3>
-                        </div>
-                        <div class="col-4 text-center">
-                            <input type="radio" name="nehezseg" id="n1" value="16" checked>
-                            <label for="n1">Könnyű<br>Hibalehetőség: 16</label>
-                        </div>
-                        <div class="col-4 text-center">
-                            <input type="radio" name="nehezseg" id="n2" value="12">
-                            <label for="n2">Közepes<br>Hibalehetőség: 12</label>
-                        </div>
-                        <div class="col-4 text-center">
-                            <input type="radio" name="nehezseg" id="n3" value="8">
-                            <label for="n3">Nehéz<br>Hibalehetőség: 8</label>
-                        </div>
+            <!-- /////  ALAP BEÁLLÍTÁSOK  \\\\\ -->
+            <div class="container text-center" id="alapok">
+                <div class="row">
+                    <div class="col-12 col-sm-6">
+                        
+                            <h3>Kitalálandó szó</h3>
+                            <div class="container row m-0 p-0">
+                                <div class="col-12 col-md-9 m-0 p-0">
+                                    <input type="text" id="szo" placeholder="Kitalálandó szó (mutatva)" class="p-2 w-100">
+                                </div>
+                                <div class="col-12 col-md-3 m-0 p-0">
+                                    <button id="mutate" onclick="Mutat()" class="mt-2 mt-md-0 w-100 w-sm-auto p-2 ikon" title="Szó mutatása/elrejtése"><i class="fa-solid fa-eye"></i></button>
+                                </div>
+                                <p id="hibaellenorzes1" class="text-center"><i class="fa-solid fa-xmark text-danger"></i> Nincs beírva semmi.</p>
+                            </div>
 
-                        <div class="col-12">
-                            <button onclick="Kezdes()" class="p-2">Játék kezdése</button>
-                        </div>
                     </div>
-                </div>
-            </div>
-
-            <!-- ///// JÁTÉKTÉR \\\\\-->
-            <div id="jatekter" class="d-none">
-
-                <!-- Kijelzések -->
-                <div class="container" id="kijelzes">
-                    <div class="row text-center">
-                        <div class="col-12" id="tartalom">
-                            <div id="ember" width="256" height="256">
-                                <img src="img/man0-512_gray.png" alt="" width="256" id="emberkep" class="d-block mx-auto">
-                                Nincsen benne:
-                                <div id="betuk">&nbsp;</div>
+                    <!-- Nehézségi szintek -->
+                    <div class="col-12 col-sm-6">
+                        <h3>Nehézségi szintek</h3>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-4">
+                                    <input type="radio" name="nehezseg" id="n1" value="16" checked>
+                                    <label for="n1">Könnyű<br>Életpont: 16</label>
+                                </div>
+                                <div class="col-4">
+                                    <input type="radio" name="nehezseg" id="n2" value="12">
+                                    <label for="n2">Közepes<br>Életpont: 12</label>
+                                </div>
+                                <div class="col-4">
+                                    <input type="radio" name="nehezseg" id="n3" value="8">
+                                    <label for="n3">Nehéz<br>Életpont: 8</label>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Beviteli rész -->
-                <div class="container text-center" id="bevitel">
-                    <div class="row">
-                        <div class="col-12">
-                            <div id="visszajelzes">
-                                <br>
-                            </div>
-                            <input type="text" id="betuinput" name="betuinput" pattern="[A-Za-zÁÉÍÓÖŐÚÜŰáéíóöőúüű]+" maxlength="1" title="Írj ide valamit..." placeholder="Írj ide egy betűt/számot..." required class="p-2">
-                            <input type="button" value="Ellenőrzés" onclick="Ellenoriz()" id="bekuld" class="p-2">
-                            <h5 class="text-center" id="eletpont"></h5>
-                        </div>
+                    <div class="col-12">
+                        <button onclick="Kezdes()" class="p-2" id="start" disabled>Játék kezdése</button>
                     </div>
                 </div>
+            </div>
 
-                <!-- Kérdés -->
-                <div class="container d-none" id="kerdes">
-                    <div class="row text-center">
-                        <div class="col-12">
-                            <div id="kepallas"></div>
-                            <h3 class="text-center">Kérdés</h3>
-                            <p>Az életpontjaid elfogytak. Viszont van lehetőséged tovább játszani.</p>
-                            <h5 class="text-center m-0">Szeretnéd folytatni?</h5>
-                            <input type="button" value="Igen" onclick="TovabbE(true)" class="p-2" id="tovabb">
-                            <input type="button" value="Nem" onclick="TovabbE(false)" class="p-2" id="feladom">
+            <!-- ///// JÁTÉKTÉR \\\\\ -->
+            <div id="jatekter" class="container d-none">
+                <div class="row">
+                    <div class="col-12 col-sm-6">
+
+                        <!-- Beviteli rész -->
+                        <div class="container text-center" id="bevitel">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div id="visszajelzes">
+                                        <br>
+                                    </div>
+                                    <input type="text" id="betuinput" name="betuinput" pattern="[A-Za-zÁÉÍÓÖŐÚÜŰáéíóöőúüű]+" maxlength="1" title="Írj ide valamit..." placeholder="Írj ide egy betűt/számot..." required class="p-2">
+                                    <input type="button" value="Ellenőrzés" onclick="Ellenoriz()" id="bekuld" class="p-2">
+                                    <h5 class="text-center" id="eletpont"></h5>
+                                </div>
+                            </div>
                         </div>
+
+                        <!-- Kérdés -->
+                        <div class="container d-none" id="kerdes">
+                            <div class="row text-center">
+                                <div class="col-12">
+                                    <div id="kepallas"></div>
+                                    <h3 class="text-center">Kérdés</h3>
+                                    <p>Az életpontjaid elfogytak. Viszont van lehetőséged tovább játszani.</p>
+                                    <h5 class="text-center m-0">Szeretnéd folytatni?</h5>
+                                    <input type="button" value="Igen" onclick="TovabbE(true)" class="p-2" id="tovabb">
+                                    <input type="button" value="Nem" onclick="TovabbE(false)" class="p-2" id="feladom">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-12 col-sm-6">
+                            
+                        <!-- Kijelzések -->
+                        <div class="container" id="kijelzes">
+                            <div class="row text-center">
+                                <div class="col-12" id="tartalom">
+                                    <div id="ember" width="256" height="256">
+                                        <img src="img/man0-512_gray.png" alt="" width="256" id="emberkep" class="d-block mx-auto">
+                                        Nincsen benne:
+                                        <div id="betuk">&nbsp;</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 
@@ -170,21 +210,21 @@
                             <tr>
                                 <td>
                                     <label>
-                                        <i class="fa-solid fa-circle-info" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Disabled popover"></i> 
+                                        <i class="fa-solid fa-circle-info" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="A kitalálandó szó betűmérete."></i> 
                                         Betűméret:
                                     </label>
                                 </td>
                                 <td>
-                                    <input class="d-flex align-items-center mx-auto" type="range" id="b_meret" name="b_meret" min="16" max="160" value="96" step="1" class="mx-2">
+                                    <input class="d-flex align-items-center mx-auto" type="range" id="b_meret" name="b_meret" min="1" max="30" value="10" step="1" class="mx-2">
                                 </td>
                                 <td>
-                                    <label id="ertek">96 px</label>
+                                    <label id="ertek">10 vw</label>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     <label>
-                                        <i class="fa-solid fa-circle-info" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Disabled popover"></i> 
+                                        <i class="fa-solid fa-circle-info" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Az oldaltémája (világos/sötét)."></i> 
                                         Téma:
                                     </label>
                                 </td>
@@ -222,13 +262,19 @@
           <hr class="mb-4">
             <h1 class="text-center mb-3">Tudnivalók</h1>
             <p class="text-center fw-bold m-0">[] Használható karakterek []</p>
-            <p>Az oldal a következő karaktereket fogadja csak el: A-Z, a-z, 0-9</p>
+            <p>
+                Az oldal a kitalálandó szó bekérésekor Minden karaktert befogad, kivéve a "-"-et.
+                <br>
+                Az oldal a szó kitalálása közben a következő karaktereket fogadja csak el: A-Z, a-z, 0-9
+            </p>
             <p class="text-center fw-bold m-0">[] Sose frissítsd az oldalt! []</p>
             <p>Az oldal a jelenleg futó munkamenettel párhuzamosan menti a különféle módosításokat, így ha frissíted, akkor az addigi össze adat elveszik.</p>
             <p class="text-center fw-bold m-0">[] Bugok []</p>
             <p>Ha bármi hiba felütné a fejét, akkor kéretik jelezni felém: <a href="mailto: skelyxd@gmail.com"> skelyxd@gmail.com </a></p>
+            <p class="text-center fw-bold m-0">[] UI []</p>
+            <p>Majd valamikor tervezek egy olyan funkciót is, ahol csak egy txt fájlt tud majd beolvasni, amiből majd ki fogja szedni a kitalálandó szavakat, de ez még nagyon a jövő zenéje.</p>
             <hr>
-            <p class="text-center">[ + ] Verzió: 1.07.02 [ + ]</p>
+            <p class="text-center">[ + ] Verzió: 1.08.01 [ + ]</p>
           <hr>
         </div>
       </div>
@@ -248,7 +294,7 @@
       </div>
     </div>
 </div>
-
+<!-- Süti modal -->
 <div class="position-fixed bottom-0 m-3" style="z-index: 1 !important;" id="cookieConsent">
     <div class="border border-secondary rounded p-3" id="suti">
       <p class="text-center p-0 m-0">
