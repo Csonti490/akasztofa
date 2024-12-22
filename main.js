@@ -26,6 +26,7 @@ window.onload = function() {
     });
     document.querySelectorAll('input[name="nehezseg"]')[0].checked = true;
     document.getElementById("b_meret").value = betumeret;
+    document.getElementById("start").disabled = true;
     Gyari();
 };
 
@@ -44,8 +45,6 @@ function Mutat(){
         szem.innerHTML = sz[0];
         document.getElementById("szo").placeholder = "Kitalálandó szó (mutatva)";
     }
-    /*szem.innerHTML = szem.innerHTML==sz[0]?sz[1]:sz[0];
-    document.getElementById("szo").type = szem.innerHTML==sz[0]?"text":"password";*/
 }
 
 /* Általános információk */
@@ -69,14 +68,12 @@ function Kezdes(){
     szo = document.getElementById("szo");
     elet = selectedRadio.value;
     
-    if(!/[A-Za-z0-9áéíóöőúüűÁÉÍÓÖŐÚÜŰ]/.test(szo) ){//szo.value == ""
+    if(!/[A-Za-z0-9áéíóöőúüűÁÉÍÓÖŐÚÜŰ]/.test(szo) ){
         alert("HIBA! Nincsen beírva kitalálandó szó!");
     }else if(/[A-Za-z0-9áéíóöőúüűÁÉÍÓÖŐÚÜŰ]/.test(szo)){
 
         szo = szo.value.toUpperCase();
         elet = selectedRadio.value;
-        //console.log("Ezt találd ki: "+szo.value+" Élet: "+elet); //Ellenőrzésre
-        //megjelenito.innerHTML = szo.replace(/[A-Za-z0-9áéíóöőúüűÁÉÍÓÖŐÚÜŰ]/g, '_');
         eddigi = szo.replace(/[A-Za-z0-9áéíóöőúüűÁÉÍÓÖŐÚÜŰ]/g, '_');
 
         if(!eddigi.includes('_')){
@@ -86,7 +83,6 @@ function Kezdes(){
             alapok.classList.add("d-none");
             jatekter.classList.remove("d-none");
             eletpont.innerHTML = "Életpont: "+elet;
-            //document.getElementById("cim").classList.add("d-none");
         }
     }
 }
@@ -208,19 +204,16 @@ function EmberValt(){
 
 /* Játék vége */
 function TheEnd(){
-    let kep = '<img src="'+document.getElementById('emberkep').src+'" alt="" width="256" id="emberkep" class="d-block mx-auto">';
+    //let kep = document.getElementById('emberkep').src;
     if(elet == 0 && tovabbmegyek == false){
-        //alert("Nem sikerült kitalálni a szót. Megfejtés: "+szo);
 
         bevitel.classList.add("d-none");
         kerdes.classList.remove("d-none");
 
     } else if(!eddigi.includes("_")){
-        //alert("A szó sikeresen kitalálva. ( Maradék élet: "+elet+" )");
-        kijelzes.classList.add("d-none");
         bevitel.classList.add("d-none");
-        eredmenykiir.innerHTML = kep;
-        eredmenykiir.innerHTML += elet > 0 ? "<h3 class='text-center'>Sikeresen kitaláltad a szót.<br>Maradék életek száma: "+elet+"</h3>":"<h3 class='text-center'>Sikeresen kitaláltad a szót.<br>Bár kiskrapek pórul járt. :/</h3>";
+        eredmenykiir.innerHTML += elet > 0 ? "Sikeresen kitaláltad a szót.<br>Maradék életek száma: "+elet+"":"Sikeresen kitaláltad a szót.<br>Bár kiskrapek pórul járt. :/";
+        //document.getElementById("emberkep").src = kep;
         eredmeny.classList.remove("d-none");
         console.log("Itt a vége");
     }
@@ -228,12 +221,11 @@ function TheEnd(){
 
 /* Nem találta ki a szavat, de folytani akarja-e */
 function TovabbE(tovabbmesz){
-    let kep = '<img src="'+document.getElementById('emberkep').src+'" alt="" width="256" id="emberkep" class="d-block mx-auto">';
+    //let kep = document.getElementById('emberkep').src;
     if(!tovabbmesz){
-        kijelzes.classList.add("d-none");
         kerdes.classList.add("d-none");
-        eredmenykiir.innerHTML = kep;
-        eredmenykiir.innerHTML += "<h3 class='text-center'>Sajnos nem sikerült kitalálni a szavat. :(</h3>";
+        eredmenykiir.innerHTML += "Sajnos nem sikerült kitalálni a szavat. :(";
+        //document.getElementById("emberkep").src = kep;
         eredmeny.classList.remove("d-none");
         MegoldasMutatasa();
     }else{
@@ -251,7 +243,7 @@ function MegoldasMutatasa(){
 
     for (var i = 0; i < hianyos.length; i++) {
         if (hianyos[i] === '_') {
-            eredmeny.push('<span class="off">' + szoveg[i] + '</span>');
+            eredmeny.push('<span class="text-danger">' + szoveg[i] + '</span>');
         } else {
             eredmeny.push(hianyos[i]);
         }

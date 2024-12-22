@@ -135,39 +135,12 @@ input[type="radio"]{
 }
 
 /*Beállítások*/
-tr {
-    border-bottom: 1px solid white;
-    border-top: 1px solid white;
-}
-table,tr,td {
-    padding: 8px;
-}
-table {
-    border-collapse: collapse !important;
-}
-td:nth-child(1){
-    text-align: right;
-}
-td:nth-child(2),td:nth-child(3){
-    text-align: center;
-}
 #sttngs{
     background-color: var(--sotetlila);
     /*background: linear-gradient(to right, rgba(0, 0, 0, 0.125), rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.125));*/
     border: 1px solid white;
     border-radius: 15px;
 }
-td:nth-child(1),td:nth-child(3){
-    width: 25%;
-}
-td:nth-child(2){
-    width: 50%;
-}
-span.off {
-    color: red;
-}
-
-
 
 #suti {
     width: 250px;
@@ -266,4 +239,8 @@ input[type="file"]::file-selector-button {
 }
 input[type="file"] {
     background-color: rgba(128, 128, 128, 0.5);
+}
+
+.magassag {
+    height: 45vh !important;
 }
