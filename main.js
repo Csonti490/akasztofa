@@ -94,14 +94,14 @@ document.getElementById('szo').addEventListener('input', function (e) {
     // Cseréljük le az összes "_" karaktert üres stringre
     e.target.value = e.target.value.replace(/_/g, '');
     if (e.target.value.length == 0){
-        document.getElementById("hibaellenorzes1").innerHTML = n + " Nincs beírva semmi.";
+        document.getElementById("hibaellenorzes1").innerHTML = n + " Nincs mit kitalálni.";
         StartEngedelyezes(true);
     }else if(e.target.value.length != 0 && !/[A-Za-z0-9áéíóöőúüűÁÉÍÓÖŐÚÜŰ]/.test(e.target.value)){
-        document.getElementById("hibaellenorzes1").innerHTML = n + " Nincs benne kitalálható karakter.";
+        document.getElementById("hibaellenorzes1").innerHTML = n + " Nincs beírva szó a mezőbe.";
         StartEngedelyezes(true);
     }
     else if(/[A-Za-z0-9áéíóöőúüűÁÉÍÓÖŐÚÜŰ]/.test(e.target.value)){
-        document.getElementById("hibaellenorzes1").innerHTML = y + " Gomb engedélyezve.";
+        document.getElementById("hibaellenorzes1").innerHTML = y + " Mehet a játék. :D";
         StartEngedelyezes(false);
     }
 });
@@ -204,7 +204,6 @@ function EmberValt(){
 
 /* Játék vége */
 function TheEnd(){
-    //let kep = document.getElementById('emberkep').src;
     if(elet == 0 && tovabbmegyek == false){
 
         bevitel.classList.add("d-none");
@@ -213,19 +212,16 @@ function TheEnd(){
     } else if(!eddigi.includes("_")){
         bevitel.classList.add("d-none");
         eredmenykiir.innerHTML += elet > 0 ? "Sikeresen kitaláltad a szót.<br>Maradék életek száma: "+elet+"":"Sikeresen kitaláltad a szót.<br>Bár kiskrapek pórul járt. :/";
-        //document.getElementById("emberkep").src = kep;
         eredmeny.classList.remove("d-none");
         console.log("Itt a vége");
     }
 }
 
-/* Nem találta ki a szavat, de folytani akarja-e */
+/* Nem találta ki a szavat, de folytatni akarja-e */
 function TovabbE(tovabbmesz){
-    //let kep = document.getElementById('emberkep').src;
     if(!tovabbmesz){
         kerdes.classList.add("d-none");
         eredmenykiir.innerHTML += "Sajnos nem sikerült kitalálni a szavat. :(";
-        //document.getElementById("emberkep").src = kep;
         eredmeny.classList.remove("d-none");
         MegoldasMutatasa();
     }else{
@@ -251,30 +247,32 @@ function MegoldasMutatasa(){
     megjelenito.innerHTML = eredmeny.join('');
 }
 
-/* Beállításokhoz navigálás */
+/* Beállítások megnyitása */
 const legomb = document.getElementById("beallitasok");
 legomb.addEventListener("click", function(e) {
   e.preventDefault();
-  //IranyLefele();
   Megnyit();
 });
-
-function IranyLefele() {
-    window.scrollTo({
-      top: document.body.scrollHeight,
-      behavior: "smooth"
-    });
-}
 
 var sttngs = document.getElementById("sttngs");
 function Megnyit(){
     sttngs.classList.remove("d-none");
+    sttngs.classList.add("megjelenik");
+}
+function Becsuk(){
+    sttngs.classList.remove("megjelenik");
+    sttngs.classList.add("eltunik");
+    setTimeout(() => {
+        sttngs.classList.add("d-none");
+        sttngs.classList.remove("eltunik");
+    }, 900);
+}
+/*function Megnyit(){
+    sttngs.classList.remove("d-none");
 }
 function Becsuk(){
     sttngs.classList.add("d-none");
-}
-
-
+}*/
 
 /* Beállítások betűméret */
 var cim = document.getElementById("megjelenito");
@@ -285,7 +283,7 @@ b_meret.addEventListener("input", function() {
     document.getElementById("ertek").innerText = meret+" vw";
 });
 
-/* Ideiglenes téma */
+/* Téma */
 function TemaValtas(n){
     let gomb = document.getElementsByClassName("temagomb");
     let temakiir = document.getElementById("temakiir");
@@ -302,9 +300,11 @@ function TemaValtas(n){
     }
 }
 
+
+
 /* Alaphelyzet */
 function UjJatek(){
-    document.getElementById("hibaellenorzes1").innerHTML = n + " Nincs beírva semmi.";
+    document.getElementById("hibaellenorzes1").innerHTML = n + " Nincs mit kitalálni.";
     StartEngedelyezes(true);
 
     tovabbmegyek = false;
@@ -318,7 +318,6 @@ function UjJatek(){
     jatekter.classList.add("d-none");
 
     document.getElementById("betuinput").value = "";
-    //document.querySelectorAll('input[name="nehezseg"]')[0].checked = true;
     document.getElementById("szo").value = "";
     document.getElementById("betuk").innerHTML = "&nbsp;";
     document.getElementById("megjelenito").innerHTML = "Akasztófa";
@@ -333,7 +332,7 @@ function UjJatek(){
     szam = 0;
 }
 
-/* Beállítások alaphelyzete */
+/* Beállítások alaphelyzetbe */
 function Gyari(){
     document.getElementById("megjelenito").style.fontSize = betumeret + "vw";
     document.getElementById("b_meret").value = betumeret;
@@ -346,7 +345,7 @@ function Gyari(){
 }
 
 
-/*Felugró infó*/
+/* Felugró infó */
 var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
 var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
     return new bootstrap.Popover(popoverTriggerEl)

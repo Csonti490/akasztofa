@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="hu" dir="ltr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Akasztófa">
+        <meta name="keywords" content="Játék">
+        <meta name="author" content="CsontiXD">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+        <link rel="stylesheet" href="bootstrap-5.0.2-dist/css/bootstrap.css">
+        <link rel="stylesheet" href="style.css">
+        <link id="favicon" rel="icon" type="image/x-icon" href="img/man16-512_gray.png">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+        <!-- Protest Revolution -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Protest+Revolution&display=swap" rel="stylesheet">
+
+        <!-- Kanit -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap" rel="stylesheet">
+
+        <title>Akasztófa</title>
+    </head>
+    <body>
+        <header>
+            <nav class="navbar navbar-expand-sm navbar-dark hatternav">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="index.html">Akasztófa</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.html"><i class="fa-solid fa-house"></i> Főoldal</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="" data-bs-toggle="modal" data-bs-target="#M1"><i class="fa-solid fa-circle-info"></i></i> Tudnivalók</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" id="beallitasok"><i class="fa-solid fa-gear"></i> Beállítások</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <main>
+
+            <div id="megjelenitodoboz" class="d-flex justify-content-center align-items-center">
+                <h1 class="m-0 text-center" id="megjelenito">
+                    Akasztófa
+                </h1>
+            </div>
+
+            <!-- /////  Játékszabályok beállítása  \\\\\ -->
+            <div class="container text-center p-3 my-auto magassag" id="alapok">
+                <div class="row">
+                    <!-- Kitalálandó szó bekérése -->
+                    <div class="col-12 col-sm-6">
+                        <h3 class="py-3">Kitalálandó szó</h3>
+                        <div class="container row m-0 p-0">
+                            <div class="col-12 col-md-9 m-0 p-0">
+                                <input type="text" id="szo" placeholder="Kitalálandó szó (mutatva)" class="p-2 w-100">
+                            </div>
+                            <div class="col-12 col-md-3 m-0 p-0">
+                                <button id="mutate" onclick="Mutat()" class="mt-2 mt-md-0 w-50 p-2 ikon" title="Szó mutatása/elrejtése"><i class="fa-solid fa-eye"></i></button>
+                            </div>
+                            <p id="hibaellenorzes1" class="text-center"><i class="fa-solid fa-xmark text-danger"></i> Még nincs beírva szó a mezőbe.</p>
+                        </div>
+                    </div>
+                    <!-- Nehézségi szintek -->
+                    <div class="col-12 col-sm-6">
+                        <h3 class="py-3">Nehézségi szintek</h3>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-4">
+                                    <input type="radio" name="nehezseg" id="n1" value="16" checked>
+                                    <label for="n1">Könnyű<br>Életpont: 16</label>
+                                </div>
+                                <div class="col-4">
+                                    <input type="radio" name="nehezseg" id="n2" value="12">
+                                    <label for="n2">Közepes<br>Életpont: 12</label>
+                                </div>
+                                <div class="col-4">
+                                    <input type="radio" name="nehezseg" id="n3" value="8">
+                                    <label for="n3">Nehéz<br>Életpont: 8</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <button onclick="Kezdes()" class="p-2 my-3" id="start" disabled>Játék kezdése</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ///// Játéktér \\\\\ -->
+            <div class="container text-center my-auto magassag p-0 d-none" id="jatekter">
+                <div class="row">
+                    <div class="col-12 col-sm-6 my-auto p-0">
+
+                        <!-- Beviteli rész -->
+                        <div class="container p-0" id="bevitel">
+                            <div class="row text-center">
+                                <div class="col-12">
+                                    <div id="visszajelzes">
+                                        <br>
+                                    </div>
+                                    <input type="text" id="betuinput" name="betuinput" pattern="[A-Za-zÁÉÍÓÖŐÚÜŰáéíóöőúüű]+" maxlength="1" title="Írj ide valamit..." placeholder="Írj ide egy betűt/számot..." required class="p-2">
+                                    <input type="button" value="Ellenőrzés" onclick="Ellenoriz()" id="bekuld" class="p-2">
+                                    <h5 class="text-center" id="eletpont"></h5>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Kérdés -->
+                        <div class="container p-0 d-none" id="kerdes">
+                            <div class="row text-center">
+                                <div class="col-12">
+                                    <div id="kepallas"></div>
+                                    <h3 class="text-center">Kérdés</h3>
+                                    <p>Az életpontjaid elfogytak. Viszont van lehetőséged tovább játszani.</p>
+                                    <h5 class="text-center m-0">Szeretnéd folytatni?</h5>
+                                    <input type="button" value="Igen" onclick="TovabbE(true)" class="p-2" id="tovabb">
+                                    <input type="button" value="Nem" onclick="TovabbE(false)" class="p-2" id="feladom">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Játék eredménye -->
+                        <div class="container p-0 d-none" id="eredmeny">
+                            <div class="row text-center">
+                                <div class="col-12">
+                                    <h4 class="text-center" id="eredmenykiir"></h4>
+                                    <input type="button" value="Új játék" onclick="UjJatek()" class="p-2" id="ujjatek">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Kijelzések -->
+                    <div class="col-12 col-sm-6 p-0">
+                        <div class="container p-0" id="kijelzes">
+                            <div class="row text-center">
+                                <div class="col-12 p-0" id="tartalom">
+                                    <div id="ember" width="256" height="256">
+                                        <img src="img/man0-512_gray.png" alt="" width="256" id="emberkep" class="d-block mx-auto">
+                                        Nincsen benne:
+                                        <div id="betuk">&nbsp;</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+
+            </div>
+
+            <div class="container row position-fixed bottom-0 start-50 translate-middle-x m-0 mb-5 p-3 d-none col-8 col-md-8 col-lg-6" id="sttngs">
+                <div class="col-12">
+                    <button onclick="Becsuk()" type="button" class="btn btn-danger float-end">X</button>
+                    <hr class="mb-4">
+                    <h1 class="text-center">Beállítások</h1>
+                    <div class="container text-center">
+                        <div class="row border p-2 m-2 rounded">
+                            <div class="col-12 col-md-3 px-1">
+                                Betűméret:
+                            </div>
+                            <div class="col-12 col-md-6 px-1">
+                                <input class="d-flex align-items-center mx-auto w-75" type="range" id="b_meret" name="b_meret" min="1" max="30" value="10" step="1" class="mx-2">
+                            </div>
+                            <div class="col-12 col-md-3 px-1">
+                                <span class="d-md-none">Érték: </span><label id="ertek">10 vw</label>
+                            </div>
+                        </div>
+                        <div class="row border p-2 m-2 rounded">
+                            <div class="col-12 col-md-3 px-1">
+                                Téma:
+                            </div>
+                            <div class="col-12 col-md-6 px-1">
+                                <button onclick="TemaValtas(0)" class="temagomb w-25" disabled><i class="fa-solid fa-sun"></i></button> <button onclick="TemaValtas(1)" class="temagomb w-25"><i class="fa-solid fa-moon"></i></button>
+                            </div>
+                            <div class="col-12 col-md-3 px-1">
+                                <span class="d-md-none">Érték: </span><label id="temakiir">világos</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <button class="d-block mx-auto p-2 m-2" onclick="Gyari()">Alapbeállítások</button>
+                </div>
+                <hr>
+            </div>
+
+        </main>
+        <footer class="text-center">
+            [ - ] Verzió: 1.08.04 [ - ]
+        </footer>
+    </body>
+    <script src="bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="main.js"></script>
+</html>
+
+<!-- Infó modal -->
+<div class="modal fade text-center" id="M1" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-md">
+      <div class="modal-content">
+        <div class="modal-body">
+          <button type="button" class="btn btn-danger float-end" data-bs-dismiss="modal">X</button>
+          <hr class="mb-4">
+            <h1 class="text-center mb-3">Tudnivalók</h1>
+            <p class="text-center fw-bold m-0">[-] Használható karakterek [-]</p>
+            <p>
+                Az oldal a kitalálandó szó bekérésekor Minden karaktert befogad, kivéve a "-"-et.
+                <br>
+                Az oldal a szó kitalálása közben a következő karaktereket fogadja csak el: A-Z, a-z, 0-9
+            </p>
+            <p class="text-center fw-bold m-0">[-] Sose frissítsd az oldalt! [-]</p>
+            <p>Az oldal a jelenleg futó munkamenettel párhuzamosan menti a különféle módosításokat, így ha frissíted, akkor az addigi össze adat elvész.</p>
+          <hr>
+        </div>
+      </div>
+    </div>
+</div>
