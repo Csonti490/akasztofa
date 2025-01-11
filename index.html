@@ -50,7 +50,7 @@
 
             <div id="megjelenitodoboz" class="d-flex justify-content-center align-items-center">
                 <h1 class="m-0 text-center" id="megjelenito">
-                    Akasztófa
+                    <span class="karakter text-uppercase">_</span><span class="karakter">_</span><span class="karakter">_</span><span class="karakter">_</span><span class="karakter">_</span><span class="karakter">_</span><span class="karakter">_</span><span class="karakter">_</span><span class="karakter">_</span>
                 </h1>
             </div>
 
@@ -136,3 +136,110 @@
         color: white;
     }
 </style>
+
+<style>
+    @keyframes ani {
+        0% {
+            opacity: 0;
+            bottom: 50px;
+        }
+        25% {
+            
+        }
+        50% {
+            
+        }
+        75% {
+            
+        }
+        100% {
+            opacity: 1;
+            bottom: 0;
+        }
+    }
+    .rezeg {
+        animation: 1s ani;
+    }
+    span {
+        /*all: unset;*/
+        display: inline-block;
+        font-size: 10vw;
+        position: relative;
+    }
+    
+</style>
+<script>
+    /*var x = document.getElementsByClassName("karakter");
+    var szoveg = ["A","k","a","s","z","t","ó","f","a"];
+    var sorrend = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
+    sorrend = shuffleArray(sorrend);
+    var c = document.getElementById("megjelenito");
+
+    function Helyez(){
+        if(sorrend.length != 0){
+            x[sorrend[0]].innerHTML = szoveg[sorrend[0]];
+            if(szoveg[sorrend[0]] == "a"){
+                //x[0].innerHTML = "a";
+                //x[2].innerHTML = "a";
+                //x[8].innerHTML = "a";
+                //szoveg = szoveg.filter(item => item !== "a");
+                //sorrend = sorrend.filter(item => item !== 0 && item !== 2 && item !== 8);
+            }
+            //x[sorrend[0]].classList.remove("rezeg");
+            //void x[sorrend[0]].offsetWidth;
+            x[sorrend[0]].classList.add("rezeg");
+            sorrend.shift();
+            //console.log(sorrend);
+        }
+        
+    }
+    setInterval(Helyez,1000);*/
+
+
+    var x = document.getElementsByClassName("karakter");
+var szoveg = ["a", "k", "a", "s", "z", "t", "ó", "f", "a"];
+var sorrend = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+
+// Véletlenszerű sorrend keverése
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+sorrend = shuffleArray(sorrend);
+var c = document.getElementById("megjelenito");
+
+function Helyez() {
+    if (sorrend.length != 0) {
+        // Ellenőrizzük, hogy az aktuális betű "a"-e
+        if (szoveg[sorrend[0]] === "a") {
+            // Az összes "a"-t egyszerre jelenítjük meg
+            for (let i = 0; i < sorrend.length; i++) {
+                if (szoveg[sorrend[i]] === "a") {
+                    x[sorrend[i]].innerHTML = szoveg[sorrend[i]];
+                    x[sorrend[i]].classList.add("rezeg");
+                }
+            }
+        } else {
+            // Egyéb betűk egyenként jelennek meg
+            x[sorrend[0]].innerHTML = szoveg[sorrend[0]];
+            x[sorrend[0]].classList.add("rezeg");
+        }
+        sorrend.shift();
+    }
+}
+
+setInterval(Helyez, 1000);
+
+    
+</script>
