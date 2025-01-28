@@ -59,12 +59,12 @@
                     <div class="col-12 col-sm-6 p-5 border">
                         <button class="m-2 px-3 py-2" onclick="window.location.href='index1.html'">Játék 1</button>
                         <h3>Leírás</h3>
-                        <p>Az első verzióban kézzel lehet bevinni a kitalálandó szavakat.</p>
+                        <p>Az első verzióban kézzel lehet bevinni a kitalálandó szavakat egyesésével.</p>
                     </div>
                     <div class="col-12 col-sm-6 p-5 border">
                         <button class="m-2 px-3 py-2" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Jelenleg ez nincsen még készen. :/" disabled>Hamarosan...</button>
                         <h3>Leírás</h3>
-                        <p class="">A második verzióban egy txt fájlt lehet beolvasni, amiben soronként vannak felsorolva a kitalálandó szavan.</p>
+                        <p>A második verzióban több kitalálandó szavat is be lehet olvasni egy txt fájl beolvasásával, amiben soronként vannak felsorolva a rejtvények.</p>
                     </div>
                 </div>
             </div>
@@ -169,7 +169,7 @@
     
 </style>
 <script>
-    /*var x = document.getElementsByClassName("karakter");
+    var x = document.getElementsByClassName("karakter");
     var szoveg = ["A","k","a","s","z","t","ó","f","a"];
     var sorrend = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 
@@ -201,45 +201,5 @@
         }
         
     }
-    setInterval(Helyez,1000);*/
-
-
-    var x = document.getElementsByClassName("karakter");
-var szoveg = ["a", "k", "a", "s", "z", "t", "ó", "f", "a"];
-var sorrend = [0, 1, 2, 3, 4, 5, 6, 7, 8];
-
-// Véletlenszerű sorrend keverése
-function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
-}
-sorrend = shuffleArray(sorrend);
-var c = document.getElementById("megjelenito");
-
-function Helyez() {
-    if (sorrend.length != 0) {
-        // Ellenőrizzük, hogy az aktuális betű "a"-e
-        if (szoveg[sorrend[0]] === "a") {
-            // Az összes "a"-t egyszerre jelenítjük meg
-            for (let i = 0; i < sorrend.length; i++) {
-                if (szoveg[sorrend[i]] === "a") {
-                    x[sorrend[i]].innerHTML = szoveg[sorrend[i]];
-                    x[sorrend[i]].classList.add("rezeg");
-                }
-            }
-        } else {
-            // Egyéb betűk egyenként jelennek meg
-            x[sorrend[0]].innerHTML = szoveg[sorrend[0]];
-            x[sorrend[0]].classList.add("rezeg");
-        }
-        sorrend.shift();
-    }
-}
-
-setInterval(Helyez, 1000);
-
-    
+    setInterval(Helyez,500);
 </script>
