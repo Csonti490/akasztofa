@@ -5,6 +5,7 @@
     --sotetkek: rgb(28,37,63); /* háttér */
     --sotetszurke: rgb(35,38,39);
     --szurke: rgb(53, 50, 50);
+    --s: #2b2a33;
 
     --m_kek: #2e3192;
     --m_vkek: #026e9f;
@@ -79,9 +80,11 @@ a.linkek {
 }
 
 /* Felugró ablak */
-.modal-body {
+.modal-content {
+    border-radius: 8px !important;
     background-color: var(--sotetkek);
     text-align: justify;
+    border: 1px solid white;
 }
 .modal-header, .modal-footer {
     background-color: var(--sotetlila);
@@ -114,9 +117,7 @@ input[type="radio"]{
 
 /*Beállítások*/
 #sttngs{
-    background-color: var(--sotetlila);
-    border: 1px solid white;
-    border-radius: 15px;
+    border-radius: 8px;
     z-index: 1 !important;
 }
 
