@@ -474,7 +474,198 @@
     </div>
     <div id="d6" class="d-none">
         <pre>
-
+            Router>ena
+            Router#conf t
+            Router(config)#int gig0/0/0
+            Router(config-if)#ip address 192.168.10.33 255.255.255.240
+            Router(config-if)#no sh
+            Router(config-if)#int gig 0/0/1
+            Router(config-if)#ip address 192.168.10.1 255.255.255.224
+            Router(config-if)#no sh
+            Router(config-if)#int se0/1/0
+            Router(config-if)#ip address 10.10.10.1 255.255.255.252
+            Router(config-if)#no sh
+            Switch>ena
+            Switch#conf t
+            Switch(config)#int vlan1
+            Switch(config-if)#ip address 192.168.10.3 255.255.255.224
+            Switch(config-if)#no sh
+            Switch(config-if)#exit
+            Switch(config)#ip default-gateway 192.168.10.1
+            Switch>ena
+            Switch#conf tz
+            Switch#conf t
+            Switch(config)#ip default-gateway 192.168.10.33
+            Switch(config)#do w
+            Switch(config)#do w
+            Router>ena
+            Router#conf t
+            Router(config)#int se 0/1/1
+            Router(config-if)#ip address 10.10.10.2 255.255.255.252
+            Router(config-if)#no sh
+            Router(config-if)#int gig 
+            Router(config-if)#int gig 0/0/0
+            Router(config-if)#ip address 192.168.20.1 255.255.255.240
+            Router(config-if)#no sh
+            Router(config-if)#do w
+            Router(config-if)#int se 0/1/0
+            Router(config-if)#clock 128000
+            Router(config-if)#clock?
+            Router(config-if)#clock ?
+            Router(config-if)#clock rate 128000
+            Router(config-if)#exirt
+            Router(config-if)#exit
+            Switch>ena
+            Switch#conf t
+            Switch(config)#int vlan 1
+            Switch(config-if)#ip address 192.168.20.2 255.255.255.240
+            Switch(config-if)#no sh
+            Switch(config-if)#exit
+            Switch(config)#ip default-gateway 192.168.20.1 255.255.255.240
+            Switch(config)#ip default-gateway 192.168.20.1
+            Switch(config)#do w
+            Router(config)#ip?
+            Router(config)#ip ?
+            Router(config)#ip route 192.168.20.0 0.0.0.15 10.10.10.2
+            Router(config)#ip route 192.168.20.0 255.255.255.240 10.10.10.2
+            Router(config)#do w
+            Router(config-if)#exit
+            Router(config)#ip route 0.0.0.0 0.0.0.0 s 0/1/1
+            Router>ena
+            Router#hostname company
+            Router#conf t
+            Router(config)#hostname company
+            company(config)#ipv?
+            company(config)#ipv6 ?
+            company(config)#ipv6 unicast-routing ?
+            company(config)#no ipv6 unicast-routing 
+            company(config)#ipv unicast-routing 
+            company(config)#int g 0/0/0
+            company(config-if)#ipv6 address 2001:db8:c:10::1/64
+            company(config-if)#ipv address fe80::1 link-local 
+            company(config-if)#int gig 0/0/1
+            company(config-if)#ipv6 address 2001:db8:c:2::1/64
+            company(config-if)#ipv address fe80::1 link-local 
+            company(config-if)#int gig 0/0/0
+            company(config-if)#ipv6 address 2001:db8:c:1::33/64
+            company(config-if)#ipv address fe80::33 link-local 
+            company(config-if)#int gig 0/0/0
+            company(config-if)#no ipv6 address 2001:db8:c:10::1/64
+            company(config-if)#ipv6 address 2001:db8:c:1::33/64
+            company(config-if)#int se 0/1/0
+            company(config-if)#ipv6 address 2001:db8:c:10::1/64
+            company(config-if)#ipv address fe80::1 link-local 
+            company(config-if)#exit
+            company(config)#ipv route 2001:db8:c:3::/64 2001:db8:c:10::2
+            company(config)#do w
+            Router>ena
+            Router#conf t
+            Router(config)#ipv unicast-routing 
+            Router(config)#int se 0/1/1
+            Router(config-if)#ipv address 2001:db8:c:10::2/64
+            Router(config-if)#ipv address fe80::2 link-local 
+            Router(config-if)#int gig 0/0/0
+            Router(config-if)#ipv address 2001:db8:c:3::1/64
+            Router(config-if)#ipv address fe80::1 link-local 
+            Router(config-if)#exit
+            Router(config)#ipv ro?
+            Router(config)#ipv route ::/0 s0/1/1
+            Router(config)#end
+            Router#w
+            company>ena
+            company#conf t
+            company(config)#line console 0
+            company(config-line)#password cisco
+            company(config-line)#login
+            company(config-line)#exit
+            company(config)#exit
+            company#exit
+            company>ena
+            company#conf t
+            company(config)#enable ?
+            company(config)#enable secret cisco
+            company(config)#do show run
+            company(config)#service password-encryption 
+            company(config)#do show run
+            company(config)#line vty 0 4
+            company(config-line)#password cisco
+            company(config-line)#login
+            company(config-line)#exit
+            company(config)#do show run
+            company(config)#do w
+            company>ena
+            company#conf t
+            company(config)#ip domain-name company.hu
+            company(config)#username admin secret cisco
+            company(config)#username Jani secret cisco
+            company(config)#crypto key generate rsa 
+            company(config)#line vty 0 4
+            company(config-line)#transport input ssh
+            company(config-line)#login local 
+            company(config-line)#login ?
+            company(config-line)#end
+            company#w
+            company#exit
+            Switch>ena
+            Switch#conf t
+            Switch(config)#hostname SW1
+            SW1(config)#ena secret cisco
+            SW1(config)#line console 0
+            SW1(config-line)#password cisco
+            SW1(config-line)#login
+            SW1(config-line)#exit
+            SW1(config)#ip domain-name company.hu
+            SW1(config)#username admin sec cisco
+            SW1(config)#username Jani sec cisco
+            SW1(config)#crypto key generate rsa 
+            SW1(config)#line vty 0 4
+            SW1(config-line)#line vty 0 15
+            SW1(config-line)#transport input ssh
+            SW1(config-line)#login local 
+            SW1(config-line)#exit
+            SW1(config)#ip ssh v 2
+            SW1(config)#end
+            SW1#w
+            company>exit
+            Router>ena
+            Router#conf t
+            Router(config)#enable secret cisco
+            Router(config)#service password-encryption 
+            Router(config)#ip domain-name company.hu
+            Router(config)#username admin secret cisco
+            Router(config)#line vty 0 15
+            Router(config-line)#exit
+            Router(config)#crypto key generate rsa 
+            Router(config)#hostname Branch
+            Branch(config)#crypto key generate rsa 
+            Branch(config)#line vty 0 15
+            Branch(config-line)#transport input ssh 
+            Branch(config-line)#login local 
+            Branch(config-line)#exit
+            Branch(config)#ip ssh 2
+            Branch(config)#ip ssh?
+            Branch(config)#ip ssh ?
+            Branch(config)#ip ssh version 2
+            Branch(config)#sec?
+            Branch(config)#security ?
+            Branch(config)#security passwords min-length 10
+            Branch(config)#login block-for 60 attempts 2 within 30
+            Branch(config)#line vty 0 15
+            Branch(config-line)#?
+            Branch(config-line)#exec-timeout 5 20
+            Branch(config-line)#do w
+            Branch(config-line)#end
+            Branch#exit
+            Branch>exit
+            Branch>ena
+            Branch#conf t
+            Branch(config)#banner motd #Tilos a belepes#
+            
+        </pre>
+    </div>
+    <div id="d7" class="d-none">
+        <pre>
+            
         </pre>
     </div>
 
@@ -490,7 +681,7 @@
 </style>
 <script>
     function Mutat(n){
-        for (let i = 1; i <= 6; i++) {
+        for (let i = 1; i <= 7; i++) {
             document.getElementById("d"+i).classList.add("d-none");
         }
         document.getElementById("d"+n).classList.remove("d-none");
