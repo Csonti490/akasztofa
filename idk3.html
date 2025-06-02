@@ -1,0 +1,126 @@
+2. rész: IP-címzési séma létrehozása
+
+A hálózat alcímzése:
+
+    IPv4 hálózat: 209.165.201.0/24
+
+    LAN 1 (29 hoszt) → 209.165.201.0/27
+
+    LAN 2 (17 hoszt) → 209.165.201.32/27
+
+IP-címek kiosztása:
+
+    Router interfészek:
+
+        Central-RT G0/0/1: 209.165.201.1
+
+        Central-RT G0/0/0: 209.165.201.33
+
+    PC-k:
+
+        LAN 1 PC: 209.165.201.30
+
+        LAN 2 PC: 209.165.201.62
+
+    Switch (SVI):
+
+        Central-SW VLAN1: 209.165.201.2
+
+3. rész: Alapvető eszközbeállítások konfigurálása
+Router konfiguráció (Central-RT):
+
+enable
+configure terminal
+hostname Central-RT
+no ip domain-lookup
+banner motd # Figyelem! Csak jogosult felhasználók léphetnek be! #
+line console 0
+ password C@nsPassw!
+ login
+exit
+interface GigabitEthernet0/0/1
+ description LAN 1 kapcsolat
+ ip address 209.165.201.1 255.255.255.224
+ no shutdown
+exit
+interface GigabitEthernet0/0/0
+ description LAN 2 kapcsolat
+ ip address 209.165.201.33 255.255.255.224
+ no shutdown
+exit
+end
+write memory
+
+Switch konfiguráció (Central-SW):
+
+enable
+configure terminal
+hostname Central-SW
+no ip domain-lookup
+banner motd # Figyelem! Csak jogosult felhasználók léphetnek be! #
+line console 0
+ password C@nsPassw!
+ login
+exit
+interface vlan1
+ description Hálózati Switch IP-címe
+ ip address 209.165.201.2 255.255.255.224
+ no shutdown
+exit
+end
+write memory
+
+4. rész: Biztonsági beállítások
+Router – Jelszavak és SSH beállításai:
+
+enable
+configure terminal
+enable secret ThielsaSecret
+service password-encryption
+security passwords min-length 10
+ip domain-name netsec.com
+crypto key generate rsa modulus 1024
+username netadmin privilege 15 secret CI$co12345
+line vty 0 4
+ login local
+ transport input ssh
+exit
+end
+write memory
+
+Switch – Biztonsági beállítások és portok letiltása:
+
+enable
+configure terminal
+enable secret SWITCHPASS
+service password-encryption
+line vty 0 4
+ login local
+ transport input ssh
+( R1(config)# ip ssh version 2 )
+exit
+interface range GigabitEthernet0/1 - 24
+ shutdown
+ description Nem használt port - letiltva
+exit
+end
+write memory
+
+5. rész: Hosztok konfigurálása és kapcsolat ellenőrzése
+Beállítod a PC-k hálózati beállításait manuálisan:
+
+LAN 1 PC:
+
+    IP-cím: 209.165.201.30
+
+    Alhálózati maszk: 255.255.255.224
+
+    Alapértelmezett átjáró: 209.165.201.1
+
+LAN 2 PC:
+
+    IP-cím: 209.165.201.62
+
+    Alhálózati maszk: 255.255.255.224
+
+    Alapértelmezett átjáró: 209.165.201.33
