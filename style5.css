@@ -1,0 +1,97 @@
+/* Alapértelmezett (balra igazított) szöveg */
+.text-left {
+    text-align: left !important;
+  }
+  
+  .text-center {
+    text-align: center !important;
+  }
+  
+  .text-right {
+    text-align: right !important;
+  }
+  
+  .text-justify {
+    text-align: justify !important;
+  }
+  
+  /* sm képernyőmérettől (576px) */
+  @media (min-width: 576px) {
+    .text-sm-left {
+      text-align: left !important;
+    }
+    .text-sm-center {
+      text-align: center !important;
+    }
+    .text-sm-right {
+      text-align: right !important;
+    }
+    .text-sm-justify {
+      text-align: justify !important;
+    }
+  }
+  
+  /* md képernyőmérettől (768px) */
+  @media (min-width: 768px) {
+    .text-md-left {
+      text-align: left !important;
+    }
+    .text-md-center {
+      text-align: center !important;
+    }
+    .text-md-right {
+      text-align: right !important;
+    }
+    .text-md-justify {
+      text-align: justify !important;
+    }
+  }
+  
+  /* lg képernyőmérettől (992px) */
+  @media (min-width: 992px) {
+    .text-lg-left {
+      text-align: left !important;
+    }
+    .text-lg-center {
+      text-align: center !important;
+    }
+    .text-lg-right {
+      text-align: right !important;
+    }
+    .text-lg-justify {
+      text-align: justify !important;
+    }
+  }
+  
+  /* xl képernyőmérettől (1200px) */
+  @media (min-width: 1200px) {
+    .text-xl-left {
+      text-align: left !important;
+    }
+    .text-xl-center {
+      text-align: center !important;
+    }
+    .text-xl-right {
+      text-align: right !important;
+    }
+    .text-xl-justify {
+      text-align: justify !important;
+    }
+  }
+  
+  /* xxl képernyőmérettől (1400px) */
+  @media (min-width: 1400px) {
+    .text-xxl-left {
+      text-align: left !important;
+    }
+    .text-xxl-center {
+      text-align: center !important;
+    }
+    .text-xxl-right {
+      text-align: right !important;
+    }
+    .text-xxl-justify {
+      text-align: justify !important;
+    }
+  }
+  

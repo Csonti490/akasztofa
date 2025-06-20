@@ -15,18 +15,21 @@
     
     <link rel="stylesheet" href="style_light.css" id="tema">
     <link rel="stylesheet" href="style.css">
+    <style>
+        main{
+            min-height: calc(100vh - 56px*2);
+        }
+    </style>
     <link rel="stylesheet" href="style2.css">
     <link rel="stylesheet" href="style3.css">
     <link rel="stylesheet" href="style4.css">
     <link rel="stylesheet" href="style5.css">
     <script src="cookie.js"></script>
-    <script src="game1.js" defer></script>
 
     <title>Akasztófa Játék</title>
     
 </head>
-<body onload="getCookie('akasztofa_suti')" class="p-0 overflow-auto">
-    <div class="wrapper" style="min-height: 100vh; display: flex; flex-direction: column;">
+<body onload="getCookie('akasztofa_suti')">
     <header class="fw-bold">
         <nav class="navbar navbar-expand-sm text-center">
             <div class="container-fluid">
@@ -53,113 +56,34 @@
             </div>
         </nav>
     </header>
-    <main class="mb-3" style="flex-grow: 1;">
+    <main>
         <div id="megjelenitodoboz" class="d-flex justify-content-center align-items-center vh-50">
             <h1 class="m-0 text-center" id="megjelenito">
                 Akasztófa
             </h1>
         </div>
-        <!--Beállítások-->
-        <div class="container-fluid text-center" id="beallitasok">
+        <div class="container">
             <div class="row">
-                <div class="col-12 col-md-6 mb-3">
-                    <h3>Kitalálandó szó</h3>
-                    <input type="text" name="" id="kitalalando" class="py-2 px-3 fw-bold w-75" placeholder="Kitalálandó szó (mutatva)">
-                    <button class="py-2 px-3 fw-bold gomb" id="mutatrejt"><i class="fa-solid fa-eye"></i></button>
-                    <p class="m-0" id="visszajelzes"><i class="fa-solid fa-xmark text-danger"></i> Még nincs beírva szó a mezőbe.</p>
-                </div>
-                <div class="col-12 col-md-6 mb-3">
-                    <h3>Nehézségi szintek</h3>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-4 p-0">
-                                <input type="radio" name="nehezseg" id="n1" value="16" checked>
-                                <label for="n1">Könnyű<br>16 <i class="fa-solid fa-heart"></i></label>
-                            </div>
-                            <div class="col-4 p-0">
-                                <input type="radio" name="nehezseg" id="n2" value="12">
-                                <label for="n2">Közepes<br>12 <i class="fa-solid fa-heart"></i></label>
-                            </div>
-                            <div class="col-4 p-0">
-                                <input type="radio" name="nehezseg" id="n3" value="8">
-                                <label for="n3">Nehéz<br>8 <i class="fa-solid fa-heart"></i></label>
-                            </div>
-                        </div>
+                <div class="col-12 col-sm-6 text-center h-100 my-1">
+                    <button class="py-3 px-5 h5 fw-bold rounded gomb" onclick="window.location.href='index1.html'"><i class="fa-solid fa-dice-one"></i> Verzió 1</button>
+                    <div class="rounded korvonal d-flex justify-content-center align-items-center p-1 mx-auto">
+                    Egy kitalálandó szavat lehet bevinni és kitalálni.
                     </div>
                 </div>
-                <div class="col-12 d-flex justify-content-center align-items-center">
-                    <button class="py-3 px-5 h5 fw-bold rounded gomb" id="mehet" disabled>Játék kezdése</button>
+                <div class="col-12 col-sm-6 text-center h-100 my-1">
+                    <button class="py-3 px-5 h5 fw-bold rounded gomb" onclick="window.location.href='index2.html'"><i class="fa-solid fa-dice-two"></i> Verzió 2</button>
+                    <div class="rounded korvonal d-flex justify-content-center align-items-center p-1 mx-auto">
+                    Több kitalálandó szavat is be lehet olvasni egy txt fájl beolvasásával.
+                    </div>
                 </div>
             </div>
         </div>
-
-        <!-- Játéktér -->
-         <div class="container-fluid text-center h-50 d-none" id="jatekter">
-            <div class="row">
-                <!-- Beviteli -->
-                <div class="col-12 col-sm-7 my-auto p-0" id="bevitel">
-                    <h5 id="elet">Életpontok: <span id="eletpontok">&nbsp;</span> <i class="fa-solid fa-heart"></i></h5>
-                    <input type="text" name="" class="py-2 px-3 fw-bold rounded" id="tippelt" placeholder="Írj ide egy betűt/számot..." maxlength="1" required>
-                    <button class="py-2 px-3 fw-bold rounded gomb" id="ellenorzes"><i class="fa-solid fa-magnifying-glass"></i> Ellenőrzés</button>
-                    <p class="" id="ellenorzes_visszajelzes">&nbsp;</p>
-                    <div class="m-0 p-0 rounded">
-                        <p class="m-0">Nincs benne:</p>
-                        <p class="m-0" id="nincsbenne">&nbsp;</p>
-                    </div>
-                </div>
-                <!-- Végeredmény -->
-                <div class="col-12 col-sm-7 my-auto p-0 d-none" id="eredmeny">
-                    <div class="m-0 p-0">
-                        <h3 class="text-center">Játék vége</h3>
-                        <p id="eredmenykiir">
-                            &nbsp;
-                        </p>
-                        <button class="py-2 px-3 fw-bold rounded gomb" id="ujjatek">Új játék</button>
-                    </div>
-                </div>
-                <!-- Kérdés -->
-                <div class="col-12 col-sm-7 my-auto p-0 d-none" id="kerdes">
-                    <div class="m-0 p-0">
-                        <h3 class="text-center">Kérdés</h3>
-                        <p>Az életpontjaid elfogytak. Viszont van lehetőséged tovább játszani.</p>
-                        <h5 class="text-center m-0">Szeretnéd folytatni?</h5>
-                        <button class="py-2 px-3 fw-bold rounded gomb" id="tovabb">Tovább</button>
-                        <button class="py-2 px-3 fw-bold rounded gomb" id="feladom">Feladom</button>
-                    </div>
-                </div>
-                <!-- Megjelenítő -->
-                <div class="col-12 col-sm-5" width="256" height="256">
-                    <img src="img/man0-512_blue.png" class="d-block mx-auto img-fluid" width="256" id="emberkep">
-                    
-                </div>
-            </div>
-         </div>
     </main>
     <footer class="mt-auto py-3 text-center fw-bold">
         Verzió: 2.00.01 | Készítette: CsontiXD
     </footer>
-    </div>
 </body>
 </html>
-
-<!-- Hibajelzés -->
-<div class="modal fade" id="ErrorInfo" tabindex="-1" aria-labelledby="autoModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
-  <div class="modal-dialog modal-dialog modal-dialog-centered modal-sm">
-    <div class="modal-content">
-      <div class="modal-header justify-content-center">
-        <h5 class="modal-title fw-bold"><i class="fa-solid fa-triangle-exclamation"></i> Hiba! <i class="fa-solid fa-triangle-exclamation"></i></h5>
-      </div>
-      <div class="modal-body">
-        <p class="text-center p-0 m-0" id="info">
-            Valami hiba történt.
-        </p>
-      </div>
-      <div class="modal-footer justify-content-center">
-        <button type="button" class="btn btn-success py-2 px-3 h5 fw-bold" data-bs-dismiss="modal"> Oké</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- Süti -->
 <div class="modal fade" id="cookieConsent" tabindex="-1" aria-labelledby="autoModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
@@ -217,8 +141,8 @@
         </div>
         <div class="modal-body">
             <h5 class="text-center fw-bold"><i class="fa-solid fa-circle-question"></i> Mi legyen a feladvány?</h5>
-            <p>Írd be a szövegesmezőbe a kitalálandó szavat és ha elérhetővé válik a "Játék kezdése" gomb, akkor kezdődhet a találgatás.</p>
-            <p>Ha nem akarok senkivel sem megosztani a megfejtést és jól tudsz gépelni, akkor a mező melletti szemes gombra kattintva el is rejtheted.</p>
+            <p>Írd be a szövegesmezőbe a kitalálandó szót vagy olvasd be a kitalálandó szavakat tartalmazó fájlt és ha elérhetővé válik a "Játék kezdése" gomb, akkor nyomj rá és kezdődhet a találgatás.</p>
+            <p>Ha a 'Verzió 1'-ben, ahol egy szövegesmezőbe kell beírnod a játék elején a kitalálandó szót ott, ha nem akarok senkivel sem megosztani a megfejtést és jól tudsz gépelni, akkor a mező melletti szemes gombra kattintva el is rejtheted.</p>
             <hr>
             <h5 class="text-center fw-bold"><i class="fa-solid fa-sliders"></i> Nehézségi szintek / <i class="fa-solid fa-heart"></i> Életpontok</h5>
             <p>A játék kezdete előtti felületen be lehet állítani, hogy hány találgatás (életpont) legyen. Ha esetleg kifogynál az életpontokból a rendszer megkérdezi, hogy "Tovább folytatod-e a találgatást?", ha ott a feladást választod, akkor a rendszer megmutatja a megfejtést. Ellenkező esetben tovább lehet folytatni a játékot.</p>

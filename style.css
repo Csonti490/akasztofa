@@ -1,94 +1,85 @@
 :root {
-    
-    --sotetlila: rgb(87, 31, 105); /* fejléc, lábléc */
-    --feherlila: rgb(179, 154, 187); /* fejléc kijelölés */
-    --sotetkek: rgb(28,37,63); /* háttér */
-    --sotetszurke: rgb(35,38,39);
-    --szurke: rgb(53, 50, 50);
-    --s: #2b2a33;
+    --feher: #f0f0f0;
+    --fekete: black;
 
-    --m_kek: #2e3192;
-    --m_vkek: #026e9f;
+    /*Dark theme*/
+    --sotetkek: #021f4c; /*fejléc,lábléc*/
+    --sotetlila: #1a1a2e;/*háttérszín*/
 
-    --vilagoskek: rgb(25, 80, 247);
+    /*Light theme*/
+    --kek: #2e3192; /*fejléc,láblác*/
+    --feher: #f0f0f0; /*háttér*/
 }
 
 /* Alap */
-*{
-    box-sizing: border-box;
+body, .modal {
+    min-width: 300px !important;
 }
-body {
-    background-color: var(--sotetkek);
-    color: white;
-    min-width: 300px;
-    font-family: 'Kanit', sans-serif;
-}
-main {
-    margin: 0 !important;
-    padding: 0 !important;
-}
-.hatternav, footer {
-    background-color: var(--sotetlila);
-}
-nav .navbar-brand {
-    margin-right: 0 !important;
-}
-nav .navbar-brand > img {
-    width: 125px;
-}
-nav a.navbar-brand:hover {
-    transition: transform .2s;
-    transform: scale(1.05);
-    color: var(--feherlila) !important;
-    text-decoration: underline;
-}
-nav li.nav-item a:hover {
-    transition: transform .2s;
-    transform: scale(1.025);
-    text-decoration: underline;
-    color: var(--feherlila) !important;
-}
-a.nav-link {
-    color: white !important;
-}
-nav .dropdown-item, .dropdown-menu {
-    background-color: var(--sotetlila);
-    color: white;
-}
-nav .dropdown-item:hover {
-    color: var(--feherlila);
-    background-color: var(--sotetlila) !important;
-}
-.modal span {
-    font-weight: bold;
-}
-main {
-    min-height: 100vh;
-}
-footer {
-    line-height: 56px;
-}
-a.linkek {
-    color: white;
-}
-.navbar-brand {
-    font-family: 'Protest Revolution', sans-serif !important;
-    letter-spacing: .25rem !important;
-}
-.navbar-brand:hover {
-    text-decoration: none !important;
+* {
+    transition: 0.25s;
 }
 
-/* Felugró ablak */
-.modal-content {
-    border-radius: 8px !important;
-    background-color: var(--sotetkek);
-    text-align: justify;
-    border: 1px solid white;
+/* Menü */
+.navbar-brand:hover, .nav-link:hover{
+    text-decoration: underline;
 }
-.modal-header, .modal-footer {
-    background-color: var(--sotetlila);
-    color: white;
+.navbar-brand, .nav-link, footer {
+    color: var(--feher) !important;
+}
+button.navbar-toggler {
+    border: 1px solid var(--feher);
+}
+.navbar-toggler:hover {
+    box-shadow: 0px 0px 0px 2.5px var(--feher) !important;
+}
+.navbar-toggler:focus {
+    box-shadow: 0px 0px 0px 2.5px var(--feher) !important;
+}
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='white' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+.nav-link i {
+    padding-right: 1px;
+}
+@media (max-width: 575px) {/*575 , 767*/
+    .nav-link:hover{
+        text-decoration: none;
+    }
+    .nav-link:hover::before {
+        content: ">>";
+        margin-right: 5px;
+    }
+    .nav-link:hover::after {
+        content: "<<";
+        margin-left: 5px;
+    }
+}
+.modal-title {
+    color: var(--feher);
+}
+/* Nehézségi szintek (input radio) */
+input[name="nehezseg"]{
+    width: 100%;
+    height: 2em;
+}
+
+/* Süti */
+button.cookie::before {
+    content: "\f563";
+    font-family: "Font Awesome 6 Free";
+    color: brown;
+    font-size: 125%;
+}
+button.cookie:hover::before {
+    content: "\f564";
+    font-family: "Font Awesome 6 Free";
+    color: brown;
+    font-size: 125%;
+}
+#cookieConsent.show ~ .modal-backdrop {
+  backdrop-filter: blur(5px);
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 1 !important;
 }
 
 /* Kitalálandó szó */
@@ -97,6 +88,7 @@ a.linkek {
     overflow-x: auto !important;
 }
 #megjelenito {
+    font-weight: bold;
     font-size: 10vw;
     word-wrap: break-word;
     overflow-wrap: break-word;
@@ -104,41 +96,18 @@ a.linkek {
     letter-spacing: 0.5rem;
     font-family: 'Consolas', monospace;
 }
-
-/* Játéktér */
-input[type="radio"]{
-    border: 0px;
-    width: 100%;
-    height: 2em;
+#mutatrejt>i {
+    width: 20px;
 }
-.magassag {
-    height: 45vh !important;
-}
-
-/*Beállítások*/
-#sttngs{
-    border-radius: 8px;
-    z-index: 1 !important;
-}
-
-/* Süti modal */
-#suti {
-    width: 250px;
-    background-color: rgba(43, 42, 51, 0.95);
+#emberkep.vilagitas {
+    filter: invert(1) brightness(2);
 }
 
 
-@keyframes megjelenik {
-    0% {opacity: 0;}
-    100% {opacity: 1;} 
+div#files input[type=file]:hover{
+    cursor: pointer;
 }
-@keyframes eltunik {
-    0% {opacity: 1;}
-    100% {opacity: 0;}
-}
-.megjelenik {
-    animation: 1s megjelenik;
-}
-.eltunik {
-    animation: 1s eltunik;
+div#files input[type=file]::file-selector-button{
+
+    border-radius: var(--bs-border-radius) !important;
 }

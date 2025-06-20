@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="style4.css">
     <link rel="stylesheet" href="style5.css">
     <script src="cookie.js"></script>
-    <script src="game1.js" defer></script>
+    <script src="game2.js" defer></script>
 
     <title>Akasztófa Játék</title>
     
@@ -62,13 +62,22 @@
         <!--Beállítások-->
         <div class="container-fluid text-center" id="beallitasok">
             <div class="row">
-                <div class="col-12 col-md-6 mb-3">
-                    <h3>Kitalálandó szó</h3>
-                    <input type="text" name="" id="kitalalando" class="py-2 px-3 fw-bold w-75" placeholder="Kitalálandó szó (mutatva)">
-                    <button class="py-2 px-3 fw-bold gomb" id="mutatrejt"><i class="fa-solid fa-eye"></i></button>
-                    <p class="m-0" id="visszajelzes"><i class="fa-solid fa-xmark text-danger"></i> Még nincs beírva szó a mezőbe.</p>
+                <div class="col-12 col-sm-6 mb-3" id="ujbeolvas">
+                    <h3>Szavak beolvasása</h3>
+                    <div class="p-0 m-0" id="files">
+                        <input type="file" name="" id="fkitalalandok" accept=".txt">
+                        <button class="py-2 px-3 fw-bold rounded gomb" disabled id="fajlellenor">Fájl ellenőrzése</button>
+                    </div>
+                    <p class="m-0" id="visszajelzes"><i class="fa-solid fa-file-circle-plus"></i> Nincs fájl kiválasztva.</p>
                 </div>
-                <div class="col-12 col-md-6 mb-3">
+                <div class="col-12 col-sm-6 mb-3 d-none" id="regifolytat">
+                    <h3></h3>
+                    <p>Maradtak még szavaid, folytatod a következővel? ( <span id="db"></span> db )</p>
+                    <button class="py-2 px-3 fw-bold rounded gomb" id="YES">Igen</button>
+                    <button class="py-2 px-3 fw-bold rounded gomb" id="NO">Nem</button>
+                    <p id="yesno">&nbsp;</p>
+                </div>
+                <div class="col-12 col-sm-6 mb-3">
                     <h3>Nehézségi szintek</h3>
                     <div class="container">
                         <div class="row">
@@ -217,8 +226,8 @@
         </div>
         <div class="modal-body">
             <h5 class="text-center fw-bold"><i class="fa-solid fa-circle-question"></i> Mi legyen a feladvány?</h5>
-            <p>Írd be a szövegesmezőbe a kitalálandó szavat és ha elérhetővé válik a "Játék kezdése" gomb, akkor kezdődhet a találgatás.</p>
-            <p>Ha nem akarok senkivel sem megosztani a megfejtést és jól tudsz gépelni, akkor a mező melletti szemes gombra kattintva el is rejtheted.</p>
+            <p>Olvasd be a kitalálandó szavakat tartalmazó fájlt és ha elérhetővé válik a "Játék kezdése" gomb, akkor nyomj rá és kezdődhet a találgatás.</p>
+            <p>Miután egy szót sikersen kitaláltál vagy feladtad a próbálkozásokat, hogy kitaláld. Egy gomb fog megjelenni, amivel elkezdheted a következő szó kitalálását.</p>
             <hr>
             <h5 class="text-center fw-bold"><i class="fa-solid fa-sliders"></i> Nehézségi szintek / <i class="fa-solid fa-heart"></i> Életpontok</h5>
             <p>A játék kezdete előtti felületen be lehet állítani, hogy hány találgatás (életpont) legyen. Ha esetleg kifogynál az életpontokból a rendszer megkérdezi, hogy "Tovább folytatod-e a találgatást?", ha ott a feladást választod, akkor a rendszer megmutatja a megfejtést. Ellenkező esetben tovább lehet folytatni a játékot.</p>
