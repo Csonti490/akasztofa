@@ -220,6 +220,7 @@ let yesno = document.getElementById("yesno");
 ujjatek.addEventListener("click", function () {
     //Ide kell azt beírni, hogyha van még kitalálandó szavaim, akkor legyen lehetőség folytatni a sort.
     beallitasok.classList.remove("d-none");
+    ellenorzes.disabled = true;
 
     if(kifejezesek.length > 0){
         ujbeolvas.classList.add("d-none");
