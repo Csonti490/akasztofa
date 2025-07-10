@@ -3,7 +3,7 @@ let kitalalando = document.getElementById("kitalalando"); // Kitalálandó szó
 let visszajelzes = document.getElementById("visszajelzes"); // Kitalálandó szó "hangja"
 let mehet = document.getElementById("mehet"); // Játékindító
 
-/* Kitalálandó szó rejtése/mutatása */
+// Kitalálandó szó rejtése/mutatása
 mutatrejt.addEventListener("click", function () {
     if (mutatrejt.innerHTML.includes("-slash")){
         mutatrejt.innerHTML = '<i class="fa-solid fa-eye"></i>';
@@ -16,10 +16,11 @@ mutatrejt.addEventListener("click", function () {
     }
 });
 
-/* Játék engedélyezése */
+let valid = /[A-Za-z0-9áéíóöőúüűÁÉÍÓÖŐÚÜŰ]/; // Engedélyezett karakterek
+
+// Játék engedélyezése
 kitalalando.addEventListener("input", function () {
     kitalalando.value = kitalalando.value.replace(/['"`_]/g, '');
-    const valid = /[A-Za-z0-9áéíóöőúüűÁÉÍÓÖŐÚÜŰ]/;
     if(kitalalando.value.length == 0 || !valid.test(kitalalando.value)){
         visszajelzes.innerHTML = `<i class="fa-solid fa-xmark text-danger"></i> Még nincs beírva szó a mezőbe.`;
         mehet.disabled = true;
@@ -36,16 +37,16 @@ let jatekter = document.getElementById("jatekter"); // Játéktér
 let kitalalando_szo = ""; // Mit kell kitalálni
 let jelenlegi_szo = ""; // Mi van eddig kitalálva
 
-//Hiba
+// Hiba okának visszajelzése
 let hibaok = document.getElementById("info");
 let myModal = new bootstrap.Modal(document.getElementById('ErrorInfo'));
 
 mehet.addEventListener("click", function () {
 
-    if(!/[A-Za-z0-9áéíóöőúüűÁÉÍÓÖŐÚÜŰ]/.test(kitalalando.value) ){
+    if(!valid.test(kitalalando.value) ){
         hibaok.innerHTML = `Nincsen beírva kitalálandó szó!`;
         myModal.show();
-    }else if(/[A-Za-z0-9áéíóöőúüűÁÉÍÓÖŐÚÜŰ]/.test(kitalalando.value) && !/_/.test(kitalalando.value)){
+    }else if(valid.test(kitalalando.value) && !/_/.test(kitalalando.value)){
 
         // Alap adatok elmentése
         kitalalando_szo = kitalalando.value.toUpperCase();
@@ -62,7 +63,7 @@ mehet.addEventListener("click", function () {
             JatekKezdese();
         }
     }else{
-        hibaok.innerHTML = `Nem szerepelhet "_" (alulvonás) karakter a kifejezésben!`;
+        hibaok.innerHTML = `Tiltott karakter ( " ' \` _ ) található a kifejezésben.`;
         myModal.show();
     }
 
@@ -70,28 +71,32 @@ mehet.addEventListener("click", function () {
 maxelet = 16;
 let eletpont = 16; //16 v 12 v 8
 let eletpont_kijelzo = document.getElementById("eletpontok"); // Életpont kijelzés
-let szam = 0;
+let szam = 0; // A kiskrapek állapota
+let seged = 0;
 
 function JatekKezdese(){
     maxelet = parseInt(document.querySelector('input[name="nehezseg"]:checked').value);
     eletpont = maxelet;
     eletpont_kijelzo.textContent = eletpont;
+    tippeltbetu.value = "";
+    seged = 0;
 }
 
 let ellenorzes = document.getElementById("ellenorzes"); // Ellenőrző gomb
-let nemtalaltbetuk = [];
-let tippeltbetu = document.getElementById("tippelt");
+let nemtalaltbetuk = []; // Azok a betűk, amelyeket már próbáltál, de nem jöttek be
+let tippeltbetu = document.getElementById("tippelt"); // Kérdéses betű
 
+// Tiltott karakterek kizárása
 tippeltbetu.addEventListener("input", function () {
-    const engedelyezett = /[A-Za-z0-9áéíóöőúüűÁÉÍÓÖŐÚÜŰ]/;
-    if (!engedelyezett.test(tippeltbetu.value)) {
+    if (!valid.test(tippeltbetu.value)) {
         tippeltbetu.value = '';
     }
 });
 
-let nincsbenne = document.getElementById("nincsbenne");
-let ellenorzes_visszajelzes = document.getElementById("ellenorzes_visszajelzes");
-let folytatas = false;
+let nincsbenne = document.getElementById("nincsbenne"); // Nem található ilyen betű a rejtvényben
+let ellenorzes_visszajelzes = document.getElementById("ellenorzes_visszajelzes"); // Visszajelzés a kérdéses karakter után
+let folytatas = false; // Elfogytak az életpontjaid, de folytatnád-e tovább
+// Játék magja
 ellenorzes.addEventListener("click", function () {
     if(tippeltbetu.value.length == 0 || tippeltbetu.value == null){
         // Nem írtam be semmit
@@ -133,27 +138,17 @@ ellenorzes.addEventListener("click", function () {
             eletpont_kijelzo.innerHTML = eletpont;
             ellenorzes_visszajelzes.innerHTML = `Ezt a betűt nem tartalmazza: ${betu}`;
 
-            if (eletpont > 0) {
-                EmberValt();
-            } else if (!folytatas) {
+            if(!folytatas){
                 JatekVege();
+            }
+            if(eletpont > -1){
+                EmberValt();
             }
 
             tippeltbetu.value = "";
         }
     }
 });
-
-function Gyari(){
-    document.querySelectorAll('input[type="text"]').forEach(function(input) {
-      input.value = '';
-    });
-    document.querySelectorAll('input[type="password"]').forEach(function(input) {
-      input.value = '';
-    });
-    document.querySelectorAll('input[name="nehezseg"]')[0].checked = true;
-    mehet.disabled = true;
-}
 
 let bevitel = document.getElementById("bevitel");
 let kerdes = document.getElementById("kerdes");
@@ -174,6 +169,7 @@ function JatekVege(){
         bevitel.classList.add("d-none");
         eredmeny.classList.remove("d-none");
         eredmenykiir.innerHTML = "Sajnos nem sikerült kitalálni a szót.<br>És a kiskrapek pórul járt. :/";
+        Megoldas();
     }
 }
 
@@ -190,11 +186,26 @@ feladom.addEventListener("click", function () {
     kerdes.classList.add("d-none");
     eredmeny.classList.remove("d-none");
     eredmenykiir.innerHTML = "Sajnos nem sikerült kitalálni a szót.<br>És a kiskrapek pórul járt. :/";
+    Megoldas();
 });
+
+function Megoldas(){
+    var szoveg = kitalalando_szo;
+    var hianyos = jelenlegi_szo;
+    var eredmeny = [];
+
+    for (var i = 0; i < hianyos.length; i++) {
+        if (hianyos[i] === '_') {
+            eredmeny.push('<span class="text-danger">' + szoveg[i] + '</span>');
+        } else {
+            eredmeny.push(hianyos[i]);
+        }
+    }
+    megjelenito.innerHTML = eredmeny.join('');
+}
 
 let ujjatek = document.getElementById("ujjatek");
 ujjatek.addEventListener("click", function () {
-    //location.reload();
     beallitasok.classList.remove("d-none");
     kitalalando.value = "";
     visszajelzes.innerHTML = `<i class="fa-solid fa-xmark text-danger"></i> Még nincs beírva szó a mezőbe.`;
@@ -221,11 +232,11 @@ ujjatek.addEventListener("click", function () {
     eletpont = 16;
     szam = 0;
     folytatas = false;
+    seged = 0;
 });
 
-
+// A kiskrapek állapotának változtatása
 function EmberValt(){
-    
     let emberkiir = document.getElementById("emberkep");
     let emberrajz = "";
     switch (maxelet) {
@@ -272,4 +283,15 @@ function updateButtonText() {
 window.addEventListener("resize", updateButtonText);
 window.addEventListener("DOMContentLoaded", updateButtonText);
 
-window.addEventListener("DOMContentLoaded",Gyari);
+// Ha frissülne az oldal
+function Gyari(){
+    document.querySelectorAll('input[type="text"]').forEach(function(input) {
+      input.value = '';
+    });
+    document.querySelectorAll('input[type="password"]').forEach(function(input) {
+      input.value = '';
+    });
+    document.querySelectorAll('input[name="nehezseg"]')[0].checked = true;
+    mehet.disabled = true;
+}
+window.addEventListener("DOMContentLoaded", Gyari);

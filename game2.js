@@ -67,7 +67,7 @@ feldolgoz.addEventListener('click', () => {
 
   // Ha minden rendben:
   kifejezesek = sorok.map(sor => sor.trim());
-  console.log("Kifejezések tömbje:", kifejezesek);
+  //console.log("Kifejezések tömbje:", kifejezesek);
   mehet.disabled = false;
   visszajelzes.innerHTML = `<i class="fa-solid fa-file-circle-check"></i> Sikeres fájlbeolvasás`;
 });
@@ -82,6 +82,7 @@ let jelenlegi_szo = ""; // Mi van eddig kitalálva
 
 mehet.addEventListener("click", function () {
     // Alap adatok elmentése
+    //ellenorzes.disabled = false;
     kitalalando_szo = kifejezesek[0].toUpperCase();
     kifejezesek.shift();
     jelenlegi_szo = kitalalando_szo.replace(/[A-Za-z0-9áéíóöőúüűÁÉÍÓÖŐÚÜŰ]/g, '_');
@@ -101,11 +102,14 @@ maxelet = 16;
 let eletpont = 16; //16 v 12 v 8
 let eletpont_kijelzo = document.getElementById("eletpontok"); // Életpont kijelzés
 let szam = 0;
+let seged = 0;
 
 function JatekKezdese(){
     maxelet = parseInt(document.querySelector('input[name="nehezseg"]:checked').value);
     eletpont = maxelet;
     eletpont_kijelzo.textContent = eletpont;
+    tippeltbetu.value = "";
+    seged = 0;
 }
 
 let ellenorzes = document.getElementById("ellenorzes"); // Ellenőrző gomb
@@ -163,10 +167,11 @@ ellenorzes.addEventListener("click", function () {
             eletpont_kijelzo.innerHTML = eletpont;
             ellenorzes_visszajelzes.innerHTML = `Ezt a betűt nem tartalmazza: ${betu}`;
 
-            if (eletpont > 0) {
-                EmberValt();
-            } else if (!folytatas) {
+            if(!folytatas){
                 JatekVege();
+            }
+            if(eletpont > -1){
+                EmberValt();
             }
 
             tippeltbetu.value = "";
@@ -193,6 +198,7 @@ function JatekVege(){
         bevitel.classList.add("d-none");
         eredmeny.classList.remove("d-none");
         eredmenykiir.innerHTML = "Sajnos nem sikerült kitalálni a szót.<br>És a kiskrapek pórul járt. :/";
+        Megoldas();
     }
 }
 
@@ -209,7 +215,23 @@ feladom.addEventListener("click", function () {
     kerdes.classList.add("d-none");
     eredmeny.classList.remove("d-none");
     eredmenykiir.innerHTML = "Sajnos nem sikerült kitalálni a szót.<br>És a kiskrapek pórul járt. :/";
+    Megoldas();
 });
+
+function Megoldas(){
+    var szoveg = kitalalando_szo;
+    var hianyos = jelenlegi_szo;
+    var eredmeny = [];
+
+    for (var i = 0; i < hianyos.length; i++) {
+        if (hianyos[i] === '_') {
+            eredmeny.push('<span class="text-danger">' + szoveg[i] + '</span>');
+        } else {
+            eredmeny.push(hianyos[i]);
+        }
+    }
+    megjelenito.innerHTML = eredmeny.join('');
+}
 
 let ujjatek = document.getElementById("ujjatek");
 let ujbeolvas = document.getElementById("ujbeolvas");
@@ -220,7 +242,7 @@ let yesno = document.getElementById("yesno");
 ujjatek.addEventListener("click", function () {
     //Ide kell azt beírni, hogyha van még kitalálandó szavaim, akkor legyen lehetőség folytatni a sort.
     beallitasok.classList.remove("d-none");
-    ellenorzes.disabled = true;
+    ellenorzes.disabled = false;//TRUE
 
     if(kifejezesek.length > 0){
         ujbeolvas.classList.add("d-none");
@@ -236,6 +258,7 @@ ujjatek.addEventListener("click", function () {
     visszajelzes.innerHTML = `<i class="fa-solid fa-file-circle-plus"></i> Nincs fájl kiválasztva.`;
     ellenorzes_visszajelzes.innerHTML = "&nbsp;";
     mehet.disabled = true;
+    feldolgoz.disabled = true;
 
     jatekter.classList.add("d-none");
     bevitel.classList.add("d-none");
@@ -257,6 +280,7 @@ ujjatek.addEventListener("click", function () {
     eletpont = 16;
     szam = 0;
     folytatas = false;
+    seged = 0;
 });
 
 let YES = document.getElementById("YES");
@@ -275,7 +299,6 @@ NO.addEventListener("click", function () {
 
 
 function EmberValt(){
-    
     let emberkiir = document.getElementById("emberkep");
     let emberrajz = "";
     switch (maxelet) {

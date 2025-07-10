@@ -21,8 +21,12 @@ body, .modal {
 
 /* Menü */
 .navbar-brand:hover, .nav-link:hover{
+    transform: scale(1.125);
+}
+.nav-link:hover{
     text-decoration: underline;
 }
+
 .navbar-brand, .nav-link, footer {
     color: var(--feher) !important;
 }
@@ -108,6 +112,5 @@ div#files input[type=file]:hover{
     cursor: pointer;
 }
 div#files input[type=file]::file-selector-button{
-
     border-radius: var(--bs-border-radius) !important;
 }
