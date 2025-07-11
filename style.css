@@ -87,6 +87,14 @@ button.cookie:hover::before {
 }
 
 /* Kitalálandó szó */
+/*#megjelenitodoboz {
+    height: 45vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scroll-padding-top: 70px;
+}*/
+
+/*
 #megjelenitodoboz {
     height: 45vh;
     overflow-x: auto !important;
@@ -99,7 +107,53 @@ button.cookie:hover::before {
     overflow-x: auto !important;
     letter-spacing: 0.5rem;
     font-family: 'Consolas', monospace;
+}*/
+
+/*
+#megjelenitodoboz {
+    height: 45vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+#megjelenito {
+    font-weight: bold;
+    font-size: 10vw;
+    word-break: break-word;
+    letter-spacing: 0.5rem;
+    font-family: 'Consolas', monospace;
+    text-align: center;
+}*/
+
+#megjelenitodoboz {
+    height: 45vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: block;
+    text-align: center;
+    position: relative;
+}
+
+#megjelenito-wrapper {
+    min-height: 45vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#megjelenito {
+    font-weight: bold;
+    font-size: 10vw;
+    word-break: break-word;
+    letter-spacing: 0.5rem;
+    font-family: 'Consolas', monospace;
+    text-align: center;
+}
+
+
 #mutatrejt>i {
     width: 20px;
 }
