@@ -12,7 +12,7 @@
     <!-- BS 5.2.3 -->
     <link rel="stylesheet" href="bootstrap-5.2.3-dist/css/bootstrap.css">
     <script src="bootstrap-5.2.3-dist/js/bootstrap.bundle.min.js"></script>
-    
+    <!-- Stílusok -->
     <link rel="stylesheet" href="style_light.css" id="tema">
     <link rel="stylesheet" href="style.css">
     <style>
@@ -25,9 +25,13 @@
     <link rel="stylesheet" href="style4.css">
     <link rel="stylesheet" href="style5.css">
     <script src="cookie.js"></script>
+    <!-- Animációk -->
+    <link rel="stylesheet" href="animations.css">
+    <script src="animations.js" defer></script>
+    <!-- Egyéb -->
+     <script src="main.js"></script>
 
     <title>Akasztófa Játék</title>
-    
 </head>
 <body onload="getCookie('akasztofa_suti')">
     <header class="fw-bold">
@@ -80,7 +84,7 @@
         </div>
     </main>
     <footer class="mt-auto py-3 text-center fw-bold">
-        Verzió: 2.03.04 | Készítette: CsontiXD
+        Verzió: 2.03.05 | Készítette: CsontiXD
     </footer>
 </body>
 </html>
@@ -198,72 +202,3 @@
       </div>
     </div>
 </div>
-
-<style>
-/*Verziók animációja*/
-@keyframes swirl-in-fwd {
-  0% {
-    transform: rotate(-540deg) scale(0);
-    opacity: 0;
-  }
-  100% {
-    transform: rotate(0) scale(1);
-    opacity: 1;
-  }
-}
-.animat {
-	animation: swirl-in-fwd 0.6s ease-out both;
-}
-
-/*Cím animációja*/
-.animated-char {
-  display: inline-block;
-  opacity: 0;
-  animation: slide-in-top 0.5s cubic-bezier(.25,.46,.45,.94) both;
-}
-@keyframes slide-in-top {
-  0% {
-    transform: translateY(-1000px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-.delay-0 { animation-delay: 0.2s; }
-.delay-1 { animation-delay: 0.4s; }
-.delay-2 { animation-delay: 0.2s; }
-.delay-3 { animation-delay: 0.5s; }
-.delay-4 { animation-delay: 0.3s; }
-.delay-5 { animation-delay: 0.6s; }
-.delay-6 { animation-delay: 0.7s; }
-.delay-7 { animation-delay: 0.1s; }
-.delay-8 { animation-delay: 0.2s; }
-</style>
-
-<script>
-/*Verziók animációja*/
-const elemek = document.querySelectorAll(".kocka");
-setInterval(() => {
-  elemek.forEach(elem => {
-    elem.classList.remove('animat');
-    void elem.offsetWidth;
-    elem.classList.add('animat');
-  });
-}, 2500);
-
-/*Cím animációja*/
-const title = document.getElementById('megjelenito');
-const original = title.textContent;
-title.innerHTML = '';
-
-const delays = [0,1,2,3,4,5,6,7,8]; // megadott delay indexek
-
-[...original].forEach((char, index) => {
-  const el = document.createElement('span'); // span nélkül, de inline
-  el.className = `animated-char delay-${delays[index] || 0}`;
-  el.textContent = char;
-  title.appendChild(el);
-});
-</script>
