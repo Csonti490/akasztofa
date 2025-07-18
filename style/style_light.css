@@ -1,0 +1,75 @@
+:root {
+    --feher: #f0f0f0;
+    --fekete: black;
+
+    /*Dark theme*/
+    --sotetkek: #021f4c; /*fejléc,lábléc*/
+    --sotetlila: #1a1a2e;/*háttérszín*/
+
+    /*Light theme*/
+    --kek: #2e3192; /*fejléc,láblác*/
+    --feher: #f0f0f0; /*háttér*/
+}
+body {
+    background-color: var(--feher) !important;
+    color: var(--sotetkek);
+}
+
+header, footer  {
+    background: var(--kek) !important;
+}
+.modal-body, .modal-body div {
+    color: var(--sotetkek);
+}
+.modal-header, .modal-footer {
+    background-color: var(--kek);
+}
+.modal-content {
+    background: #f0f0f0 !important;
+    color: var(--sotetkek) !important;
+}
+button.gomb {
+    background-color: var(--kek);
+    color: var(--feher);
+}
+button.gomb:hover:not(:disabled) {
+    color: var(--kek);
+    background-color: var(--feher);
+    box-shadow: 0px 0px 0px 2.5px var(--kek) !important;
+}
+input[type=number]{
+    color: var(--feher);
+    background-color: var(--kek);
+}
+button.gomb:disabled{
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 50" preserveAspectRatio="none"><line x1="0" y1="0" x2="100" y2="50" stroke="red" stroke-width="10"/><line x1="100" y1="0" x2="0" y2="50" stroke="red" stroke-width="10"/></svg>');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: rgb(30, 30, 30);
+    color: rgba(255, 255, 255, 50%);
+}
+
+#megjelenito {
+    color: var(--kek);
+}
+.korvonal {
+    color: var(--fekete);
+    background-color: var(--feher);
+    border: 1px solid var(--kek);
+}
+input[type=radio]{
+    accent-color: var(--kek);
+}
+input[type=text],input[type=password]{
+    color: var(--feher);
+    background-color: var(--kek);
+}
+input::file-selector-button {
+    background-color: var(--kek);
+    color: var(--feher);
+}
+input::file-selector-button:hover{
+    background-color: var(--feher);
+    color: var(--kek);
+}
