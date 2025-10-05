@@ -3,11 +3,11 @@ window.addEventListener('DOMContentLoaded', () => {
     const setCim = () => {
         const ora = new Date().getHours();
 
-        if (ora >= 8 && ora < 12) {
+        if (ora >= 10 && ora < 12) {
             document.title = "Reggeli lógás";
-        } else if (ora >= 12 && ora < 20) {
+        } else if (ora >= 18 && ora < 20) {
             document.title = "Esti lógás";
-        } else {
+        }else {
             document.title = "Akasztófa Játék";
         }
     };
@@ -32,10 +32,11 @@ window.onfocus = function () {
 
 window.onblur = function () {
     i = 1;
-    DiavetitesID = setInterval(Diavetites, 500); // elmentjük az ID-t
+    DiavetitesID = setInterval(Diavetites, 500);
 };
 
 function Diavetites() {
     fi.setAttribute("href", `img/gray/man${i}-512_gray.png`);
     i = i < 16 ? i + 1 : 1;
 }
+/* -=- -=-=-=-=-=- -=-*/
