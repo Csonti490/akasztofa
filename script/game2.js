@@ -123,6 +123,24 @@ tippeltbetu.addEventListener("input", function () {
     }
 });
 
+// Eltaláltál egy karaktert animációval
+function TalaltBetu(e){
+    e.classList.add('a-c');
+    setTimeout(() => e.classList.remove('a-c'), 1500);
+}
+
+function frissitMegjelenito(szo, animaltBetu = null) {
+    megjelenito.innerHTML = '';
+    szo.split('').forEach((char, i) => {
+        let span = document.createElement('span');
+        span.textContent = char;
+        if (char === animaltBetu) {
+            TalaltBetu(span);
+        }
+        megjelenito.appendChild(span);
+    });
+}
+
 let nincsbenne = document.getElementById("nincsbenne");
 let ellenorzes_visszajelzes = document.getElementById("ellenorzes_visszajelzes");
 let folytatas = false;
@@ -146,7 +164,7 @@ ellenorzes.addEventListener("click", function () {
 
             if (ujszo !== jelenlegi_szo) {
                 jelenlegi_szo = ujszo;
-                megjelenito.innerHTML = jelenlegi_szo;
+                frissitMegjelenito(jelenlegi_szo, betu); //megjelenito.innerHTML = jelenlegi_szo;
                 ellenorzes_visszajelzes.innerHTML = `Eltaláltál egy betűt: ${betu}`;
 
                 if (jelenlegi_szo === kitalalando_szo) {
@@ -191,7 +209,7 @@ function JatekVege(){
         // Kitaláltad a szót
         bevitel.classList.add("d-none");
         eredmeny.classList.remove("d-none");
-        eredmenykiir.innerHTML += eletpont > 0 ? "Sikeresen kitaláltad a szót.<br>Maradék életek száma: "+eletpont+"":"Sikeresen kitaláltad a szót.<br>Bár kiskrapek pórul járt. :/";
+        eredmenykiir.innerHTML += eletpont > 0 ? "Sikeresen kitaláltad a szót.<br>Maradék életek száma: "+eletpont+' <i class="fa-solid fa-heart pulse"></i>':"Sikeresen kitaláltad a szót.<br>Bár kiskrapek pórul járt. :/";
         eredmeny.classList.remove("d-none");
     }else if(eletpont < 0 && kitalalando_szo == jelenlegi_szo){
         // Feladtad

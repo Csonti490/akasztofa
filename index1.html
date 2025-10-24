@@ -21,6 +21,9 @@
     <link rel="stylesheet" href="style/style5.css">
     <!-- Süti -->
     <script src="script/cookie.js"></script>
+    <!-- Animációk -->
+    <link rel="stylesheet" href="style/animations.css">
+    <script src="script/animations.js" defer></script>
     <!-- Egyéb -->
     <script src="script/main.js"></script>
     <!-- Játék -->
@@ -78,15 +81,15 @@
                         <div class="row">
                             <div class="col-4 p-0">
                                 <input type="radio" name="nehezseg" id="n1" value="16" checked>
-                                <label for="n1">Könnyű<br>16 <i class="fa-solid fa-heart"></i></label>
+                                <label for="n1">Könnyű<br>16 <i class="fa-solid fa-heart pulse"></i></label>
                             </div>
                             <div class="col-4 p-0">
                                 <input type="radio" name="nehezseg" id="n2" value="12">
-                                <label for="n2">Közepes<br>12 <i class="fa-solid fa-heart"></i></label>
+                                <label for="n2">Közepes<br>12 <i class="fa-solid fa-heart pulse"></i></label>
                             </div>
                             <div class="col-4 p-0">
                                 <input type="radio" name="nehezseg" id="n3" value="8">
-                                <label for="n3">Nehéz<br>8 <i class="fa-solid fa-heart"></i></label>
+                                <label for="n3">Nehéz<br>8 <i class="fa-solid fa-heart pulse"></i></label>
                             </div>
                         </div>
                     </div>
@@ -102,7 +105,7 @@
             <div class="row">
                 <!-- Beviteli -->
                 <div class="col-12 col-sm-7 my-auto p-0" id="bevitel">
-                    <h5 id="elet">Életpontok: <span id="eletpontok">&nbsp;</span> <i class="fa-solid fa-heart"></i></h5>
+                    <h5 id="elet">Életpontok: <span id="eletpontok">&nbsp;</span> <i class="fa-solid fa-heart pulse"></i></h5>
                     <input type="text" name="" class="py-2 px-3 fw-bold rounded" id="tippelt" placeholder="Írj ide egy betűt/számot..." maxlength="1" required>
                     <button class="py-2 px-3 fw-bold rounded gomb" id="ellenorzes"><i class="fa-solid fa-magnifying-glass"></i> Ellenőrzés</button>
                     <p class="" id="ellenorzes_visszajelzes">&nbsp;</p>
@@ -139,7 +142,7 @@
          </div>
     </main>
     <footer class="mt-auto py-3 text-center fw-bold">
-        Verzió: 2.04.07 | Készítette: CsontiXD
+        Verzió: 2.05.01 | Készítette: CsontiXD
     </footer>
     </div>
 </body>
