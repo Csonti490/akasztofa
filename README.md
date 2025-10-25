@@ -6,6 +6,6 @@ Oldal elérése: [Katt az eléréshez](https://csonti490.github.io/akasztofa/)
 Legutóbbi frissítés(ek):  
 -> Szív animációja  
 
-UI.: elsőéles teszt: Őszi MondoCon 2025
+UI.: első éles teszt: Őszi MondoCon 2025
   
 ### Utoljára frissítve: 2025.10.24.
