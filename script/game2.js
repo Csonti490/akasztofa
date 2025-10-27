@@ -1,18 +1,13 @@
 let txtTartalom = ""; // ide mentjük a beolvasott szöveget
 let kifejezesek = []; // ebben lesznek a sorok külön tömbként
 
-let feltolto = document.getElementById('fkitalalandok');
-let feldolgoz = document.getElementById('fajlellenor');
-let mehet = document.getElementById("mehet");
+let feltolto = document.getElementById('fkitalalandok'); // Fájlfeltöltő
+let feldolgoz = document.getElementById('fajlellenor'); // Fájlellenőrző
+let mehet = document.getElementById("mehet"); // Játékindító
 let visszajelzes = document.getElementById("visszajelzes");
+let valid = /[A-Za-z0-9áéíóöőúüűÁÉÍÓÖŐÚÜŰ]/; // Engedélyezett karakterek
 
-
-window.addEventListener('DOMContentLoaded', () => {
-  feltolto.value = '';
-  feldolgoz.disabled = true;
-  mehet.disabled = true;
-});
-
+// A feltöltött fájlnak az ellenőrzése
 feltolto.addEventListener('change', () => {
   mehet.disabled = true;
   const file = feltolto.files[0];
@@ -81,11 +76,12 @@ let kitalalando_szo = ""; // Mit kell kitalálni
 let jelenlegi_szo = ""; // Mi van eddig kitalálva
 
 mehet.addEventListener("click", function () {
+
     // Alap adatok elmentése
-    //ellenorzes.disabled = false;
     kitalalando_szo = kifejezesek[0].toUpperCase();
     kifejezesek.shift();
     jelenlegi_szo = kitalalando_szo.replace(/[A-Za-z0-9áéíóöőúüűÁÉÍÓÖŐÚÜŰ]/g, '_');
+
     if(!jelenlegi_szo.includes('_')){
         hibaok.innerHTML = `Nincsen kitalálandó kifejezés!`;
         myModal.show();
@@ -101,8 +97,8 @@ mehet.addEventListener("click", function () {
 maxelet = 16;
 let eletpont = 16; //16 v 12 v 8
 let eletpont_kijelzo = document.getElementById("eletpontok"); // Életpont kijelzés
-let szam = 0;
-let seged = 0;
+let szam = 0; // A kiskrapek állapota
+let seged = 0; // Segéd változó a kiskrapek állapotához
 
 function JatekKezdese(){
     maxelet = parseInt(document.querySelector('input[name="nehezseg"]:checked').value);
@@ -113,12 +109,12 @@ function JatekKezdese(){
 }
 
 let ellenorzes = document.getElementById("ellenorzes"); // Ellenőrző gomb
-let nemtalaltbetuk = [];
-let tippeltbetu = document.getElementById("tippelt");
+let nemtalaltbetuk = []; // Azok a betűk, amelyeket már próbáltál, de nem jöttek be
+let tippeltbetu = document.getElementById("tippelt"); // Kérdéses betű
 
+// Tiltott karakterek kizárása
 tippeltbetu.addEventListener("input", function () {
-    const engedelyezett = /[A-Za-z0-9áéíóöőúüűÁÉÍÓÖŐÚÜŰ]/;
-    if (!engedelyezett.test(tippeltbetu.value)) {
+    if (!valid.test(tippeltbetu.value)) {
         tippeltbetu.value = '';
     }
 });
@@ -128,7 +124,6 @@ function TalaltBetu(e){
     e.classList.add('a-c');
     setTimeout(() => e.classList.remove('a-c'), 1500);
 }
-
 function frissitMegjelenito(szo, animaltBetu = null) {
     megjelenito.innerHTML = '';
     szo.split('').forEach((char, i) => {
@@ -141,9 +136,10 @@ function frissitMegjelenito(szo, animaltBetu = null) {
     });
 }
 
-let nincsbenne = document.getElementById("nincsbenne");
-let ellenorzes_visszajelzes = document.getElementById("ellenorzes_visszajelzes");
-let folytatas = false;
+let nincsbenne = document.getElementById("nincsbenne"); // Nem található ilyen betű a rejtvényben
+let ellenorzes_visszajelzes = document.getElementById("ellenorzes_visszajelzes"); // Visszajelzés a kérdéses karakter után
+let folytatas = false; // Elfogytak az életpontjaid, de folytatnád-e tovább
+// Játék magja
 ellenorzes.addEventListener("click", function () {
     if(tippeltbetu.value.length == 0 || tippeltbetu.value == null){
         // Nem írtam be semmit
@@ -258,9 +254,8 @@ let db = document.getElementById("db");
 let yesno = document.getElementById("yesno");
 
 ujjatek.addEventListener("click", function () {
-    //Ide kell azt beírni, hogyha van még kitalálandó szavaim, akkor legyen lehetőség folytatni a sort.
     beallitasok.classList.remove("d-none");
-    ellenorzes.disabled = false;//TRUE
+    ellenorzes.disabled = false;
 
     if(kifejezesek.length > 0){
         ujbeolvas.classList.add("d-none");
@@ -315,7 +310,7 @@ NO.addEventListener("click", function () {
     kifejezesek = [];
 });
 
-
+// A kiskrapek állapotának változtatása
 function EmberValt(){
     let emberkiir = document.getElementById("emberkep");
     let emberrajz = "";
@@ -346,3 +341,74 @@ function EmberValt(){
             break;
     }
 }
+
+// Tudom a megoldást
+let tudomamegoldast = document.getElementById("tudomamegoldast");
+tudomamegoldast.addEventListener("click", function () {
+    let szo = jelenlegi_szo.split('');
+    let cel = kitalalando_szo.split('');
+    let index = 0;
+
+    function felfedKovetkezo() {
+        if (index >= cel.length) {
+            jelenlegi_szo = cel.join('');
+            frissitMegjelenito(jelenlegi_szo);
+            JatekVege();
+            return;
+        }
+
+        let aktualisKarakter = cel[index];
+        let frissult = false;
+
+        // Megkeressük az összes helyet, ahol a karakter hiányzik
+        for (let i = 0; i < cel.length; i++) {
+            if (cel[i] === aktualisKarakter && szo[i] !== cel[i]) {
+                szo[i] = cel[i];
+                frissult = true;
+            }
+        }
+
+        if (frissult) {
+            frissitMegjelenito(szo.join(''), aktualisKarakter);
+        }
+
+        // Ugrás a következő karakterre, amit még nem fedtünk fel
+        do {
+            index++;
+        } while (index < cel.length && szo[index] === cel[index]);
+
+        setTimeout(felfedKovetkezo, 500);
+    }
+
+    felfedKovetkezo();
+});
+
+// Ellenőrző gomb felirata
+function updateButtonText() {
+    const gomb = document.getElementById("ellenorzes");
+
+    if (window.innerWidth <= 662 && window.innerWidth >= 575) {
+        gomb.innerHTML = `<i class="fa-solid fa-magnifying-glass"></i>`;
+    } else if( window.innerWidth < 394) {
+        gomb.innerHTML = `<i class="fa-solid fa-magnifying-glass"></i>`;
+    }else {
+        gomb.innerHTML = `<i class="fa-solid fa-magnifying-glass"></i> Ellenőrzés`;
+    }
+}
+
+// Ha frissülne az oldal
+function Gyari(){
+    document.querySelectorAll('input[name="nehezseg"]')[0].checked = true;
+    mehet.disabled = true;
+    feltolto.value = '';
+    feldolgoz.disabled = true;
+    mehet.disabled = true;
+}
+
+window.addEventListener('resize', () => {
+  updateButtonText();
+});
+window.addEventListener('DOMContentLoaded', () => {
+  Gyari();
+  updateButtonText();
+});

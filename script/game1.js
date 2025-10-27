@@ -2,6 +2,7 @@ let mutatrejt = document.getElementById("mutatrejt"); // Kitalálandó szó "sze
 let kitalalando = document.getElementById("kitalalando"); // Kitalálandó szó
 let visszajelzes = document.getElementById("visszajelzes"); // Kitalálandó szó "hangja"
 let mehet = document.getElementById("mehet"); // Játékindító
+let valid = /[A-Za-z0-9áéíóöőúüűÁÉÍÓÖŐÚÜŰ]/; // Engedélyezett karakterek
 
 // Kitalálandó szó rejtése/mutatása
 mutatrejt.addEventListener("click", function () {
@@ -15,8 +16,6 @@ mutatrejt.addEventListener("click", function () {
         kitalalando.placeholder = "Kitalálandó szó (rejtve)";
     }
 });
-
-let valid = /[A-Za-z0-9áéíóöőúüűÁÉÍÓÖŐÚÜŰ]/; // Engedélyezett karakterek
 
 // Játék engedélyezése
 kitalalando.addEventListener("input", function () {
@@ -72,7 +71,7 @@ maxelet = 16;
 let eletpont = 16; //16 v 12 v 8
 let eletpont_kijelzo = document.getElementById("eletpontok"); // Életpont kijelzés
 let szam = 0; // A kiskrapek állapota
-let seged = 0;
+let seged = 0; // Segéd változó a kiskrapek állapotához
 
 function JatekKezdese(){
     maxelet = parseInt(document.querySelector('input[name="nehezseg"]:checked').value);
@@ -98,7 +97,6 @@ function TalaltBetu(e){
     e.classList.add('a-c');
     setTimeout(() => e.classList.remove('a-c'), 1500);
 }
-
 function frissitMegjelenito(szo, animaltBetu = null) {
     megjelenito.innerHTML = '';
     szo.split('').forEach((char, i) => {
@@ -285,6 +283,46 @@ function EmberValt(){
     }
 }
 
+// Tudom a megoldást
+let tudomamegoldast = document.getElementById("tudomamegoldast");
+tudomamegoldast.addEventListener("click", function () {
+    let szo = jelenlegi_szo.split('');
+    let cel = kitalalando_szo.split('');
+    let index = 0;
+
+    function felfedKovetkezo() {
+        if (index >= cel.length) {
+            jelenlegi_szo = cel.join('');
+            frissitMegjelenito(jelenlegi_szo);
+            JatekVege();
+            return;
+        }
+
+        let aktualisKarakter = cel[index];
+        let frissult = false;
+
+        // Megkeressük az összes helyet, ahol a karakter hiányzik
+        for (let i = 0; i < cel.length; i++) {
+            if (cel[i] === aktualisKarakter && szo[i] !== cel[i]) {
+                szo[i] = cel[i];
+                frissult = true;
+            }
+        }
+
+        if (frissult) {
+            frissitMegjelenito(szo.join(''), aktualisKarakter);
+        }
+
+        // Ugrás a következő karakterre, amit még nem fedtünk fel
+        do {
+            index++;
+        } while (index < cel.length && szo[index] === cel[index]);
+
+        setTimeout(felfedKovetkezo, 500);
+    }
+
+    felfedKovetkezo();
+});
 
 // Ellenőrző gomb felirata
 function updateButtonText() {
@@ -298,8 +336,6 @@ function updateButtonText() {
         gomb.innerHTML = `<i class="fa-solid fa-magnifying-glass"></i> Ellenőrzés`;
     }
 }
-window.addEventListener("resize", updateButtonText);
-window.addEventListener("DOMContentLoaded", updateButtonText);
 
 // Ha frissülne az oldal
 function Gyari(){
@@ -312,4 +348,11 @@ function Gyari(){
     document.querySelectorAll('input[name="nehezseg"]')[0].checked = true;
     mehet.disabled = true;
 }
-window.addEventListener("DOMContentLoaded", Gyari);
+
+window.addEventListener('resize', () => {
+  updateButtonText();
+});
+window.addEventListener('DOMContentLoaded', () => {
+  Gyari();
+  updateButtonText();
+});

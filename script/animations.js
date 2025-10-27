@@ -21,10 +21,3 @@ const delays = [0,1,2,3,4,5,6,7,8];
   el.textContent = char;
   title.appendChild(el);
 });
-
-/* -=- Eltalált betű animációja -=- */
-function sit(el){
-        el.classList.add('a-c');
-        setTimeout(() => el.classList.remove('a-c'), 1500);
-    }
-    sit();
