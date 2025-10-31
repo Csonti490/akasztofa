@@ -174,7 +174,7 @@ button.cookie:hover::before {
 }
 
 
-div#files input[type=file]:hover{
+div#files input[type=file]:hover, input[type="radio"]{
     cursor: pointer;
 }
 div#files input[type=file]::file-selector-button{
