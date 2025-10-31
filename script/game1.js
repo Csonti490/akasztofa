@@ -324,6 +324,15 @@ tudomamegoldast.addEventListener("click", function () {
     felfedKovetkezo();
 });
 
+// "Tudom a megoldást" gomb látszódjon-e
+let tam = document.getElementById("TaM");
+let isOn = false;
+tam.addEventListener("click", function(){
+    isOn = !isOn;
+    tudomamegoldast.classList.toggle('d-none', !isOn);
+    console.log(isOn+" - ");
+});
+
 // Ellenőrző gomb felirata
 function updateButtonText() {
     const gomb = document.getElementById("ellenorzes");
@@ -347,6 +356,7 @@ function Gyari(){
     });
     document.querySelectorAll('input[name="nehezseg"]')[0].checked = true;
     mehet.disabled = true;
+    tam.checked = false;
 }
 
 window.addEventListener('resize', () => {

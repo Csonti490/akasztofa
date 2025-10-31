@@ -73,3 +73,9 @@ input::file-selector-button:hover{
     background-color: var(--feher);
     color: var(--sotetkek);
 }
+input:checked + .slider {
+  background-color: var(--sotetkek);
+}
+input:focus + .slider {
+  box-shadow: 0 0 1px var(--sotetkek);
+}

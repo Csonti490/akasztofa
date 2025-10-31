@@ -73,3 +73,9 @@ input::file-selector-button:hover{
     background-color: var(--feher);
     color: var(--kek);
 }
+input:checked + .slider {
+  background-color: var(--kek);
+}
+input:focus + .slider {
+  box-shadow: 0 0 1px var(--kek);
+}
