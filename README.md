@@ -1,5 +1,5 @@
 # Akasztófa Játék
-Verzió: 2.06.02  
+Verzió: 2.06.03  
 Készítette: CsontiXD  
 Tesztelte: D.Kornel  
 Oldal elérése: [Katt az eléréshez](https://csonti490.github.io/akasztofa/)  
