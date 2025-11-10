@@ -11,4 +11,4 @@ Legutóbbi frissítés(ek):
 
 UI.: első éles teszt: Őszi MondoCon 2025
   
-### Utoljára frissítve: 2025.11.01.
+### Utoljára frissítve: 2025.11.10.
