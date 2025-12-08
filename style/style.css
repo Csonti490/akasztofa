@@ -2,12 +2,12 @@
     --feher: #f0f0f0;
     --fekete: black;
 
-    /*Dark theme*/
+    /*Sötét téma*/
     --sotetkek: #021f4c; /*fejléc,lábléc*/
     --sotetlila: #1a1a2e;/*háttérszín*/
 
-    /*Light theme*/
-    --kek: #2e3192; /*fejléc,láblác*/
+    /*Világos téma*/
+    --kek: #2e3192; /*fejléc,lábléc*/
     --feher: #f0f0f0; /*háttér*/
 }
 
@@ -26,7 +26,6 @@ body, .modal {
 .nav-link:hover{
     text-decoration: underline;
 }
-
 .navbar-brand, .nav-link, footer {
     color: var(--feher) !important;
 }
@@ -58,9 +57,12 @@ button.navbar-toggler {
         margin-left: 5px;
     }
 }
+
+/* Felugró ablakok */
 .modal-title {
     color: var(--feher);
 }
+
 /* Nehézségi szintek (input radio) */
 input[name="nehezseg"]{
     width: 100%;
@@ -148,14 +150,12 @@ button.cookie:hover::before {
     text-align: center;
     position: relative;
 }
-
 #megjelenito-wrapper {
     min-height: 45vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
 #megjelenito {
     font-weight: bold;
     font-size: 10vw;
@@ -165,15 +165,16 @@ button.cookie:hover::before {
     text-align: center;
 }
 
-
+/* Szem ikon */
 #mutatrejt>i {
     width: 20px;
 }
+/* Kiskrapek */
 #emberkep.vilagitas {
     filter: invert(1) brightness(2);
 }
 
-
+/* Fájlbeolvasó */
 div#files input[type=file]:hover, input[type="radio"]{
     cursor: pointer;
 }

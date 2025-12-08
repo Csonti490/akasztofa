@@ -40,3 +40,8 @@ function Diavetites() {
     i = i < 16 ? i + 1 : 1;
 }
 /* -=- -=-=-=-=-=- -=-*/
+
+/* -=- Popover használatához -=-*/
+const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
+/* -=- -=-=-=-=-=- -=-*/

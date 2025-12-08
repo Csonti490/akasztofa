@@ -2,22 +2,25 @@
     --feher: #f0f0f0;
     --fekete: black;
 
-    /*Dark theme*/
+    /*Sötét téma*/
     --sotetkek: #021f4c; /*fejléc,lábléc*/
     --sotetlila: #1a1a2e;/*háttérszín*/
 
-    /*Light theme*/
-    --kek: #2e3192; /*fejléc,láblác*/
+    /*Világos téma*/
+    --kek: #2e3192; /*fejléc,lábléc*/
     --feher: #f0f0f0; /*háttér*/
 }
+
+/* Fejléc, Törzs, Lábléc*/
 body {
     background-color: var(--sotetlila) !important;
     color: var(--feher);
 }
-
 header, footer  {
     background: var(--sotetkek) !important;
 }
+
+/* Felugró ablakok */
 .modal-body, .modal-body div {
     color: var(--feher);
 }
@@ -28,6 +31,8 @@ header, footer  {
     background: var(--sotetlila) !important;
     color: var(--feher) !important;
 }
+
+/* Gombok */
 button.gomb {
     background-color: var(--sotetkek);
     color: var(--feher);
@@ -36,10 +41,6 @@ button.gomb:hover:not(:disabled) {
     color: var(--sotetkek);
     background-color: var(--feher);
     box-shadow: 0px 0px 0px 2.5px var(--sotetkek) !important;
-}
-input[type=number]{
-    color: var(--feher);
-    background-color: var(--sotetkek);
 }
 button.gomb:disabled{
     background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 50" preserveAspectRatio="none"><line x1="0" y1="0" x2="100" y2="50" stroke="red" stroke-width="10"/><line x1="100" y1="0" x2="0" y2="50" stroke="red" stroke-width="10"/></svg>');
@@ -50,14 +51,32 @@ button.gomb:disabled{
     color: rgba(255, 255, 255, 50%);
 }
 
-#megjelenito {
+/* Beállítások > betűméret */
+input[type=number]{
     color: var(--feher);
+    background-color: var(--sotetkek);
 }
+
+/* Főoldal > Verzió leírások */
 .korvonal {
     color: var(--feher);
     background-color: var(--sotetlila);
     border: 1px solid var(--feher);
 }
+
+/* Főoldal > frissítések */
+#frissitesek {
+    color: white;
+    background-color: rgba(255, 255, 255 , 0.05);
+    border: 1px solid white;
+}
+
+/* Akasztófa szöveg */
+#megjelenito {
+    color: var(--feher);
+}
+
+/* Játék > játékfeltételek */
 input[type=radio]{
     accent-color: var(--sotetkek);
 }

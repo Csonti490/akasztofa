@@ -2,22 +2,25 @@
     --feher: #f0f0f0;
     --fekete: black;
 
-    /*Dark theme*/
+    /*Sötét téma*/
     --sotetkek: #021f4c; /*fejléc,lábléc*/
     --sotetlila: #1a1a2e;/*háttérszín*/
 
-    /*Light theme*/
-    --kek: #2e3192; /*fejléc,láblác*/
+    /*Világos téma*/
+    --kek: #2e3192; /*fejléc,lábléc*/
     --feher: #f0f0f0; /*háttér*/
 }
+
+/* Fejléc, Törzs, Lábléc*/
 body {
     background-color: var(--feher) !important;
     color: var(--sotetkek);
 }
-
 header, footer  {
     background: var(--kek) !important;
 }
+
+/* Felugró ablakok */
 .modal-body, .modal-body div {
     color: var(--sotetkek);
 }
@@ -28,6 +31,8 @@ header, footer  {
     background: #f0f0f0 !important;
     color: var(--sotetkek) !important;
 }
+
+/* Gombok */
 button.gomb {
     background-color: var(--kek);
     color: var(--feher);
@@ -36,10 +41,6 @@ button.gomb:hover:not(:disabled) {
     color: var(--kek);
     background-color: var(--feher);
     box-shadow: 0px 0px 0px 2.5px var(--kek) !important;
-}
-input[type=number]{
-    color: var(--feher);
-    background-color: var(--kek);
 }
 button.gomb:disabled{
     background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 50" preserveAspectRatio="none"><line x1="0" y1="0" x2="100" y2="50" stroke="red" stroke-width="10"/><line x1="100" y1="0" x2="0" y2="50" stroke="red" stroke-width="10"/></svg>');
@@ -50,14 +51,32 @@ button.gomb:disabled{
     color: rgba(255, 255, 255, 50%);
 }
 
-#megjelenito {
-    color: var(--kek);
+/*Beállítások > betűméret */
+input[type=number]{
+    color: var(--feher);
+    background-color: var(--kek);
 }
+
+/* Főoldal > Verzió leírások */
 .korvonal {
     color: var(--fekete);
     background-color: var(--feher);
     border: 1px solid var(--kek);
 }
+
+/* Főoldal > frissítések */
+#frissitesek {
+    color: var(--kek);
+    background-color: rgba(46, 49, 146, 0.05);
+    border: 1px solid var(--kek);
+}
+
+/* Akasztófa szöveg */
+#megjelenito {
+    color: var(--kek);
+}
+
+/* Játék > játékfeltételek */
 input[type=radio]{
     accent-color: var(--kek);
 }
