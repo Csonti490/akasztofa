@@ -249,6 +249,8 @@ ujjatek.addEventListener("click", function () {
     szam = 0;
     folytatas = false;
     seged = 0;
+
+    rosszvalasz.disabled = false;
 });
 
 // A kiskrapek állapotának változtatása
@@ -324,13 +326,27 @@ tudomamegoldast.addEventListener("click", function () {
     felfedKovetkezo();
 });
 
-// "Tudom a megoldást" gomb látszódjon-e
-let tam = document.getElementById("TaM");
+// Rossz válasz
+let rosszvalasz = document.getElementById("rosszvalasz");
+rosszvalasz.addEventListener("click", function () {
+    eletpont--;
+    eletpont_kijelzo.innerHTML = eletpont;
+    ellenorzes_visszajelzes.innerHTML = `Rossz volt a tippelt megoldás. -1 élet`;
+    EmberValt();
+    if(eletpont == 0){
+        JatekVege();
+        rosszvalasz.disabled = true;
+    }
+});
+
+// Rendezvényes kiegészítők
+// "Tudom a megoldást" és a "Rossz válasz" gombok látszódjon-e
+let rendezveny_kapcsolo = document.getElementById("rendezveny_kapcsolo");
+let rf = document.getElementById("rendezveny_funkciok");
 let isOn = false;
-tam.addEventListener("click", function(){
+rendezveny_kapcsolo.addEventListener("click", function(){
     isOn = !isOn;
-    tudomamegoldast.classList.toggle('d-none', !isOn);
-    console.log(isOn+" - ");
+    rf.classList.toggle('d-none', !isOn);
 });
 
 // Ellenőrző gomb felirata
@@ -356,7 +372,8 @@ function Gyari(){
     });
     document.querySelectorAll('input[name="nehezseg"]')[0].checked = true;
     mehet.disabled = true;
-    tam.checked = false;
+    rendezveny_kapcsolo.checked = false;
+    rosszvalasz.disabled = false;
 }
 
 window.addEventListener('resize', () => {

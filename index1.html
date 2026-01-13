@@ -95,10 +95,10 @@
                         <div class="row mt-3">
                             <div class="col-12 p-0">
                                 <label class="switch align-middle">
-                                    <input type="checkbox" id="TaM">
+                                    <input type="checkbox" id="rendezveny_kapcsolo">
                                     <span class="slider round"></span>
                                 </label>
-                                <p class="m-0 d-inline align-middle"><label for="TaM">"Tudom a megoldást" gomb.</label></p>
+                                <p class="m-0 d-inline align-middle"><label for="rendezveny_kapcsolo">Rendezvényes funkciók</label></p>
                             </div>
                         </div>
                     </div>
@@ -122,7 +122,11 @@
                         <p class="m-0">Nincs benne:</p>
                         <p class="m-0" id="nincsbenne">&nbsp;</p>
                     </div>
-                    <button id="tudomamegoldast" class="py-2 px-3 my-2 fw-bold rounded gomb d-none"><i class="fa-regular fa-lightbulb"></i> Tudom a megoldást</button>
+                    <!-- Rendezvényes funkciók -->
+                    <div class="m-0 p-0 d-none" id="rendezveny_funkciok">
+                        <button id="tudomamegoldast" class="py-2 px-3 my-2 fw-bold rounded gomb"><i class="fa-regular fa-lightbulb"></i> Tudom a megoldást</button>
+                        <button id="rosszvalasz" class="py-2 px-3 my-2 fw-bold rounded gomb"><i class="fa-solid fa-heart-circle-minus"></i> Rossz válasz</button>
+                    </div>
                 </div>
                 <!-- Végeredmény -->
                 <div class="col-12 col-sm-7 my-auto p-0 d-none" id="eredmeny">
@@ -152,7 +156,7 @@
          </div>
     </main>
     <footer class="mt-auto py-3 text-center fw-bold">
-        Verzió: 2.06.04 | Készítette: CsontiXD
+        Verzió: 2.07.04 | Készítette: CsontiXD
     </footer>
     </div>
 </body>
@@ -242,10 +246,23 @@
             <h5 class="text-center fw-bold"><i class="fa-solid fa-gamepad"></i> Játékmenet</h5>
             <p>Kezdődhet a találgatózás! Gépelj be a beviteli mezőbe egy betűt/számot és nyomj rá az "Ellenőrzés" gombra. Ha a szóban megtalálható az a karakter akkor meg fog jelenni, ha nem akkor alul fog megjelenni a "Nincs benne:" felirat alatt.</p>
             <hr>
-            <h5 class="text-center fw-bold"><i class="fa-solid fa-lightbulb"></i> Megoldás mutatása</h5>
-            <p>A játék kezdete előtt a nehézségi szintek beállítása alatt található egy állapot kapcsoló. Amivel a szó kitalálása közben megjelenő "Tudom a megoldást" gomb láthatósága kapcsolható ki és be.</p>
-            <p class="m-0">Ez a gomb direkt egy rendezvényre készült funkció. Ha esetleg valaki tudja a megoldást, akkor ezzel rögtön meg is lehet mutatni. Így nem kell a többi betűt egyesével begépelni, hogy a játék véget érjen.</p>
-            </div>
+            <h5 class="text-center fw-bold"><i class="fa-solid fa-lightbulb"></i> Rendezvényes funkciók</h5>
+            <p>
+                Ezek a funkciók direkt egy rendezvényre készültek.
+                <br>
+                A játék kezdete előtt a nehézségi szintek beállítása alatt található egy állapot kapcsoló. Amivel a szó kitalálása közben megjelenő "Tudom a megoldást" gomb és a "Rossz válasz" gomb láthatósága kapcsolható ki és be.
+            </p>
+            <p>
+                <b>"Tudom a megoldást" gomb</b>
+                <br>
+                Ha esetleg valaki tudja a megoldást, akkor ezzel rögtön meg is lehet mutatni. Így nem kell a többi betűt egyesével begépelni, hogy a játék véget érjen. 
+            </p>
+            <p>
+                <b>"Rossz válasz" gomb</b>
+                <br>
+                Ha esetleg mégsem a jó megoldást mondaná a megfejtő, akkor ezzel is le lehet vonni egy életet.
+            </p>
+        </div>
         <div class="modal-footer">
             <h5>&nbsp;</h5>
         </div>
