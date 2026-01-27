@@ -6,7 +6,6 @@ let feldolgoz = document.getElementById('fajlellenor'); // Fájlellenőrző
 let mehet = document.getElementById("mehet"); // Játékindító
 let visszajelzes = document.getElementById("visszajelzes");
 let valid = /[A-Za-z0-9áéíóöőúüűÁÉÍÓÖŐÚÜŰ]/; // Engedélyezett karakterek
-
 let valid2 = /^[A-Za-z0-9áéíóöőúüűÁÉÍÓÖŐÚÜŰ,;:\.\!\?\(\)\[\]\{\}\-\+\*\/\\@#%&~\^$]+$/;
 
 // A feltöltött fájlnak az ellenőrzése
@@ -63,7 +62,7 @@ feldolgoz.addEventListener('click', () => {
         sorok.forEach(sor => {
         const trimmed = sor.trim();
         for (const ch of trimmed) {
-            if (!v.test(ch)) {
+            if (!valid2.test(ch)) {
             szotar[ch] = (szotar[ch] || 0) + 1;
             }
         }
