@@ -87,10 +87,8 @@ Pár kép a játékból.
 ---
 ## Legutóbbi frissítések
 
-- "Rendezvényes funkciók" gomb
-  - "Tudom a megoldást" gomb beépítve
-  - "Rossz válasz" gomb beépítve
-- Játékmenet fül leírásának frissítése
+- "Tudnivalók" és a "Játékmenet" fül leírásának frissítése
+- Tiltott karakterek jobb szűrési módja és kilistázása 'Verzió 2' esetén
 
 ---
 
@@ -101,6 +99,8 @@ Az oldal a következő linken érhető el: [https://csonti490.github.io/akasztof
 ---
 
 ## Megjegyzés
-Legutolsó frissítésének dátuma: **2026.01.14.**
+
+Jelenlegi verzió: **2.08.05**
+Legutolsó frissítésének dátuma: **2026.01.27.**
 
 ---
