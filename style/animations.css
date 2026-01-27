@@ -78,3 +78,21 @@ i.fa-solid.fa-heart.pulse {
         opacity: 1;
     }
 }
+
+
+
+/* -=- Legutóbbi frissítések -=- */
+#friss {
+  display: inline-block;
+  animation: pulseShake 1.4s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes pulseShake {
+  0%   { transform: scale(1) rotate(0deg); }
+  20%  { transform: scale(1.12) rotate(4deg); }
+  40%  { transform: scale(1.05) rotate(-4deg); }
+  60%  { transform: scale(1.15) rotate(3deg); }
+  80%  { transform: scale(1.08) rotate(-3deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}

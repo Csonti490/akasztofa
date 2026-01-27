@@ -3,7 +3,6 @@ let kitalalando = document.getElementById("kitalalando"); // Kitalálandó szó
 let visszajelzes = document.getElementById("visszajelzes"); // Kitalálandó szó "hangja"
 let mehet = document.getElementById("mehet"); // Játékindító
 let valid = /[A-Za-z0-9áéíóöőúüűÁÉÍÓÖŐÚÜŰ]/; // Engedélyezett karakterek
-
 // Kitalálandó szó rejtése/mutatása
 mutatrejt.addEventListener("click", function () {
     if (mutatrejt.innerHTML.includes("-slash")){
@@ -20,6 +19,7 @@ mutatrejt.addEventListener("click", function () {
 // Játék engedélyezése
 kitalalando.addEventListener("input", function () {
     kitalalando.value = kitalalando.value.replace(/['"`_]/g, '');
+    kitalalando.value = kitalalando.value.replace(/[^A-Za-z0-9áéíóöőúüűÁÉÍÓÖŐÚÜŰ,;:\.\!\?\(\)\[\]\{\}\-\+\*\/\\@#%&~\^$]/g, '');
     if(kitalalando.value.length == 0 || !valid.test(kitalalando.value)){
         visszajelzes.innerHTML = `<i class="fa-solid fa-xmark text-danger"></i> Még nincs beírva szó a mezőbe.`;
         mehet.disabled = true;
@@ -28,6 +28,7 @@ kitalalando.addEventListener("input", function () {
         mehet.disabled = false;
     }
 });
+
 
 let megjelenito = document.getElementById("megjelenito"); // Kijelző
 let beallitasok = document.getElementById("beallitasok"); // Beállítások

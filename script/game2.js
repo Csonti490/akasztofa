@@ -7,6 +7,8 @@ let mehet = document.getElementById("mehet"); // Játékindító
 let visszajelzes = document.getElementById("visszajelzes");
 let valid = /[A-Za-z0-9áéíóöőúüűÁÉÍÓÖŐÚÜŰ]/; // Engedélyezett karakterek
 
+let valid2 = /^[A-Za-z0-9áéíóöőúüűÁÉÍÓÖŐÚÜŰ,;:\.\!\?\(\)\[\]\{\}\-\+\*\/\\@#%&~\^$]+$/;
+
 // A feltöltött fájlnak az ellenőrzése
 feltolto.addEventListener('change', () => {
   mehet.disabled = true;
@@ -50,23 +52,44 @@ feldolgoz.addEventListener('click', () => {
   const sorok = txtTartalom.split(/\r?\n/);
   const tiltottKarakterek = /["'`_]/;
   const hibasSor = sorok.find(sor => {
-    return sor.trim() === "" || tiltottKarakterek.test(sor);
+    return sor.trim() === "" || !valid2.test(sor);
   });
 
-  if (hibasSor !== undefined) {
-    hibaok.innerHTML = `A fájl tartalma hibás:<br>Üres sor vagy tiltott karakter ( " ' \` _ ) található benne.`;
-    myModal.show();
-    visszajelzes.innerHTML = `<i class="fa-solid fa-file-circle-xmark"></i> Hibás fájltartalom`;
-    return;
-  }
+    if (hibasSor !== undefined) {
 
-  // Ha minden rendben:
-  kifejezesek = sorok.map(sor => sor.trim());
-  //console.log("Kifejezések tömbje:", kifejezesek);
-  mehet.disabled = false;
-  visszajelzes.innerHTML = `<i class="fa-solid fa-file-circle-check"></i> Sikeres fájlbeolvasás`;
+        // Szótár a nem engedélyezett karakterekhez
+        const szotar = {};
+
+        sorok.forEach(sor => {
+        const trimmed = sor.trim();
+        for (const ch of trimmed) {
+            if (!v.test(ch)) {
+            szotar[ch] = (szotar[ch] || 0) + 1;
+            }
+        }
+        });
+
+        // Szép formázott kiírás: "ō (2 db); _ (1 db)"
+        let szepLista = Object.entries(szotar)
+        .map(([karakter, db]) => `${karakter} (${db} db)`)
+        .join("; ");
+
+        hibaok.innerHTML = `
+        A fájl tartalmában üres sor vagy tiltott karakter található.<br>Javítás után próbáld újra kiválasztani és beolvasni.<br><br>
+        <b>Nem engedélyezett karakterek:</b><br>
+        ${szepLista || "Nincs"}
+        `;
+
+        myModal.show();
+        visszajelzes.innerHTML = `<i class="fa-solid fa-file-circle-xmark"></i> Hibás fájltartalom`;
+        return;
+    }
+
+    // Ha minden rendben:
+    kifejezesek = sorok.map(sor => sor.trim());
+    mehet.disabled = false;
+    visszajelzes.innerHTML = `<i class="fa-solid fa-file-circle-check"></i> Sikeres fájlbeolvasás`;
 });
-
 
 let megjelenito = document.getElementById("megjelenito"); // Kijelző
 let beallitasok = document.getElementById("beallitasok"); // Beállítások
@@ -419,6 +442,12 @@ function updateButtonText() {
     }else {
         gomb.innerHTML = `<i class="fa-solid fa-magnifying-glass"></i> Ellenőrzés`;
     }
+}
+
+function Hiba_gomb(){
+    feltolto.value = '';
+    feldolgoz.disabled = true;
+    visszajelzes.innerHTML = `<i class="fa-solid fa-file-circle-plus"></i> Nincs fájl kiválasztva.`;
 }
 
 // Ha frissülne az oldal
