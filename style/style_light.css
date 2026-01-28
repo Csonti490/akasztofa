@@ -41,6 +41,8 @@ button.gomb:hover:not(:disabled) {
     color: var(--kek);
     background-color: var(--feher);
     box-shadow: 0px 0px 0px 2.5px var(--kek) !important;
+
+    cursor: url(f25a),auto !important;
 }
 button.gomb:disabled{
     background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 50" preserveAspectRatio="none"><line x1="0" y1="0" x2="100" y2="50" stroke="red" stroke-width="10"/><line x1="100" y1="0" x2="0" y2="50" stroke="red" stroke-width="10"/></svg>');
