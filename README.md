@@ -100,7 +100,7 @@ Az oldal a következő linken érhető el: [https://csonti490.github.io/akasztof
 
 ## Megjegyzés
 
-Jelenlegi verzió: **2.08.05**  
-Legutolsó frissítésének dátuma: **2026.01.27.**
+Jelenlegi verzió: **2.08.06**  
+Legutolsó frissítésének dátuma: **2026.01.28.**
 
 ---
