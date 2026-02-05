@@ -35,7 +35,7 @@
 <body onload="getCookie('akasztofa_suti')" class="p-0 overflow-auto">
     <div class="wrapper" style="min-height: 100vh; display: flex; flex-direction: column;">
     <header class="fw-bold">
-        <nav class="navbar navbar-expand-sm text-center">
+        <nav class="navbar navbar-expand-md text-center">
             <div class="container-fluid">
                 <a class="navbar-brand m-0" href="index.html">Akasztófa</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,6 +54,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="" data-bs-toggle="modal" data-bs-target="#BeallM"><i class="fa-solid fa-gear"></i>Beállítások</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="" data-bs-toggle="modal" data-bs-target="#KeszitoM"><i class="fa-solid fa-laptop-code"></i>Készítő</a>
                     </li>
                 </ul>
                 </div>
@@ -165,7 +168,7 @@
          </div>
     </main>
     <footer class="mt-auto py-3 text-center fw-bold">
-        Verzió: 2.08.06 | Készítette: CsontiXD
+        Verzió: 2.08.08 | Készítette: CsontiXD
     </footer>
     </div>
 </body>
@@ -323,5 +326,41 @@
         </div>
       </div>
     </div>
+</div>
 
+<!-- Készítő -->
+<div class="modal fade text-center" id="KeszitoM" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-md">
+      <div class="modal-content">
+        <div class="modal-header">
+            <h3 class="modal-title fw-bold"><i class="fa-solid fa-laptop-code"></i> Készítő</h3>
+            <button type="button" class="btn btn-danger float-end fw-bold" data-bs-dismiss="modal">X</button>
+        </div>
+        <div class="modal-body">
+            <h5 class="text-center fw-bold"><i class="fa-solid fa-book-bookmark"></i> Az oldalról</h5>
+            <p>Ez az oldal a MondoCon nevű rendezvény Reggeli/Esti Lógás műsorára készült.</p>
+            <hr>
+            <h5 class="text-center fw-bold"><i class="fa-solid fa-comments"></i> Elérhetőségek</h5>
+            <p>Ha esetleg lenne bármi kérdésed, vagy találtál valami hibát az oldalon és jelentenéd, akkor itt el tudsz érni:</p>
+
+            <div class="container row m-0 p-0 text-center" id="kszt">
+                <div class="col-6 px-3">
+                    <a href="mailto:skelyxd@gmail.com" target="_blank" title="Email link (MAILTO)">
+                        <i class="fa-solid fa-envelope"></i>
+                    </a>
+                    <p class="m-0">skelyxd@gmail.com</p>
+                </div>
+                <div class="col-6 px-3">
+                    <a href="https://discordapp.com/users/533188414082908161" target="_blank" title="Discord link (Discord user link)">
+                        <i class="fa-brands fa-discord"></i>
+                    </a>
+                    <p class="m-0">CsontiXD</p>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <h5>&nbsp;</h5>
+        </div>
+      </div>
+    </div>
 </div>

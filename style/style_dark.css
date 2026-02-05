@@ -32,6 +32,11 @@ header, footer  {
     color: var(--feher) !important;
 }
 
+/* Készítő fülben lévő ikonok */
+#kszt i {
+    color: white;
+}
+
 /* Gombok */
 button.gomb {
     background-color: var(--sotetkek);

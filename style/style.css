@@ -63,6 +63,18 @@ button.navbar-toggler {
     color: var(--feher);
 }
 
+/* Készítő fülben lévő ikonok */
+#kszt i {
+    font-size: 400%;
+}
+#kszt a {
+    color: var(--sotetkek);
+    text-decoration: none;
+}
+#kszt a:hover{
+    text-shadow: 0px 0px 15px gold;
+}
+
 /* Nehézségi szintek (input radio) */
 input[name="nehezseg"]{
     width: 100%;
