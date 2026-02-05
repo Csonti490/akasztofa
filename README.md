@@ -89,6 +89,7 @@ Pár kép a játékból.
 
 - "Tudnivalók" és a "Játékmenet" fül leírásának frissítése
 - Tiltott karakterek jobb szűrési módja és kilistázása 'Verzió 2' esetén
+- 'Készítő fül' a menüsorban
 
 ---
 
@@ -100,7 +101,7 @@ Az oldal a következő linken érhető el: [https://csonti490.github.io/akasztof
 
 ## Megjegyzés
 
-Jelenlegi verzió: **2.08.06**  
-Legutolsó frissítésének dátuma: **2026.01.28.**
+Jelenlegi verzió: **2.08.08**  
+Legutolsó frissítésének dátuma: **2026.02.05.**
 
 ---
