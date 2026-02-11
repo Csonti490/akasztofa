@@ -6,7 +6,7 @@ let feldolgoz = document.getElementById('fajlellenor'); // Fájlellenőrző
 let mehet = document.getElementById("mehet"); // Játékindító
 let visszajelzes = document.getElementById("visszajelzes");
 let valid = /[A-Za-z0-9áéíóöőúüűÁÉÍÓÖŐÚÜŰ]/; // Engedélyezett karakterek
-let valid2 = /^[A-Za-z0-9áéíóöőúüűÁÉÍÓÖŐÚÜŰ,;:\.\!\?\(\)\[\]\{\}\-\+\*\/\\@#%&~\^$=]+$/;
+let valid2 = /^[A-Za-z0-9áéíóöőúüűÁÉÍÓÖŐÚÜŰ,;:\.\!\?\(\)\[\]\{\}\-\+\*\/\\@#%&~\^$= ]+$/;
 
 // A feltöltött fájlnak az ellenőrzése
 feltolto.addEventListener('change', () => {
@@ -76,7 +76,7 @@ feldolgoz.addEventListener('click', () => {
         hibaok.innerHTML = `
         A fájl tartalmában üres sor vagy tiltott karakter található.<br>Javítás után próbáld újra kiválasztani és beolvasni.<br><br>
         <b>Nem engedélyezett karakterek:</b><br>
-        ${szepLista || "Nincs"}
+        ${szepLista || "Üres sort tartalmaz."}
         `;
 
         myModal.show();

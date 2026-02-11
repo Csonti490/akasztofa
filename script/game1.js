@@ -19,7 +19,7 @@ mutatrejt.addEventListener("click", function () {
 // Játék engedélyezése
 kitalalando.addEventListener("input", function () {
     kitalalando.value = kitalalando.value.replace(/['"`_]/g, '');
-    kitalalando.value = kitalalando.value.replace(/[^A-Za-z0-9áéíóöőúüűÁÉÍÓÖŐÚÜŰ,;:\.\!\?\(\)\[\]\{\}\-\+\*\/\\@#%&~\^$=]/g, '');
+    kitalalando.value = kitalalando.value.replace(/[^A-Za-z0-9áéíóöőúüűÁÉÍÓÖŐÚÜŰ,;:\.\!\?\(\)\[\]\{\}\-\+\*\/\\@#%&~\^$= ]/g, '');
     if(kitalalando.value.length == 0 || !valid.test(kitalalando.value)){
         visszajelzes.innerHTML = `<i class="fa-solid fa-xmark text-danger"></i> Még nincs beírva szó a mezőbe.`;
         mehet.disabled = true;
