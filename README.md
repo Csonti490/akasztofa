@@ -118,10 +118,7 @@ Rendszeresen jártam a MondoConra, és mindig nagyon szerettem a Reggeli/Esti L�
   </tr>
 </table>
 
-<p>Ide még nem tudom, hogy mit akarok írni</p>
-
 <hr>
-
 
 <div id="user-content-toc" align="center">
   <ul style="list-style: none;">
@@ -142,7 +139,9 @@ Rendszeresen jártam a MondoConra, és mindig nagyon szerettem a Reggeli/Esti L�
   </tr>
 </table>
 
-<p>Mégis mik ezek a plusz funkciók?</p>
+<h3>Mik ezek pontosan?</h3>
+<p><b>Tudom a megoldást</b>: Felfedi a megoldást. Így nem kell a többi hiányzó betűt egyesével begépelni, hogy a játék véget érjen.</p>
+<p><b>Rossz válasz</b>: Levon 1 életpontot, hogyha esetleg nem betűt találgatnak, hanem a megfejtést mondanák, de az nem lenne helyes.</p>
 
 <hr>
 
