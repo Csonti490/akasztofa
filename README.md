@@ -237,7 +237,7 @@ Az oldal a következő linken érhető el: [https://csonti490.github.io/akasztof
 </div>
 
 Jelenlegi verzió: **2.08.09**  
-Legutolsó frissítés dátuma: **2026.02.11.**
+Legutolsó frissítés dátuma: **2026.02.12.**
 
 <hr>
 
