@@ -67,8 +67,8 @@ Rendszeresen jártam a MondoConra, és mindig nagyon szerettem a Reggeli/Esti L�
 
 <table width="100%">
   <tr align="center">
-    <td><img src="./img/illustration/picture_03.png" title="Katt a kéore a nagyításhoz." width="100%"/></td>
-    <td><img src="./img/illustration/picture_04.png" title="Katt a kéore a nagyításhoz." width="100%"/></td>
+    <td><img src="./img/illustration/picture_03.png" title="Katt a képre a nagyításhoz." width="100%"/></td>
+    <td><img src="./img/illustration/picture_04.png" title="Katt a képre a nagyításhoz." width="100%"/></td>
   </tr>
   <tr align="center">
     <td width="500px" colspan="2">Egy kitalálandó szavat lehet bevinni és kitalálni.</td>
@@ -81,8 +81,8 @@ Rendszeresen jártam a MondoConra, és mindig nagyon szerettem a Reggeli/Esti L�
 
 <table width="100%">
   <tr align="center">
-    <td><img src="./img/illustration/picture_05.png" title="Katt a kéore a nagyításhoz." width="100%"/></td>
-    <td><img src="./img/illustration/picture_06.png" title="Katt a kéore a nagyításhoz." width="100%"/></td>
+    <td><img src="./img/illustration/picture_05.png" title="Katt a képre a nagyításhoz." width="100%"/></td>
+    <td><img src="./img/illustration/picture_06.png" title="Katt a képre a nagyításhoz." width="100%"/></td>
   </tr>
   <tr align="center">
     <td width="500px" colspan="2">Több kitalálandó szavat is be lehet olvasni egy txt fájl beolvasásával.</td>
@@ -101,8 +101,8 @@ Rendszeresen jártam a MondoConra, és mindig nagyon szerettem a Reggeli/Esti L�
 
 <table align="center" width="100%">
   <tr>
-    <td><img src="./img/illustration/picture_07.png" title="Katt a kéore a nagyításhoz." width="100%"/></td>
-    <td><img src="./img/illustration/picture_08.png" title="Katt a kéore a nagyításhoz." width="100%"/></td>
+    <td><img src="./img/illustration/picture_07.png" title="Katt a képre a nagyításhoz." width="100%"/></td>
+    <td><img src="./img/illustration/picture_08.png" title="Katt a képre a nagyításhoz." width="100%"/></td>
   </tr>
   <tr>
     <th width="500px">Sikeresen kitaláltad.</th>
@@ -112,7 +112,7 @@ Rendszeresen jártam a MondoConra, és mindig nagyon szerettem a Reggeli/Esti L�
 
  <table align="center" width="100%">
   <tr>
-    <td><img src="./img/illustration/picture_09.png" title="Katt a kéore a nagyításhoz." width="100%"/></td>
+    <td><img src="./img/illustration/picture_09.png" title="Katt a képre a nagyításhoz." width="100%"/></td>
   <tr>
     <th width="500px">Kitaláltad, de a kiskrapek...</th>
   </tr>
@@ -130,8 +130,8 @@ Rendszeresen jártam a MondoConra, és mindig nagyon szerettem a Reggeli/Esti L�
 
 <table align="center" width="100%">
   <tr>
-    <td><img src="./img/illustration/picture_10.png" title="Katt a kéore a nagyításhoz." width="100%"/></td>
-    <td><img src="./img/illustration/picture_11.png" title="Katt a kéore a nagyításhoz." width="100%"/></td>
+    <td><img src="./img/illustration/picture_10.png" title="Katt a képre a nagyításhoz." width="100%"/></td>
+    <td><img src="./img/illustration/picture_11.png" title="Katt a képre a nagyításhoz." width="100%"/></td>
   </tr>
   <tr>
     <th width="500px">Funkciók nélkül</th>
@@ -155,8 +155,8 @@ Rendszeresen jártam a MondoConra, és mindig nagyon szerettem a Reggeli/Esti L�
 
 <table align="center" width="100%">
   <tr>
-    <td><img src="./img/illustration/picture_12.png" title="Katt a kéore a nagyításhoz." width="100%"/></td>
-    <td><img src="./img/illustration/picture_13.png" title="Katt a kéore a nagyításhoz." width="100%"/></td>
+    <td><img src="./img/illustration/picture_12.png" title="Katt a képre a nagyításhoz." width="100%"/></td>
+    <td><img src="./img/illustration/picture_13.png" title="Katt a képre a nagyításhoz." width="100%"/></td>
   </tr>
   <tr>
     <th width="500px">Találgatás közben...</th>
@@ -166,8 +166,8 @@ Rendszeresen jártam a MondoConra, és mindig nagyon szerettem a Reggeli/Esti L�
 
 <table align="center" width="100%">
   <tr>
-    <td><img src="./img/illustration/picture_14.png" title="Katt a kéore a nagyításhoz." width="100%"/></td>
-    <td><img src="./img/illustration/picture_15.png" title="Katt a kéore a nagyításhoz." width="100%"/></td>
+    <td><img src="./img/illustration/picture_14.png" title="Katt a képre a nagyításhoz." width="100%"/></td>
+    <td><img src="./img/illustration/picture_15.png" title="Katt a képre a nagyításhoz." width="100%"/></td>
   </tr>
   <tr>
     <th width="500px">Hiba a fájlban (Verzió 2)</th>
